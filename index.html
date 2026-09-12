@@ -46,6 +46,8 @@ nav.main a{font:11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
 nav.main a:hover{color:var(--ink)}
 nav.main a.nav-3d{color:var(--acc)}
 nav.main a.nav-3d span{font-size:9px;vertical-align:super}
+nav.main a.nav-3d{color:var(--acc)}
+nav.main a.nav-3d span{font-size:9px;vertical-align:super}
 nav.main a.on{color:var(--ink);border-bottom-color:var(--acc)}
 .tel{font:12px/1 var(--mono);color:var(--ink);white-space:nowrap}
 @media(max-width:860px){.tel{display:none}}
@@ -334,13 +336,14 @@ footer.site{background:#25241f;color:#bbb4a7}.footer-cta{color:#e0ad88!important
 
 .guide-article{padding-top:50px;padding-bottom:60px;max-width:980px}.guide-article section{padding:30px 0;border-bottom:1px solid var(--line);max-width:760px}.guide-article section .eyebrow{margin-bottom:12px}.guide-article h2{font-size:26px;line-height:1.2;font-weight:550;letter-spacing:-.02em}.guide-article p{font-size:17px;color:var(--mut)}.guide-article .btns{margin-top:30px}.map a{text-decoration:none}
 .reset-draft{border:0;background:none;font:11px var(--sans);color:var(--mut);margin-left:auto;padding:14px 8px;cursor:pointer;text-decoration:underline}
+.journey-link{font:9px/1.4 var(--mono);color:#c9b9a5;text-decoration:none;white-space:nowrap}@media(max-width:640px){.journey-link{display:none}}
 </style>
 
 <div class="tools">
   <span class="br">Прототип</span>
   <span class="addr" id="addr">mooveab.ru/</span>
   <button id="bExp" aria-pressed="false">Пояснения</button>
-  <button id="bMap">Карта</button>
+  <button id="bMap">Карта</button><a class="journey-link" href="quiz.html">Путь клиента ↗</a>
 </div>
 <div class="exp hide" id="exp"><code id="expR">/</code><p id="expT"></p></div>
 
@@ -452,9 +455,9 @@ function svc(sl){for(var i=0;i<SERVICES.length;i++)if(SERVICES[i][0]===sl)return
 function svcPrice(x){var t=x[3];
  return t==='per_m2'?money(x[4])+' /м²':t==='per_visit'?money(x[4])+' /выезд':t==='monthly'?money(x[4])+' /мес':
   t==='pp'?'от '+money(50000):t==='package'?money(2500)+' /м²':t==='sections'?'от '+money(250)+' /м²':'индивидуально'}
-var PORT=[['as80','Дом в Кондратово','80 м² · 2024'],['as130','Дом на склоне','130 м² · 2025'],
- ['kr90','Дом для двоих','90 м² · 2024'],['vila220','Загородная резиденция','220 м² · 2025'],
- ['bath48','Банный комплекс','48 м² · 2023']];
+var PORT=[['as80','Дом в Кондратово','80 м² · концепция'],['as130','Дом на склоне','130 м² · концепция'],
+ ['kr90','Дом для двоих','90 м² · концепция'],['vila220','Загородная резиденция','220 м² · концепция'],
+ ['bath48','Банный комплекс','48 м² · концепция']];
 var READY=[['as80r','Готовый проект АС 80','80 м²',30000],['as130r','Готовый проект АС 130','130 м²',37000],['kr90r','Готовый проект КР 90','90 м²',24000]];
 var GUIDES=[['start','С чего начать проектирование дома'],['gpzu','Что такое ГПЗУ и зачем он нужен'],
  ['sostav','Что входит в рабочую документацию'],['oshibki','Пять ошибок при выборе участка']];
@@ -533,7 +536,7 @@ P['/privatehouse']=function(){return{t:'ИЖС',e:'Флагманский хаб
 
  /* 5. Как собирается решение */
  '<section class="s tint mx wrap">'+slab('04','Как собирается решение')+
- '<p class="lede">Три способа купить одно и то же. Разница в цене, а не в качестве.</p>'+
+ '<p class="lede">Можно начать с одной услуги, заказать полный путь или выбрать отдельные разделы. Состав определяется вашей задачей.</p>'+
  '<div class="g g3">'+[
   ['Одна услуга','Берёте только то, что нужно сейчас: анализ участка, концепцию или смету.','Цена по прайсу за выбранную услугу'],
   ['Пакет ПП + РД','Полный цикл от концепции до комплекта, по которому строят.','Общая цена по ставке РД, предпроект вычитается'],
@@ -544,17 +547,17 @@ P['/privatehouse']=function(){return{t:'ИЖС',e:'Флагманский хаб
  '<div class="btns"><button class="btn p" data-start="есть участок">Рассчитать состав и стоимость</button></div></section>'+
 
  /* 6. Избранные проекты */
- '<section class="s mx wrap">'+slab('05','Реализованные проекты',['Всё портфолио','/privatehouse/portfolio'])+
+ '<section class="s mx wrap">'+slab('05','Концепции частных домов',['Всё портфолио','/privatehouse/portfolio'])+
  '<div class="g g3">'+PORT.slice(0,3).map(function(pr,i){return '<button class="card" data-go="/privatehouse/portfolio/'+pr[0]+'">'+
   '<div class="th">'+art(i)+'</div><div class="bd"><b>'+pr[1]+'</b><small>'+pr[2]+'</small></div></button>'}).join('')+'</div></section>'+
 
  /* 7. 3D и цифровая модель */
  '<section class="s gray mx wrap">'+slab('06','Дом до того, как он построен')+
  '<div class="g g2" style="align-items:center"><div>'+
- '<p class="lede">Каждый предпроект отдаётся 3D-моделью: её можно покрутить в браузере, зайти внутрь и понять объём до стройки. Две-три модели выложены публично — остальные показываем на встрече.</p>'+
+ '<p class="lede">Поверните дом, рассмотрите пропорции и разберите его на основные части. Здесь представлены пять концептуальных макетов для демонстрации портфолио.</p>'+
  '<div class="btns"><button class="btn p" data-ext="3d.html">Открыть 3D-портфолио</button>'+
  '<button class="btn" data-go="/privatehouse/portfolio">Смотреть проекты</button></div>'+
- '<p class="note b">Пять проектов в одном пространстве, переключение между домами, разбор по разделам</p></div>'+
+ '<p class="note b">Пять проектов в одном пространстве, переключение между домами, разбор на части здания</p></div>'+
  '<div class="ph" style="--mh:280px">'+sSec(1)+'</div></div></section>'+
 
  /* 8. Гайды */
@@ -567,8 +570,29 @@ P['/privatehouse']=function(){return{t:'ИЖС',e:'Флагманский хаб
  '<div class="btns"><button class="btn p" data-start="есть участок">Рассчитать стоимость</button>'+
  '<button class="btn" data-go="/contacts">Связаться с бюро</button></div></div></section>'}};
 
+var SERVICE_COPY={
+ 'consultation':['Нужно понять, с чего начать', 'Есть вопросы по участку или проекту','Нужно определить ближайший этап','Обсудим задачу и сформулируем следующий шаг.',['Рекомендации по задаче','Список недостающих исходных данных','Предлагаемая последовательность работ']],
+ 'site-selection':['Вы выбираете между участками','Нужны критерии под будущий дом','Хотите проверить вариант до покупки','Сопоставим требования к дому с вариантами участков.',['Критерии выбора участка','Сравнение выбранных вариантов','Список ограничений для проверки']],
+ 'site-analysis':['Участок уже выбран','Нужно определить место дома','Непонятны ограничения и исходные данные','Подготовим основу для размещения дома на участке.',['Анализ доступных исходных данных','Ограничения и ориентир пятна застройки','Рекомендации для предпроекта']],
+ 'site-survey':['Недостаточно данных об участке','Нужно зафиксировать существующее положение','Планируется проектирование или реконструкция','Соберём и зафиксируем исходную информацию по согласованному заданию.',['Фиксация существующего положения','Материалы обследования','Список данных для следующего этапа']],
+ 'topographic-survey':['Нужен топоплан для проектирования','На участке сложный рельеф','Требуется уточнить расположение объектов','Подготовим топографические материалы в согласованных границах и масштабе.',['Топографический план','Данные рельефа и существующих объектов','Материалы для передачи проектировщику']],
+ 'technical-conditions':['Планируете подключение к сетям','Не хватает исходных данных по коммуникациям','Нужно сопровождение взаимодействия с сетями','Поможем собрать и согласовать исходные данные для подключения.',['Перечень требуемых исходных данных','Подготовленные обращения и материалы','Согласованный результат сопровождения']],
+ 'site-plan':['Дом нужно связать с участком','Планируются проезды и дополнительные зоны','Нужно учесть рельеф и коммуникации','Согласуем взаимное расположение дома и элементов участка.',['Схема размещения объектов','Проезды и функциональные зоны','Предусмотренные заданием решения участка']],
+ 'architecture-concept':['Есть идея будущего дома','Нужно выбрать планировку и облик','Хотите увидеть объём до рабочих чертежей','Определим концепцию, которую можно детализировать для строительства.',['Анализ участка и планировочное решение','Архитектурная концепция и визуализация','Карточка материалов и укрупнённый прогноз']],
+ 'pp-rd':['Нужен путь от идеи до чертежей','Хотите связать архитектуру и инженерию','Планируете готовить проект к стройке','Пройдём предпроект и подготовим рабочую документацию по согласованному решению.',['Предпроект: концепция и визуализация','АР, КР и инженерные разделы','Сметный расчёт']],
+ 'working-documentation':['Концепция уже определена','Нужны чертежи для строителей','Нужно уточнить конструктив и сети','Детализируем выбранное решение в рабочий комплект.',['Архитектурные и конструктивные решения','Инженерные сети по заданию','Сметный расчёт']],
+ 'engineering':['Нужно спроектировать сети дома','Требуются отопление, вентиляция или вода','Нужно дополнить проект электрикой','Свяжем инженерные системы с архитектурой дома.',['Базовые сети: ОВ, ВК','Дополнительные сети по выбору','Планы, схемы и ведомости выбранных систем']],
+ 'interior':['Нужно организовать внутреннее пространство','Хотите связать интерьер с архитектурой','Нужны решения по отделке и оборудованию','Подготовим интерьер под ваш сценарий жизни и согласованный состав работ.',['Планировочные решения','Концепция материалов и обстановки','Чертежи и спецификации по заданию']],
+ 'estimate':['Проект нужно перевести в объёмы и стоимость','Сравниваете предложения подрядчиков','Готовитесь планировать бюджет работ','Соберём объёмы и стоимость по предоставленной проектной документации.',['Ведомость объёмов','Стоимость работ и материалов','Ведомость договорной цены']],
+ 'site-preparation':['Готовитесь выходить на стройку','Нужно организовать подъезд и площадку','Требуется последовательность подготовительных работ','Определим, что подготовить на участке до начала основных работ.',['Перечень подготовительных мероприятий','Согласованная последовательность','Требования к площадке по заданию']],
+ 'supervision-visit':['Нужен разовый выезд архитектора','Возникли вопросы на стройке','Нужно проверить соответствие решения проекту','Проверим согласованный вопрос на площадке и зафиксируем результат выезда.',['Выезд по согласованному вопросу','Зафиксированные замечания','Ответы по проектным решениям']],
+ 'supervision-month':['Стройка требует регулярного участия автора','Подрядчику нужны ответы по проекту','Нужно сопровождать согласованные изменения','Сопроводим проектные решения в пределах согласованного месячного объёма.',['Выезды по согласованному графику','Работа с замечаниями и вопросами','Консультации по изменениям проекта']],
+ 'contractor-selection':['Выбираете исполнителя работ','Получили несколько предложений','Нужна помощь в сравнении состава и смет','Поможем сопоставить предложения подрядчиков с вашим проектом.',['Критерии сравнения подрядчиков','Разбор предоставленных предложений','Рекомендации и вопросы исполнителям']],
+ 'extra-buildings':['Нужны баня, гараж или навес','Хотите связать постройки в один ансамбль','Планируете дополнить существующий участок','Подготовим решение для дополнительных строений с учётом дома и участка.',['Согласованный состав построек','Расположение и архитектурная концепция','Документация в выбранном объёме']]
+};
+
 P['/privatehouse/services/:slug']=function(sl){
- var x=svc(sl);if(!x)return notFound();var name=x[1], gr=x[2], t=x[3];
+ var x=svc(sl);if(!x)return notFound();var name=x[1], gr=x[2], t=x[3],copy=SERVICE_COPY[sl];
  var near=SERVICES.filter(function(y){return y[0]!==x[0]&&(y[2]===gr||y[3]==='manual')}).slice(0,3);
  var main=(t==='package'||t==='pp'||t==='per_m2'||t==='sections');
  /* Блок 6 «Цена» — по типу страницы из §4 ТЗ. Выдуманных сумм нет: неутверждённое — «индивидуально». */
@@ -599,7 +623,7 @@ P['/privatehouse/services/:slug']=function(sl){
     '<p class="pn">Цена зафиксирована в прайсе бюро. Авторский надзор — отдельная услуга после проектирования, в пакет ПП+РД не входит.</p></div>'
   : '<div class="pbox mq"><div class="pk">Индивидуально</div>'+
     '<div class="figure">Считаем под задачу</div>'+
-    '<p class="pn">Стоимость зависит от объёма работ, участка и региона. Готовой ставки здесь нет, и придумывать её мы не будем — посчитаем по вашим вводным.</p></div>';
+    '<p class="pn">Стоимость зависит от объёма работ, участка и региона. Стоимость подготовим после уточнения задачи.</p></div>';
 
  return{t:name,e:'Шаблон лендинга услуги — один макет на все восемнадцать. Одиннадцать блоков по §3 ТЗ: первый экран, когда нужна, результат, состав, этапы, цена, кейсы, дополнительно, FAQ, навигатор, финальный CTA. Тип цены берётся из реестра: '+t+'.',
  h:crumb('Главная','ИЖС','Услуги',name)+
@@ -609,29 +633,26 @@ P['/privatehouse/services/:slug']=function(sl){
  '<div class="shero"><div><div class="eyebrow">'+gr+'</div>'+
  '<h1 class="h1s">'+name+'</h1>'+
  '<p class="lede" style="margin-bottom:22px">'+x[6]+'</p>'+
- '<div class="btns"><button class="btn p" data-start="есть участок">'+x[5]+'</button>'+
+ '<div class="btns"><button class="btn p" '+(main?'data-start="есть участок"':'data-manual="'+name+'"')+'>'+x[5]+'</button>'+
  '<button class="btn" data-go="/privatehouse">Все услуги ИЖС</button></div>'+
  '<p class="note">'+svcPrice(x)+' · '+(main?'считается на сайте':'расчёт по заявке')+'</p></div>'+
  '<div class="ph" style="--mh:260px">'+sPlan(2)+'</div></div></section>'+
 
  /* 2. Когда нужна */
  '<section class="s mx wrap">'+slab('01','Когда это нужно')+
- '<div class="g g3">'+['Вы только выбираете участок и не знаете, что на нём поместится',
-  'Есть участок, но непонятно, с чего начинать и в каком порядке',
-  'Нужен документ, который примут в согласующих органах']
+ '<div class="g g3">'+copy.slice(0,3)
   .map(function(q,i){return '<div class="tile" style="cursor:default"><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+q+'</b></div>'}).join('')+'</div></section>'+
 
  /* 3. Результат */
  '<section class="s gray mx wrap">'+slab('02','Что вы получаете')+
- '<div class="g g2"><div><p class="lede">На выходе — конкретный комплект, а не «работа проведена». Его можно показать подрядчику, в банк или в администрацию.</p>'+
- '<div class="out">'+['Комплект документов в PDF и в исходниках','3D-модель и визуализация, если входит в состав','Ведомости объёмов и материалов']
+ '<div class="g g2"><div><p class="lede">'+copy[3]+'</p>'+
+ '<div class="out">'+copy[4]
   .map(function(o,i){return '<div><i>'+String(i+1).padStart(2,'0')+'</i><span>'+o+'</span></div>'}).join('')+'</div></div>'+
  '<div class="ph" style="--mh:240px">'+sElev(1)+'</div></div></section>'+
 
  /* 4. Состав работ */
  '<section class="s mx wrap">'+slab('03','Состав работ')+
- '<div class="g g3">'+['Выезд и сбор исходных данных','Анализ ограничений участка','Варианты решения',
-  'Согласование с заказчиком','Подготовка комплекта','Передача и консультация']
+ '<div class="g g3">'+copy[4].concat(['Уточнение исходных данных','Согласование состава','Передача результата'])
   .map(function(w,i){return '<div class="tile" style="cursor:default"><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+w+'</b></div>'}).join('')+'</div></section>'+
 
  /* 5. Этапы */
@@ -646,7 +667,7 @@ P['/privatehouse/services/:slug']=function(sl){
  '<section class="s tint mx wrap">'+slab('05','Сколько стоит')+priceBlock+'</section>'+
 
  /* 7. Кейсы */
- '<section class="s mx wrap">'+slab('06','Проекты с этой услугой',['Всё портфолио','/privatehouse/portfolio'])+
+ '<section class="s mx wrap">'+slab('06','Возможные сценарии домов',['Всё портфолио','/privatehouse/portfolio'])+
  '<div class="g g3">'+PORT.slice(0,3).map(function(pr,i){return '<button class="card" data-go="/privatehouse/portfolio/'+pr[0]+'">'+
   '<div class="th">'+art(i)+'</div><div class="bd"><b>'+pr[1]+'</b><small>'+pr[2]+'</small></div></button>'}).join('')+'</div></section>'+
 
@@ -694,7 +715,7 @@ P['/proekt/:id']=function(id){
  ['Архитектурные решения','Конструктивные решения','Инженерные сети','Ведомость материалов','Спецификации','Паспорт проекта']
  .map(function(x,j){return '<div class="tile" style="cursor:default"><span class="n">'+String(j+1).padStart(2,'0')+'</span><b>'+x+'</b></div>'}).join('')+'</div></section>'+
  '<section class="s mx wrap">'+slab('02','Планировки')+'<div class="g g2"><div class="ph">'+sPlan(0)+'</div><div class="ph">'+sPlan(2)+'</div></div></section>'+
- '<section class="s mx wrap">'+calcBlock('адаптация готового проекта')+'</section>'}};
+ '<section class="s mx wrap">'+manualBlock('адаптация готового проекта')+'</section>'}};
 
 P['/napravlenie/:slug']=function(sl){
  var d=DIRS.filter(function(x){return x[0]===sl})[0];if(!d)return notFound();
@@ -707,9 +728,7 @@ P['/napravlenie/:slug']=function(sl){
  '<section class="s mx wrap">'+slab('01','Услуги направления')+'<div class="g g3">'+
  ['Предпроектные исследования','Концепция','Рабочая документация','Согласования','Авторский надзор','Сопровождение']
  .map(function(x,i){return '<div class="tile" style="cursor:default"><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+x+'</b></div>'}).join('')+'</div></section>'+
- '<section class="s mx wrap">'+slab('02','Проекты направления')+'<div class="g g3">'+
- [0,1,2].map(function(j){return '<div class="card" style="cursor:default"><div class="th">'+art(j+1,j)+'</div>'+
-  '<div class="bd"><b>Проект '+(j+1)+'</b><small>2024</small></div></div>'}).join('')+'</div></section>'+
+ '<section class="s gray mx wrap">'+slab('02','Обсудим похожую задачу')+'<p class="lede">Расскажите о типе объекта, площади и текущем этапе. Бюро уточнит подходящий состав услуг и подготовит индивидуальную оценку.</p></section>'+
  '<section class="s mx wrap">'+manualBlock(d[1])+
  '<div class="btns" style="margin-top:24px"><button class="btn gh" data-go="/privatehouse">Услуги для частного дома</button></div></section>'}};
 
@@ -858,7 +877,7 @@ function enhancePage(path,r){
 
 /* ───── роутер ───── */
 function addr(p){$('#addr').textContent='mooveab.ru'+p}
-function go(p){if(quizOn)closeQuiz();if(location.hash==='#'+p)render();else location.hash='#'+p}
+function go(p){$('header.site').classList.remove('menu-open');$('#menuToggle').setAttribute('aria-expanded','false');if(quizOn)closeQuiz();if(location.hash==='#'+p)render();else location.hash='#'+p}
 function match(path){if(P[path])return{f:P[path],a:[]};
  var keys=Object.keys(P).filter(function(k){return k.indexOf(':')>-1});
  for(var i=0;i<keys.length;i++){var kp=keys[i].split('/'),pp=path.split('/');

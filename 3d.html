@@ -63,7 +63,7 @@ button{font:inherit;color:inherit}
 /* карточка проекта */
 .info{position:fixed;left:clamp(16px,4vw,44px);bottom:clamp(16px,3.4vw,40px);z-index:10;max-width:min(400px,78vw)}
 .info .n{font:10px/1 var(--mono);letter-spacing:.18em;color:var(--acc);display:block;margin-bottom:14px}
-.info h2{font-size:clamp(26px,4.2vw,46px);letter-spacing:-.038em;line-height:1.02;margin:0 0 12px;font-weight:700}
+.info h1{font-size:clamp(26px,4.2vw,46px);letter-spacing:-.038em;line-height:1.02;margin:0 0 12px;font-weight:700}
 .info p{margin:0;color:var(--mut);font-size:14.5px;line-height:1.6;max-width:44ch}
 .meta{display:flex;gap:0;margin-top:20px;border-top:1px solid var(--line2)}
 .meta div{padding:12px 18px 0 0;margin-right:18px;border-right:1px solid var(--line2)}
@@ -125,7 +125,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(
 .scene-label{position:absolute;top:20px;left:22px;right:22px;display:flex;justify-content:space-between;gap:20px;font:9px/1.4 var(--mono);letter-spacing:.13em;color:#827465;pointer-events:none}
 .scene-label b{font-weight:400;color:var(--acc)}
 .zoom{position:absolute;right:16px;bottom:18px;display:flex;gap:5px}.zoom .btn{width:42px;font-size:22px}
-.info{top:140px;left:36px;bottom:auto;max-width:290px}.info h2{font-size:42px;line-height:1.04}.info p{font-size:14px}.info .n{font-size:10px;line-height:1.5;margin-bottom:24px}
+.info{top:140px;left:36px;bottom:auto;max-width:290px}.info h1{font-size:42px;line-height:1.04}.info p{font-size:14px}.info .n{font-size:10px;line-height:1.5;margin-bottom:24px}
 .meta{margin-top:24px}.meta div{padding-right:12px;margin-right:12px}.meta b{font-size:22px}
 .project-cta{display:flex;justify-content:space-between;gap:12px;text-decoration:none;background:var(--acc);color:white;padding:15px 18px;margin-top:28px;font-size:14px;border-radius:3px}
 .project-cta:hover{background:#7e3f23}.project-link{display:block;text-decoration:none;color:var(--ink);font-size:13px;padding:16px 0}.info .model-note{font-size:11px;line-height:1.5;color:var(--mut);padding-top:16px;border-top:1px solid var(--line2)}
@@ -137,15 +137,15 @@ button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(
 .layer-panel{display:none}.layer-panel.on{display:block;position:absolute;right:52px;top:155px;width:250px;background:rgba(255,253,249,.94);border:1px solid var(--line2);border-radius:4px;padding:12px;z-index:12;pointer-events:none}
 .lay{position:static;transform:none;opacity:1;visibility:visible;display:flex}.lay div{padding:10px 8px;gap:8px;font-size:11px;background:transparent}.lay small{display:none}.lay i{min-width:24px}.layer-note{font-size:11px;line-height:1.5;color:var(--mut);margin:12px 5px 3px}
 #gate{display:none}
-@media(max-width:1100px) and (min-width:761px){.scene{left:310px}.info{max-width:248px;left:28px}.info h2{font-size:34px}.rail{left:28px}.rail button{grid-template-columns:1fr}.rail svg{display:none}.layer-panel.on{width:190px;right:42px}}
+@media(max-width:1100px) and (min-width:761px){.scene{left:310px}.info{max-width:248px;left:28px}.info h1{font-size:34px}.rail{left:28px}.rail button{grid-template-columns:1fr}.rail svg{display:none}.layer-panel.on{width:190px;right:42px}}
 @media(max-width:760px){
  html,body{height:auto;min-height:100%;overflow:auto}.hd{position:relative;height:auto;min-height:110px;flex-wrap:wrap;padding:18px 18px 14px;gap:16px}.hd .logo{font-size:16px}.hd .tag{display:block;font-size:8px;margin-left:auto}.hd .rt{width:100%;margin:0;gap:5px;justify-content:space-between}.hd .rt .btn{flex:1;padding:9px 5px;font-size:11px}#bRes{display:block}
  .scene{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:14px 12px 0;height:340px}.scene-label{top:14px;left:14px;right:14px;font-size:8px}.scene-label span:last-child{display:none}
- .info{position:relative;top:auto;left:auto;right:auto;max-width:none;padding:24px 22px 12px}.info .n{margin-bottom:10px}.info h2{font-size:34px}.info p{display:block;max-width:none}.meta{margin-top:16px}.meta div{flex:1}.meta b{font-size:20px}.project-cta{margin-top:20px}.info .model-note{font-size:11px;margin-bottom:12px}
+ .info{position:relative;top:auto;left:auto;right:auto;max-width:none;padding:24px 22px 12px}.info .n{margin-bottom:10px}.info h1{font-size:34px}.info p{display:block;max-width:none}.meta{margin-top:16px}.meta div{flex:1}.meta b{font-size:20px}.project-cta{margin-top:20px}.info .model-note{font-size:11px;margin-bottom:12px}
  .rail{position:relative;left:auto;right:auto;bottom:auto;padding:6px 12px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.rail button{min-height:90px;padding:12px 9px;grid-template-columns:42px 1fr;gap:8px}.rail svg{width:42px}.rail .t{display:block;font-size:12px}.rail button:last-child{grid-column:1 / -1}.hint{display:none}
  .layer-panel.on{position:relative;right:auto;top:auto;width:auto;margin:0 22px 20px}.lay{display:grid;grid-template-columns:1fr 1fr}.layer-note{font-size:12px}
 }
-@media(min-width:761px) and (max-height:740px){body{overflow:auto;min-height:760px}.hd{position:absolute}.scene{bottom:auto;height:460px}.info{position:absolute;top:112px}.info h2{font-size:32px}.info .n{margin-bottom:12px}.info .model-note{font-size:10px}.info .meta{margin-top:14px}.info .project-cta{margin-top:18px}.rail{position:absolute;top:630px;bottom:auto}.hint{display:none}.layer-panel.on{top:135px}}
+@media(min-width:761px) and (max-height:740px){body{overflow:auto;min-height:760px}.hd{position:absolute}.scene{bottom:auto;height:460px}.info{position:absolute;top:112px}.info h1{font-size:32px}.info .n{margin-bottom:12px}.info .model-note{font-size:10px}.info .meta{margin-top:14px}.info .project-cta{margin-top:18px}.rail{position:absolute;top:630px;bottom:auto}.hint{display:none}.layer-panel.on{top:135px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
@@ -164,7 +164,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(
 
 <div class="info">
   <span class="n" id="iN">Проект 01 / 05</span>
-  <h2 id="iT">—</h2>
+  <h1 id="iT">—</h1>
   <p id="iD">—</p>
   <div class="meta" id="iM"></div><a class="project-cta" id="projectCTA" href="index.html#/privatehouse/portfolio/as80">Подробнее о доме <span>↗</span></a><a class="project-link" id="quoteCTA" href="index.html#/start/as80">Рассчитать похожий дом →</a><p class="model-note">Концептуальные макеты для демонстрации. Геометрия не заменяет проект и рабочие чертежи.</p>
 </div>
