@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>АБ Движение · 3D-портфолио</title>
+<style>
+:root{color-scheme:light;
+ --ink:#1a1a1a;--paper:#fff;--bg:#f8f8f6;--line:#e8e6e1;--line2:#d4d0c8;
+ --mut:#6b6b6b;--mut2:#9c968c;--acc:#a0522d;--soft:#f5ede6;--soft2:#ebdccf;
+ --dark:#161412;--don:#f5f2ee;--dmut:#8f867d;--dline:#332e29;
+ --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);
+ -webkit-font-smoothing:antialiased;letter-spacing:-.005em;overflow:hidden}
+button{font:inherit;color:inherit}
+
+/* ─────────── заслонка ─────────── */
+#gate{position:fixed;inset:0;z-index:100;background:var(--dark);color:var(--don);
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+ transition:opacity .7s ease,visibility .7s}
+#gate.out{opacity:0;visibility:hidden}
+#gate .br{position:absolute;top:clamp(18px,3vw,34px);left:clamp(18px,4vw,44px);
+ font:700 16px/1 var(--sans);letter-spacing:-.03em}
+#gate .br i{font-style:normal;color:var(--acc)}
+#gate .esc{position:absolute;top:clamp(18px,3vw,34px);right:clamp(18px,4vw,44px);
+ font:10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dmut)}
+#bcv{width:min(520px,80vw);height:min(334px,52vw);display:block}
+#gate .st{font:10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--soft2);
+ min-height:12px;text-align:center}
+#gate .pw{width:min(520px,80vw);height:1px;background:var(--dline);position:relative}
+#gate .pw i{position:absolute;inset:0 auto 0 0;background:var(--acc);width:0;transition:width .3s ease}
+#gate .pc{font:10px/1 var(--mono);letter-spacing:.14em;color:var(--dmut)}
+#gate .enter{border:1px solid var(--acc);background:transparent;color:var(--don);
+ padding:14px 26px;cursor:pointer;font:10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+ opacity:0;visibility:hidden;transition:opacity .3s,background .15s}
+#gate .enter.on{opacity:1;visibility:visible}
+#gate .enter:hover{background:var(--acc)}
+#gate h1{font-size:clamp(22px,3.4vw,34px);letter-spacing:-.035em;line-height:1.1;margin:0;
+ font-weight:700;text-align:center;max-width:18ch}
+
+/* ─────────── сцена ─────────── */
+#cv{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+#cv.drag{cursor:grabbing}
+
+/* ─────────── интерфейс ─────────── */
+.hd{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;gap:20px;
+ padding:clamp(14px,2.4vw,26px) clamp(16px,4vw,44px);pointer-events:none}
+.hd .logo{font:700 17px/1 var(--sans);letter-spacing:-.03em;pointer-events:auto;cursor:pointer;
+ text-decoration:none;color:var(--ink)}
+.hd .logo i{font-style:normal;color:var(--acc)}
+.hd .tag{font:10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--mut2)}
+.hd .rt{margin-left:auto;display:flex;gap:9px;pointer-events:auto}
+
+.btn{border:1px solid var(--line2);background:rgba(255,255,255,.82);backdrop-filter:blur(6px);
+ padding:11px 16px;cursor:pointer;font:10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+ transition:border-color .15s,background .15s,color .15s}
+.btn:hover{border-color:var(--ink)}
+.btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* карточка проекта */
+.info{position:fixed;left:clamp(16px,4vw,44px);bottom:clamp(16px,3.4vw,40px);z-index:10;max-width:min(400px,78vw)}
+.info .n{font:10px/1 var(--mono);letter-spacing:.18em;color:var(--acc);display:block;margin-bottom:14px}
+.info h2{font-size:clamp(26px,4.2vw,46px);letter-spacing:-.038em;line-height:1.02;margin:0 0 12px;font-weight:700}
+.info p{margin:0;color:var(--mut);font-size:14.5px;line-height:1.6;max-width:44ch}
+.meta{display:flex;gap:0;margin-top:20px;border-top:1px solid var(--line2)}
+.meta div{padding:12px 18px 0 0;margin-right:18px;border-right:1px solid var(--line2)}
+.meta div:last-child{border-right:0;margin-right:0}
+.meta b{display:block;font-size:19px;letter-spacing:-.025em;font-weight:700;line-height:1}
+.meta span{display:block;font:9px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;
+ color:var(--mut2);margin-top:7px}
+
+/* лента проектов */
+.rail{position:fixed;right:clamp(16px,4vw,44px);bottom:clamp(16px,3.4vw,40px);z-index:10;
+ display:flex;flex-direction:column;gap:7px;align-items:flex-end}
+.rail button{border:1px solid transparent;background:transparent;cursor:pointer;padding:9px 14px;
+ display:flex;align-items:baseline;gap:12px;transition:border-color .15s,background .15s;text-align:right}
+.rail button:hover{border-color:var(--line2);background:rgba(255,255,255,.7)}
+.rail button.on{border-color:var(--ink);background:rgba(255,255,255,.92)}
+.rail .i{font:9px/1 var(--mono);letter-spacing:.14em;color:var(--mut2)}
+.rail button.on .i{color:var(--acc)}
+.rail .t{font-size:13.5px;letter-spacing:-.015em;font-weight:600;white-space:nowrap}
+
+/* слои при разборе */
+.lay{position:fixed;left:clamp(16px,4vw,44px);top:50%;transform:translateY(-50%);z-index:10;
+ display:flex;flex-direction:column;gap:1px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.lay.on{opacity:1;visibility:visible}
+.lay div{display:flex;align-items:center;gap:12px;padding:10px 15px;background:rgba(255,255,255,.86);
+ border-left:2px solid var(--acc);font-size:13px}
+.lay i{font:9px/1 var(--mono);letter-spacing:.13em;color:var(--acc);font-style:normal}
+.lay b{font-weight:600}
+.lay small{color:var(--mut);font-size:11.5px;margin-left:auto;padding-left:16px}
+
+.hint{position:fixed;left:50%;bottom:clamp(14px,2.4vw,26px);transform:translateX(-50%);z-index:10;
+ font:9px/1.6 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--mut2);
+ text-align:center;pointer-events:none;transition:opacity .4s}
+.hint.off{opacity:0}
+
+@media(max-width:620px){
+ .hd{gap:10px;padding-left:16px;padding-right:16px}
+ .hd .tag{display:none}
+ .hd .rt{gap:6px}
+ .btn{padding:10px 11px;letter-spacing:.08em}
+ #bRes{display:none}
+}
+@media(max-width:900px){
+ .info{max-width:none;right:clamp(16px,4vw,44px);bottom:auto;top:96px}
+ .info p{display:none}
+ .rail{flex-direction:row;flex-wrap:wrap;left:clamp(16px,4vw,44px);justify-content:flex-start}
+ .rail .t{display:none}
+ .rail button{padding:11px 14px}
+ .lay{display:none}
+ .hint{display:none}
+}
+
+/* Architectural study viewer */
+body{background:radial-gradient(ellipse at 68% 30%,#fff 0,#f8f8f6 48%,#ede9e2 100%)}
+.hd{height:88px;border-bottom:1px solid var(--line);background:rgba(248,248,246,.92)}
+.btn{min-height:42px;font:12px/1.2 var(--sans);letter-spacing:0;text-transform:none;border-radius:3px}
+button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(--acc);outline-offset:4px}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+.scene{position:absolute;left:360px;right:28px;top:108px;bottom:192px;overflow:hidden;border:1px solid #dfd8ce;border-radius:5px;background:radial-gradient(ellipse at 65% 20%,#fffdf9,#eee9df)}
+.scene-label{position:absolute;top:20px;left:22px;right:22px;display:flex;justify-content:space-between;gap:20px;font:9px/1.4 var(--mono);letter-spacing:.13em;color:#827465;pointer-events:none}
+.scene-label b{font-weight:400;color:var(--acc)}
+.zoom{position:absolute;right:16px;bottom:18px;display:flex;gap:5px}.zoom .btn{width:42px;font-size:22px}
+.info{top:140px;left:36px;bottom:auto;max-width:290px}.info h2{font-size:42px;line-height:1.04}.info p{font-size:14px}.info .n{font-size:10px;line-height:1.5;margin-bottom:24px}
+.meta{margin-top:24px}.meta div{padding-right:12px;margin-right:12px}.meta b{font-size:22px}
+.project-cta{display:flex;justify-content:space-between;gap:12px;text-decoration:none;background:var(--acc);color:white;padding:15px 18px;margin-top:28px;font-size:14px;border-radius:3px}
+.project-cta:hover{background:#7e3f23}.project-link{display:block;text-decoration:none;color:var(--ink);font-size:13px;padding:16px 0}.info .model-note{font-size:11px;line-height:1.5;color:var(--mut);padding-top:16px;border-top:1px solid var(--line2)}
+.rail{left:36px;right:28px;bottom:24px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:stretch}
+.rail button{position:relative;display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;text-align:left;background:#f8f8f6;border:1px solid var(--line2);border-radius:3px;padding:16px 12px;min-height:102px}
+.rail button.on{border-color:var(--acc);box-shadow:inset 0 3px var(--acc);background:#fff}.rail button:hover{border-color:var(--acc)}
+.rail .t{white-space:normal;font-size:13px;line-height:1.4}.rail .i{display:block;margin-bottom:6px}.rail svg{width:64px;height:60px}.rail small{display:block;color:var(--mut);font-size:11px;font-weight:400;margin-top:5px}
+.hint{bottom:142px;left:calc(50% + 160px);font:11px/1.5 var(--sans);letter-spacing:0;text-transform:none;color:var(--mut);width:60%}
+.layer-panel{display:none}.layer-panel.on{display:block;position:absolute;right:52px;top:155px;width:250px;background:rgba(255,253,249,.94);border:1px solid var(--line2);border-radius:4px;padding:12px;z-index:12;pointer-events:none}
+.lay{position:static;transform:none;opacity:1;visibility:visible;display:flex}.lay div{padding:10px 8px;gap:8px;font-size:11px;background:transparent}.lay small{display:none}.lay i{min-width:24px}.layer-note{font-size:11px;line-height:1.5;color:var(--mut);margin:12px 5px 3px}
+#gate{display:none}
+@media(max-width:1100px) and (min-width:761px){.scene{left:310px}.info{max-width:248px;left:28px}.info h2{font-size:34px}.rail{left:28px}.rail button{grid-template-columns:1fr}.rail svg{display:none}.layer-panel.on{width:190px;right:42px}}
+@media(max-width:760px){
+ html,body{height:auto;min-height:100%;overflow:auto}.hd{position:relative;height:auto;min-height:110px;flex-wrap:wrap;padding:18px 18px 14px;gap:16px}.hd .logo{font-size:16px}.hd .tag{display:block;font-size:8px;margin-left:auto}.hd .rt{width:100%;margin:0;gap:5px;justify-content:space-between}.hd .rt .btn{flex:1;padding:9px 5px;font-size:11px}#bRes{display:block}
+ .scene{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:14px 12px 0;height:340px}.scene-label{top:14px;left:14px;right:14px;font-size:8px}.scene-label span:last-child{display:none}
+ .info{position:relative;top:auto;left:auto;right:auto;max-width:none;padding:24px 22px 12px}.info .n{margin-bottom:10px}.info h2{font-size:34px}.info p{display:block;max-width:none}.meta{margin-top:16px}.meta div{flex:1}.meta b{font-size:20px}.project-cta{margin-top:20px}.info .model-note{font-size:11px;margin-bottom:12px}
+ .rail{position:relative;left:auto;right:auto;bottom:auto;padding:6px 12px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.rail button{min-height:90px;padding:12px 9px;grid-template-columns:42px 1fr;gap:8px}.rail svg{width:42px}.rail .t{display:block;font-size:12px}.rail button:last-child{grid-column:1 / -1}.hint{display:none}
+ .layer-panel.on{position:relative;right:auto;top:auto;width:auto;margin:0 22px 20px}.lay{display:grid;grid-template-columns:1fr 1fr}.layer-note{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+
+<div class="scene"><canvas id="cv" tabindex="0" aria-label="3D-модель дома. Перетаскивайте для вращения, используйте кнопки масштаба."></canvas><div class="scene-label"><span>МАКЕТ / <b id="viewLabel">ПЕРСПЕКТИВА</b></span><span>АБ ДВИЖЕНИЕ — STUDY SERIES</span></div><div class="zoom"><button class="btn" id="zoomIn" aria-label="Приблизить">+</button><button class="btn" id="zoomOut" aria-label="Отдалить">−</button></div></div>
+
+<div class="hd">
+  <a class="logo" href="index.html" title="Вернуться на сайт">ДВИЖЕНИЕ<i>.</i></a>
+  <span class="tag">Архитектура в объёме</span>
+  <div class="rt">
+    <button class="btn" id="bEx">Разобрать</button>
+    <button class="btn" id="bRot">Вращение</button>
+    <button class="btn" id="bTop">Вид сверху</button><button class="btn" id="bRes">Исходный вид</button>
+  </div>
+</div>
+
+<div class="info">
+  <span class="n" id="iN">Проект 01 / 05</span>
+  <h2 id="iT">—</h2>
+  <p id="iD">—</p>
+  <div class="meta" id="iM"></div><a class="project-cta" id="projectCTA" href="прототип_сайта.html#/privatehouse/portfolio/as80">Подробнее о доме <span>↗</span></a><a class="project-link" id="quoteCTA" href="прототип_сайта.html#/start/as80">Рассчитать похожий дом →</a><p class="model-note">Концептуальные макеты для демонстрации. Геометрия не заменяет проект и рабочие чертежи.</p>
+</div>
+
+<div class="layer-panel"><div class="lay" id="lay"></div><p class="layer-note">Это части здания. АР описывает облик и планировки, КР — несущие конструкции, ИР — сети. СМ считает объёмы и стоимость всех работ.</p></div>
+<div class="rail" id="rail"></div>
+<div class="hint" id="hint">Поверните макет мышью или пальцем · ← → сменить дом</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s){return document.querySelector(s)};
+
+/* ══════════════ геометрия ══════════════
+   Всё параметрическое: коробки и призмы кровли. Никаких внешних моделей —
+   страница открывается двойным кликом и весит меньше одной фотографии. */
+
+function box(x,y,z,w,h,d,t,part){
+ var v=[[x,y,z],[x+w,y,z],[x+w,y,z+d],[x,y,z+d],
+        [x,y+h,z],[x+w,y+h,z],[x+w,y+h,z+d],[x,y+h,z+d]];
+ return{v:v,f:[[0,1,2,3],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]],t:t||'wall',part:part||'walls'};
+}
+/* двускатная кровля: призма с коньком вдоль оси X */
+function gable(x,y,z,w,h,d,ov,t,part){
+ ov=ov||0; x-=ov; z-=ov; w+=ov*2; d+=ov*2;
+ var v=[[x,y,z],[x+w,y,z],[x+w,y,z+d],[x,y,z+d],
+        [x,y+h,z+d/2],[x+w,y+h,z+d/2]];
+ return{v:v,f:[[0,3,2,1],[0,1,5,4],[2,3,4,5],[0,4,3],[1,2,5]],t:t||'roof',part:part||'roof'};
+}
+/* односкатная кровля */
+function shed(x,y,z,w,h1,h2,d,ov,t,part){
+ ov=ov||0; x-=ov; z-=ov; w+=ov*2; d+=ov*2;
+ var v=[[x,y,z],[x+w,y,z],[x+w,y,z+d],[x,y,z+d],
+        [x,y+h1,z],[x+w,y+h1,z],[x+w,y+h2,z+d],[x,y+h2,z+d]];
+ return{v:v,f:[[0,3,2,1],[4,7,6,5],[0,4,5,1],[1,5,6,2],[2,6,7,3],[3,7,4,0]],t:t||'roof',part:part||'roof'};
+}
+/* вальмовая кровля */
+function hip(x,y,z,w,h,d,ov,t,part){
+ ov=ov||0; x-=ov; z-=ov; w+=ov*2; d+=ov*2;
+ var ix=w*0.26;
+ var v=[[x,y,z],[x+w,y,z],[x+w,y,z+d],[x,y,z+d],
+        [x+ix,y+h,z+d/2],[x+w-ix,y+h,z+d/2]];
+ return{v:v,f:[[0,3,2,1],[0,1,5,4],[2,3,4,5],[0,4,3],[1,2,5]],t:t||'roof',part:part||'roof'};
+}
+/* окно — одна плоская накладка на фасаде: 'z' север, 'Z' юг, 'x' запад, 'X' восток */
+function win(x,y,z,w,h,face,part){
+ var e=0.05,v;
+ var n;
+ if(face==='z')      {v=[[x,y,z-e],[x+w,y,z-e],[x+w,y+h,z-e],[x,y+h,z-e]];n=[0,0,-1]}
+ else if(face==='Z') {v=[[x,y,z+e],[x+w,y,z+e],[x+w,y+h,z+e],[x,y+h,z+e]];n=[0,0,1]}
+ else if(face==='x') {v=[[x-e,y,z],[x-e,y,z+w],[x-e,y+h,z+w],[x-e,y+h,z]];n=[-1,0,0]}
+ else                {v=[[x+e,y,z],[x+e,y,z+w],[x+e,y+h,z+w],[x+e,y+h,z]];n=[1,0,0]}
+ return{v:v,f:[[0,1,2,3]],t:'glass',part:part||'walls',flat:1,fn:n};
+}
+function slab(x,y,z,w,h,d,t,part){return box(x,y,z,w,h,d,t||'deck',part||'extras')}
+/* дерево: ствол + гранёная крона. Часть участка, при разборе остаётся на месте */
+function tree(x,z,h){
+ var out=[box(x-.1,0,z-.1,.2,h*.6,.2,'trunk','site')],v=[],faces=[],rings=5,N=9;
+ for(var j=0;j<=rings;j++){var phi=Math.PI*j/rings,rr=Math.max(.02,Math.sin(phi))*h*.32;for(var i=0;i<N;i++){var a=i/N*Math.PI*2+(j%2)*.13;v.push([x+Math.cos(a)*rr,h*.70+Math.cos(phi)*h*.42,z+Math.sin(a)*rr])}}
+ for(var j=0;j<rings;j++)for(var i=0;i<N;i++){var a=j*N+i,b=j*N+(i+1)%N,c=(j+1)*N+(i+1)%N,d=(j+1)*N+i;faces.push([a,b,c],[a,c,d])}
+ out.push({v:v,f:faces,t:'leaf',part:'site'});return out;
+}
+function path(x,z,w,d){return box(x,-0.04,z,w,0.08,d,'path','site')}
+
+/* ── пять проектов бюро ── */
+var PROJECTS=[
+ {id:'as80',t:'Дом в Кондратово',area:80,year:2024,fl:1,
+  d:'Компактный одноэтажный дом на ровном участке. Двускатная кровля, терраса вдоль южного фасада, панорамное остекление гостиной.',
+  build:function(){
+   var g=[],W=10,D=8;
+   g.push(box(-W/2,-0.45,-D/2,W,0.45,D,'found','foundation'));
+   g.push(box(-W/2,0,-D/2,W,3.1,D,'wall','walls'));
+   g.push(win(-3.4,0.9,-D/2,4.6,1.9,'z','walls'));
+   g.push(win(2.1,1.1,-D/2,1.5,1.5,'z','walls'));
+   g.push(win(-1.2,1.0,D/2,3.0,1.7,'Z','walls'));
+   g.push(win(-W/2,1.1,-1.6,1.6,1.5,'x','walls'));
+   g.push(gable(-W/2,3.1,-D/2,W,2.2,D,0.45,'roof','roof'));
+   g.push(slab(-W/2,-0.06,-D/2-2.6,W,0.18,2.6,'deck','extras'));
+   g.push(path(-1.2,-D/2-8.2,2.2,5.6));
+   g=g.concat(tree(-11.2,2.6,4.6),tree(11.4,-3.4,3.9),tree(9.6,7.2,4.2));
+   return g;}},
+
+ {id:'as130',t:'Дом на склоне',area:130,year:2025,fl:2,
+  d:'Два этажа с врезкой в рельеф: нижний уровень уходит в склон, верхний выходит на консольную террасу. Односкатная кровля с уклоном по склону.',
+  build:function(){
+   var g=[],W=12,D=9;
+   g.push(box(-W/2-1.2,-1.6,-D/2-0.8,W+2.4,1.6,D+1.6,'found','foundation'));
+   g.push(box(-W/2,-1.2,-D/2,W,3.0,D,'wall','walls'));
+   g.push(win(-4.6,-0.5,-D/2,3.4,1.7,'z','walls'));
+   g.push(box(-W/2,1.8,-D/2,W,3.0,D-1.6,'wall','walls'));
+   g.push(win(-4.4,2.6,-D/2,7.2,1.9,'z','walls'));
+   g.push(win(-W/2,2.7,-2.4,2.8,1.6,'x','walls'));
+   g.push(shed(-W/2,4.8,-D/2,W,1.5,0.5,D-1.6,0.5,'roof','roof'));
+   g.push(slab(-W/2,1.68,-D/2-3.2,W,0.2,3.2,'deck','extras'));
+   g.push(box(-W/2,-1.2,-D/2-3.2,0.22,2.9,3.2,'wall','extras'));
+   g=g.concat(tree(-13.0,4.4,5.0),tree(12.6,-1.8,4.2));
+   return g;}},
+
+ {id:'kr90',t:'Дом для двоих',area:90,year:2024,fl:1,
+  d:'Одноэтажный дом с примыкающим навесом для машины. Простая геометрия, глухой северный фасад, вся жизнь развёрнута во двор.',
+  build:function(){
+   var g=[],W=11,D=8;
+   g.push(box(-W/2,-0.45,-D/2,W,0.45,D,'found','foundation'));
+   g.push(box(-W/2,0,-D/2,W,2.9,D,'wall','walls'));
+   g.push(win(-4.2,0.9,-D/2,5.4,1.9,'z','walls'));
+   g.push(win(1.6,1.2,-D/2,2.2,1.4,'z','walls'));
+   g.push(win(W/2,1.2,-1.4,2.2,1.4,'X','walls'));
+   g.push(gable(-W/2,2.9,-D/2,W,2.0,D,0.4,'roof','roof'));
+   /* навес */
+   g.push(box(W/2+0.3,-0.2,-D/2+0.6,0.22,2.7,0.22,'wall','extras'));
+   g.push(box(W/2+5.2,-0.2,-D/2+0.6,0.22,2.7,0.22,'wall','extras'));
+   g.push(box(W/2+0.3,-0.2,D/2-1.0,0.22,2.7,0.22,'wall','extras'));
+   g.push(box(W/2+5.2,-0.2,D/2-1.0,0.22,2.7,0.22,'wall','extras'));
+   g.push(slab(W/2+0.1,2.5,-D/2+0.3,5.6,0.22,D-0.6,'deck','extras'));
+   g.push(path(W/2+1.4,-D/2-6.4,3.2,6.4));
+   g=g.concat(tree(-11.8,-1.4,4.4),tree(-10.2,6.0,3.6));
+   return g;}},
+
+ {id:'vila220',t:'Загородная резиденция',area:220,year:2025,fl:2,
+  d:'Двухэтажный объём с вальмовой кровлей и вынесенным гостевым крылом. Терраса с бассейном, панорамное остекление в два света.',
+  build:function(){
+   var g=[],W=15,D=11;
+   g.push(box(-W/2,-0.5,-D/2,W,0.5,D,'found','foundation'));
+   g.push(box(-W/2,0,-D/2,W,6.4,D,'wall','walls'));
+   g.push(win(-6,0.9,-D/2,7.4,4.6,'z','walls'));
+   g.push(win(2.4,1.0,-D/2,3.4,2.0,'z','walls'));
+   g.push(win(2.4,4.1,-D/2,3.4,1.6,'z','walls'));
+   g.push(win(-W/2,1.1,-3.4,4.2,1.8,'x','walls'));
+   g.push(win(-W/2,4.3,-3.4,4.2,1.5,'x','walls'));
+   g.push(hip(-W/2,6.4,-D/2,W,2.4,D,0.6,'roof','roof'));
+   /* гостевое крыло */
+   g.push(box(W/2-0.2,-0.4,-D/2+1.4,5.4,3.0,6.2,'wall','extras'));
+   g.push(win(W/2+0.4,0.8,-D/2+1.4,3.6,1.7,'z','extras'));
+   g.push(gable(W/2-0.2,2.6,-D/2+1.4,5.4,1.6,6.2,0.4,'roof','extras'));
+   /* терраса и бассейн */
+   g.push(slab(-W/2,-0.08,-D/2-4.4,W,0.2,4.4,'deck','extras'));
+   g.push(box(-5.2,-0.5,-D/2-3.6,6.4,0.42,2.6,'water','extras'));
+   g.push(path(-1.6,-D/2-9.0,2.4,4.6));
+   g=g.concat(tree(-13.8,-2.4,5.2),tree(14.2,5.0,4.4),tree(-12.0,8.0,3.8));
+   return g;}},
+
+ {id:'bath48',t:'Банный комплекс',area:48,year:2023,fl:1,
+  d:'Отдельно стоящая баня с крытой верандой и зоной отдыха. Низкий вытянутый объём, тёмное дерево, кровля с большим выносом.',
+  build:function(){
+   var g=[],W=8,D=6;
+   g.push(box(-W/2,-0.4,-D/2,W,0.4,D,'found','foundation'));
+   g.push(box(-W/2,0,-D/2,W,2.6,D,'wood','walls'));
+   g.push(win(-2.6,0.9,-D/2,3.0,1.5,'z','walls'));
+   g.push(win(1.4,1.1,-D/2,1.2,1.2,'z','walls'));
+   g.push(gable(-W/2,2.6,-D/2,W,1.6,D,0.7,'roof','roof'));
+   /* веранда */
+   g.push(slab(-W/2,-0.05,-D/2-3.0,W,0.16,3.0,'deck','extras'));
+   g.push(box(-W/2+0.3,0,-D/2-2.7,0.18,2.5,0.18,'wood','extras'));
+   g.push(box(W/2-0.5,0,-D/2-2.7,0.18,2.5,0.18,'wood','extras'));
+   g=g.concat(tree(-9.6,3.0,4.0),tree(9.2,-2.0,3.4));
+   g.push(shed(-W/2,2.5,-D/2-3.0,W,0.3,-0.2,3.0,0.3,'roof','extras'));
+   return g;}}
+];
+
+/* ── слои разбора: соответствуют разделам проекта ── */
+var LAYERS=[
+ {part:'roof',n:'01',t:'Кровля · АР + КР',s:'облик и несущая система',dy:6.2},
+ {part:'walls',n:'02',t:'Стены · АР + КР',s:'планировки и конструктив',dy:2.6},
+ {part:'extras',n:'03',t:'Террасы и пристройки',s:'отдельные объёмы',dy:0.9},
+ {part:'foundation',n:'04',t:'Фундамент · КР',s:'несущее основание',dy:0}
+];
+
+/* ══════════════ рендер ══════════════ */
+var cv=$('#cv'),gl=cv.getContext('webgl',{antialias:true,alpha:true,preserveDrawingBuffer:true}),W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+function resize(){
+ var rect=cv.parentElement.getBoundingClientRect();W=rect.width;H=rect.height;
+ cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+ if(gl)gl.viewport(0,0,cv.width,cv.height);
+}
+window.addEventListener('resize',resize);resize();
+
+var COL={
+ wall:[250,246,237], roof:[151,91,62], glass:[66,91,98],
+ deck:[214,205,193], found:[176,168,157], water:[122,148,160], ground:[238,234,227],
+ wood:[122,88,62], brick:[196,168,146], trunk:[112,96,82], leaf:[129,144,105], path:[224,218,208]
+};
+var cam={yaw:0.62,pitch:0.40,dist:36,tgt:[0,2.0,0]},
+    target={yaw:0.62,pitch:0.40,dist:36},
+    autoRot=false,exploded=false,exT=0,grow=1,cur=0,geo=[],hintOff=false;
+
+function rot(p){
+ var x=p[0]-cam.tgt[0],y=p[1]-cam.tgt[1],z=p[2]-cam.tgt[2];
+ var cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
+ var x1=x*cy-z*sy, z1=x*sy+z*cy;
+ var cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch);
+ var y1=y*cp+z1*sp, z2=-y*sp+z1*cp;
+ return [x1,y1,z2+cam.dist];
+}
+function rotV(v){
+ var cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
+ var x1=v[0]*cy-v[2]*sy, z1=v[0]*sy+v[2]*cy;
+ var cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch);
+ return [x1, v[1]*cp+z1*sp, -v[1]*sp+z1*cp];
+}
+function proj(p){
+ var q=rot(p), f=Math.min(W*0.95,H*1.65)*1.2;
+ var s=f/cam.dist;
+ return [W/2+q[0]*s, H/2-q[1]*s, q[2]];
+}
+function norm(a,b,c){
+ var u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]], v=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
+ var n=[u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]];
+ var l=Math.hypot(n[0],n[1],n[2])||1;
+ return [n[0]/l,n[1]/l,n[2]/l];
+}
+var LIGHT=(function(){var l=[0.42,0.82,-0.38],m=Math.hypot(l[0],l[1],l[2]);return [l[0]/m,l[1]/m,l[2]/m]})();
+
+function build(i){
+ var raw=PROJECTS[i].build(), out=[];
+ raw.forEach(function(g){
+  var off=0;
+  for(var k=0;k<LAYERS.length;k++)if(LAYERS[k].part===g.part)off=LAYERS[k].dy;
+  /* центр объёма — по нему разворачиваем нормали наружу, порядок обхода
+     вершин у примитивов разный, и полагаться на него нельзя */
+  var c=[0,0,0];
+  g.v.forEach(function(p){c[0]+=p[0];c[1]+=p[1];c[2]+=p[2]});
+  c=[c[0]/g.v.length,c[1]/g.v.length,c[2]/g.v.length];
+  g.f.forEach(function(face){
+   var pts=face.map(function(ix){var p=g.v[ix];return [p[0],p[1],p[2]]});
+   var n=norm(pts[0],pts[1],pts[2]);
+   var fc=[0,0,0];
+   pts.forEach(function(p){fc[0]+=p[0];fc[1]+=p[1];fc[2]+=p[2]});
+   fc=[fc[0]/pts.length,fc[1]/pts.length,fc[2]/pts.length];
+   if(g.fn)n=g.fn;
+   else{
+    var d=(fc[0]-c[0])*n[0]+(fc[1]-c[1])*n[1]+(fc[2]-c[2])*n[2];
+    if(d<0)n=[-n[0],-n[1],-n[2]];
+   }
+   out.push({p:pts,n:n,t:g.t,part:g.part,off:off,flat:g.flat});
+  });
+ });
+ return out;
+}
+function setProject(i,instant){
+ cur=(i+PROJECTS.length)%PROJECTS.length;
+ geo=build(cur);
+ grow=instant?1:0;
+ if(location.hash.slice(1)!==PROJECTS[cur].id)history.replaceState(null,'','#'+PROJECTS[cur].id);
+ paintUI();
+}
+function fromHash(){
+ var h=location.hash.slice(1);
+ for(var i=0;i<PROJECTS.length;i++)if(PROJECTS[i].id===h)return i;
+ return 0;
+}
+
+/* Native WebGL depth buffer: intersecting roofs, walls and windows are occluded per pixel. */
+var renderError=false,program,buffer;
+if(!gl){
+ renderError=true;cv.insertAdjacentHTML('afterend','<p style="padding:80px 30px">3D недоступно в этом браузере. Откройте карточку дома — описание и расчёт доступны по ссылкам рядом.</p>');
+}else{
+ function shader(type,source){var sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh));return sh}
+ program=gl.createProgram();
+ gl.attachShader(program,shader(gl.VERTEX_SHADER,`
+ attribute vec3 aPosition;attribute vec3 aWorld;attribute vec3 aColor;attribute float aMaterial;
+ varying vec3 world;varying vec3 color;varying float material;
+ void main(){gl_Position=vec4(aPosition,1.0);world=aWorld;color=aColor;material=aMaterial;}`));
+ gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`
+ precision mediump float;varying vec3 world;varying vec3 color;varying float material;
+ float line(float p,float width){float f=fract(p);return 1.0-smoothstep(width,width+0.03,min(f,1.0-f));}
+ void main(){vec3 c=color;
+ if(material<0.5){
+  float grid=max(line(world.x/2.0,0.006),line(world.z/2.0,0.006));c=mix(c,vec3(.65,.55,.43),grid*.12);
+  float shadow=exp(-pow((world.x-1.0)/7.5,4.0)-pow((world.z-1.2)/5.0,4.0));c*=1.0-shadow*.22;
+ }else if(material<1.5){c*=1.0-line(world.x*2.0,.018)*.17;}
+ else if(material<2.5){
+  float vertical=max(line(world.x/1.25,.014),line(world.z/1.25,.014));
+  // The constant plane coordinate must not create a full-face mullion.
+  float gx=line(world.x/1.25,.014),gz=line(world.z/1.25,.014);
+  float frame=material>2.1?gz:gx;float cross=line(world.y/2.0,.01);
+  c=mix(vec3(.25,.32,.33),vec3(.57,.65,.64),clamp(world.y/6.0,0.0,1.0));
+  c=mix(c,vec3(.16,.21,.21),max(frame,cross)*.6);
+  c+=pow(max(0.0,sin(world.x*.14+world.z*.17+world.y*.25)),12.0)*.10;
+ }else if(material<3.5){c*=1.0-line(world.x*3.0,.025)*.12;}
+ else if(material<4.5){float grain=fract(sin(dot(world.xz+world.y,vec2(12.9898,78.233)))*43758.5453);c*=.985+grain*.015;}
+ gl_FragColor=vec4(c,1.0);}`));
+ gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));
+ gl.useProgram(program);buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+ [['aPosition',3,0],['aWorld',3,12],['aColor',3,24],['aMaterial',1,36]].forEach(function(a){var loc=gl.getAttribLocation(program,a[0]);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,a[1],gl.FLOAT,false,40,a[2])});
+ gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.clearColor(0,0,0,0);
+}
+function draw(){
+ if(renderError)return;
+ gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);var data=[];
+ function face(pts,n,t){
+  var c=COL[t]||COL.wall,dot=Math.max(0,n[0]*LIGHT[0]+n[1]*LIGHT[1]+n[2]*LIGHT[2]);
+  var m=t==='ground'?1:0.70+0.30*dot;
+  var material=t==='ground'?0:t==='roof'?1:t==='glass'?(Math.abs(n[0])>.5?2.2:2.0):t==='deck'||t==='wood'?3:t==='wall'?4:5;
+  var tint=c.map(v=>v*m/255);
+  function vertex(p){var q=proj(p);data.push(q[0]/W*2-1,1-q[1]/H*2,(q[2]-60)/100,p[0],p[1],p[2],...tint,material)}
+  for(var i=1;i<pts.length-1;i++){vertex(pts[0]);vertex(pts[i]);vertex(pts[i+1])}
+ }
+ face([[-18,-.55,-18],[-18,-.55,18],[18,-.55,18],[18,-.55,-18]],[0,1,0],'ground');
+ geo.forEach(function(f){face(f.p.map(p=>[p[0],p[1]*grow+f.off*exT,p[2]]),f.n,f.t)});
+ gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.DYNAMIC_DRAW);gl.drawArrays(gl.TRIANGLES,0,data.length/10);
+}
+cv.addEventListener('webglcontextlost',function(e){e.preventDefault();renderError=true;$('#viewLabel').textContent='Перезагрузите страницу для восстановления 3D'});
+cv.addEventListener('webglcontextrestored',function(){location.reload()});
+
+var lastTick=0;
+function tick(time){
+ var dt=Math.min(40,(time||0)-lastTick||16.67);lastTick=time||0;
+ if(document.hidden){requestAnimationFrame(tick);return}
+ if(autoRot && !drag)target.yaw+=0.000065*dt;
+ cam.yaw+=(target.yaw-cam.yaw)*0.09;
+ cam.pitch+=(target.pitch-cam.pitch)*0.09;
+ cam.dist+=(target.dist-cam.dist)*0.09;
+ exT+=((exploded?1:0)-exT)*0.10;
+ if(grow<1)grow=Math.min(1,grow+0.045);
+ draw();
+ requestAnimationFrame(tick);
+}
+
+/* ══════════════ управление ══════════════ */
+var drag=false,lx=0,ly=0;
+cv.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;cv.classList.add('drag');
+ cv.setPointerCapture(e.pointerId);killHint()});
+cv.addEventListener('pointermove',function(e){
+ if(!drag)return;
+ target.yaw+=(e.clientX-lx)*0.007;
+ target.pitch=Math.max(0.12,Math.min(1.48,target.pitch+(e.clientY-ly)*0.005));
+ lx=e.clientX;ly=e.clientY;
+});
+['pointerup','pointercancel'].forEach(function(ev){
+ cv.addEventListener(ev,function(){drag=false;cv.classList.remove('drag')});
+});
+cv.addEventListener('wheel',function(e){
+ e.preventDefault();
+ target.dist=Math.max(13,Math.min(60,target.dist+e.deltaY*0.03));
+ killHint();
+},{passive:false});
+window.addEventListener('keydown',function(e){
+ if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.altKey||e.metaKey||e.ctrlKey)return;
+ if(e.key==='ArrowRight'){setProject(cur+1);killHint()}
+ else if(e.key==='ArrowLeft'){setProject(cur-1);killHint()}
+ else if(e.key===' ' && e.target===cv){e.preventDefault();toggleEx()}
+});
+function killHint(){if(!hintOff){hintOff=true;$('#hint').classList.add('off')}}
+
+function toggleEx(){
+ exploded=!exploded;
+ geo=build(cur);
+ $('#bEx').classList.toggle('on',exploded);
+ $('#bEx').textContent=exploded?'Собрать':'Разобрать';
+ $('#lay').classList.toggle('on',exploded);
+ document.querySelector('.layer-panel').classList.toggle('on',exploded);$('#bEx').setAttribute('aria-pressed',exploded);
+ cam.tgt[1]=exploded?4.8:2;
+ $('#viewLabel').textContent=exploded?'СОСТАВ ЗДАНИЯ':'ПЕРСПЕКТИВА';
+ if(exploded)target.dist=Math.max(target.dist,34);
+}
+$('#bEx').onclick=function(){toggleEx();killHint()};
+$('#bRot').onclick=function(){autoRot=!autoRot;this.classList.toggle('on',!autoRot);
+ this.textContent=autoRot?'Пауза':'Вращать';this.setAttribute('aria-pressed',autoRot);killHint()};
+$('#bRes').onclick=function(){if(exploded)toggleEx();target.yaw=0.62;target.pitch=0.40;target.dist=36;autoRot=false;$('#bRot').textContent='Вращать';$('#bRot').setAttribute('aria-pressed','false');$('#viewLabel').textContent='ПЕРСПЕКТИВА';killHint()};
+$('#bTop').onclick=function(){target.pitch=1.48;target.yaw=0;$('#viewLabel').textContent='ВИД СВЕРХУ';killHint()};
+$('#zoomIn').onclick=function(){target.dist=Math.max(20,target.dist-4)};
+$('#zoomOut').onclick=function(){target.dist=Math.min(64,target.dist+4)};
+$('#bRot').textContent='Вращать';$('#bRot').setAttribute('aria-pressed','false');$('#bEx').setAttribute('aria-pressed','false');
+
+/* ══════════════ интерфейс ══════════════ */
+function paintUI(){
+ var p=PROJECTS[cur];
+ $('#iN').textContent='Проект '+String(cur+1).padStart(2,'0')+' / '+String(PROJECTS.length).padStart(2,'0');
+ $('#iT').textContent=p.t;
+ $('#iD').textContent=p.d;document.title=p.t+' · 3D · АБ Движение';
+ $('#projectCTA').href='прототип_сайта.html#/privatehouse/portfolio/'+p.id;$('#quoteCTA').href='прототип_сайта.html#/start/'+p.id;
+ $('#iM').innerHTML=[[p.area+' м²','площадь'],[p.fl,p.fl===1?'этаж':'этажа'],['3D','концепция']]
+  .map(function(m){return '<div><b>'+m[0]+'</b><span>'+m[1]+'</span></div>'}).join('');
+ document.querySelectorAll('#rail button').forEach(function(b,i){b.classList.toggle('on',i===cur);b.setAttribute('aria-pressed',i===cur)});
+}
+$('#rail').innerHTML=PROJECTS.map(function(p,i){
+ return '<button data-i="'+i+'" aria-label="'+p.t+' — '+p.area+' м²"><svg viewBox="0 0 80 64" fill="none"><path d="M5 45L36 60L76 38L44 22Z" fill="#e1d9ca"/><path d="M15 27V44L38 54L68 36V20L44 10Z" fill="#faf7f0" stroke="#b8ab99"/><path d="M10 28L36 '+(i===1?'10':'3')+'L73 19L39 40Z" fill="'+(['#a0522d','#887866','#895c47','#aa7254','#554b40'][i])+'"/><path d="M41 41L58 31V43L41 52Z" fill="#536567"/></svg><span><span class="i">'+String(i+1).padStart(2,'0')+' / КОНЦЕПЦИЯ</span><span class="t">'+p.t+'</span><small>'+p.area+' м² · '+p.fl+' эт.</small></span></button>';
+}).join('');
+$('#rail').addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b)return;
+ setProject(+b.dataset.i);killHint();
+});
+$('#lay').innerHTML=LAYERS.map(function(l){
+ return '<div><i>'+l.n+'</i><b>'+l.t+'</b><small>'+l.s+'</small></div>';
+}).join('');
+
+var entered=true;
+window.addEventListener('hashchange',function(){setProject(fromHash())});
+setProject(fromHash(),true);
+requestAnimationFrame(tick);
+})();
+</script>
+</html>
