@@ -145,11 +145,10 @@ button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(
  .rail{position:relative;left:auto;right:auto;bottom:auto;padding:6px 12px 24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.rail button{min-height:90px;padding:12px 9px;grid-template-columns:42px 1fr;gap:8px}.rail svg{width:42px}.rail .t{display:block;font-size:12px}.rail button:last-child{grid-column:1 / -1}.hint{display:none}
  .layer-panel.on{position:relative;right:auto;top:auto;width:auto;margin:0 22px 20px}.lay{display:grid;grid-template-columns:1fr 1fr}.layer-note{font-size:12px}
 }
+@media(min-width:761px) and (max-height:740px){body{overflow:auto;min-height:760px}.hd{position:absolute}.scene{bottom:auto;height:460px}.info{position:absolute;top:112px}.info h2{font-size:32px}.info .n{margin-bottom:12px}.info .model-note{font-size:10px}.info .meta{margin-top:14px}.info .project-cta{margin-top:18px}.rail{position:absolute;top:630px;bottom:auto}.hint{display:none}.layer-panel.on{top:135px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 </style>
-
-<div class="scene"><canvas id="cv" tabindex="0" aria-label="3D-модель дома. Перетаскивайте для вращения, используйте кнопки масштаба."></canvas><div class="scene-label"><span>МАКЕТ / <b id="viewLabel">ПЕРСПЕКТИВА</b></span><span>АБ ДВИЖЕНИЕ — STUDY SERIES</span></div><div class="zoom"><button class="btn" id="zoomIn" aria-label="Приблизить">+</button><button class="btn" id="zoomOut" aria-label="Отдалить">−</button></div></div>
 
 <div class="hd">
   <a class="logo" href="index.html" title="Вернуться на сайт">ДВИЖЕНИЕ<i>.</i></a>
@@ -161,11 +160,13 @@ button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(
   </div>
 </div>
 
+<div class="scene"><canvas id="cv" tabindex="0" aria-label="3D-модель дома. Перетаскивайте для вращения, используйте кнопки масштаба."></canvas><div class="scene-label"><span>МАКЕТ / <b id="viewLabel">ПЕРСПЕКТИВА</b></span><span>АБ ДВИЖЕНИЕ — STUDY SERIES</span></div><div class="zoom"><button class="btn" id="zoomIn" aria-label="Приблизить">+</button><button class="btn" id="zoomOut" aria-label="Отдалить">−</button></div></div>
+
 <div class="info">
   <span class="n" id="iN">Проект 01 / 05</span>
   <h2 id="iT">—</h2>
   <p id="iD">—</p>
-  <div class="meta" id="iM"></div><a class="project-cta" id="projectCTA" href="прототип_сайта.html#/privatehouse/portfolio/as80">Подробнее о доме <span>↗</span></a><a class="project-link" id="quoteCTA" href="прототип_сайта.html#/start/as80">Рассчитать похожий дом →</a><p class="model-note">Концептуальные макеты для демонстрации. Геометрия не заменяет проект и рабочие чертежи.</p>
+  <div class="meta" id="iM"></div><a class="project-cta" id="projectCTA" href="index.html#/privatehouse/portfolio/as80">Подробнее о доме <span>↗</span></a><a class="project-link" id="quoteCTA" href="index.html#/start/as80">Рассчитать похожий дом →</a><p class="model-note">Концептуальные макеты для демонстрации. Геометрия не заменяет проект и рабочие чертежи.</p>
 </div>
 
 <div class="layer-panel"><div class="lay" id="lay"></div><p class="layer-note">Это части здания. АР описывает облик и планировки, КР — несущие конструкции, ИР — сети. СМ считает объёмы и стоимость всех работ.</p></div>
@@ -300,7 +301,8 @@ var PROJECTS=[
    g.push(gable(W/2-0.2,2.6,-D/2+1.4,5.4,1.6,6.2,0.4,'roof','extras'));
    /* терраса и бассейн */
    g.push(slab(-W/2,-0.08,-D/2-4.4,W,0.2,4.4,'deck','extras'));
-   g.push(box(-5.2,-0.5,-D/2-3.6,6.4,0.42,2.6,'water','extras'));
+   g.push(box(-5.35,.12,-D/2-3.75,6.7,.05,2.9,'wall','extras'));
+   g.push(box(-5.2,.18,-D/2-3.6,6.4,.03,2.6,'water','extras'));
    g.push(path(-1.6,-D/2-9.0,2.4,4.6));
    g=g.concat(tree(-13.8,-2.4,5.2),tree(14.2,5.0,4.4),tree(-12.0,8.0,3.8));
    return g;}},
@@ -336,14 +338,14 @@ var cv=$('#cv'),gl=cv.getContext('webgl',{antialias:true,alpha:true,preserveDraw
 function resize(){
  var rect=cv.parentElement.getBoundingClientRect();W=rect.width;H=rect.height;
  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
- if(gl)gl.viewport(0,0,cv.width,cv.height);
+ needsDraw=true;if(gl)gl.viewport(0,0,cv.width,cv.height);
 }
 window.addEventListener('resize',resize);resize();
 
 var COL={
  wall:[250,246,237], roof:[151,91,62], glass:[66,91,98],
  deck:[214,205,193], found:[176,168,157], water:[122,148,160], ground:[238,234,227],
- wood:[122,88,62], brick:[196,168,146], trunk:[112,96,82], leaf:[129,144,105], path:[224,218,208]
+ roofDark:[79,80,73],metal:[59,61,55],wood:[122,88,62], brick:[196,168,146], trunk:[112,96,82], leaf:[129,144,105], path:[224,218,208]
 };
 var cam={yaw:0.62,pitch:0.40,dist:36,tgt:[0,2.0,0]},
     target={yaw:0.62,pitch:0.40,dist:36},
@@ -378,6 +380,20 @@ var LIGHT=(function(){var l=[0.42,0.82,-0.38],m=Math.hypot(l[0],l[1],l[2]);retur
 
 function build(i){
  var raw=PROJECTS[i].build(), out=[];
+ var dims=[[10,8,3.1],[12,9,4.8],[11,8,2.9],[15,11,6.4],[8,6,2.6]][i],dw=dims[0],dd=dims[1],hh=dims[2];
+ // Roof edging and a chimney give the study models an architectural scale.
+ raw.push(box(-dw/2-.35,hh-.06,-dd/2-.42,dw+.7,.12,.12,'metal','roof'));
+ if(i!==1)raw.push(box(dw*.23,hh+.4,dd*.16,.62,1.8,.62,'brick','roof'));
+ // Steps and small terrace furnishings are clearly part of the concept geometry.
+ if(i!==1){
+  raw.push(box(-dw/2+.7,.18,-dd/2-1.55,1.9,.16,.65,'wood','extras'));
+  raw.push(box(-dw/2+.8,.34,-dd/2-1.55,.12,.43,.65,'metal','extras'));
+  raw.push(box(-dw/2+2.4,.34,-dd/2-1.55,.12,.43,.65,'metal','extras'));
+  raw.push(box(-dw/2+.7,.77,-dd/2-1.55,1.9,.12,.65,'wood','extras'));
+ }
+ if(i===4||i===1)raw.forEach(g=>{if(g.t==='roof')g.t='roofDark'});
+ // Low planting along the approach, separate from the building layers.
+ raw=raw.concat(tree(-dw/2-2.1,-dd/2-3.2,1.1),tree(-dw/2-3.0,-dd/2-2.5,.85),tree(dw/2+2.3,dd/2+1,1.4));
  raw.forEach(function(g){
   var off=0;
   for(var k=0;k<LAYERS.length;k++)if(LAYERS[k].part===g.part)off=LAYERS[k].dy;
@@ -404,8 +420,8 @@ function build(i){
 }
 function setProject(i,instant){
  cur=(i+PROJECTS.length)%PROJECTS.length;
- geo=build(cur);
- grow=instant?1:0;
+ geo=build(cur);needsDraw=true;
+ grow=instant||window.matchMedia('(prefers-reduced-motion: reduce)').matches?1:0;target.dist=cur===3?(W<500?36:44):(W<500?29:36);if(instant)cam.dist=target.dist;
  if(location.hash.slice(1)!==PROJECTS[cur].id)history.replaceState(null,'','#'+PROJECTS[cur].id);
  paintUI();
 }
@@ -427,7 +443,7 @@ if(!gl){
  varying vec3 world;varying vec3 color;varying float material;
  void main(){gl_Position=vec4(aPosition,1.0);world=aWorld;color=aColor;material=aMaterial;}`));
  gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`
- precision mediump float;varying vec3 world;varying vec3 color;varying float material;
+ precision highp float;varying vec3 world;varying vec3 color;varying float material;
  float line(float p,float width){float f=fract(p);return 1.0-smoothstep(width,width+0.03,min(f,1.0-f));}
  void main(){vec3 c=color;
  if(material<0.5){
@@ -456,7 +472,7 @@ function draw(){
  function face(pts,n,t){
   var c=COL[t]||COL.wall,dot=Math.max(0,n[0]*LIGHT[0]+n[1]*LIGHT[1]+n[2]*LIGHT[2]);
   var m=t==='ground'?1:0.70+0.30*dot;
-  var material=t==='ground'?0:t==='roof'?1:t==='glass'?(Math.abs(n[0])>.5?2.2:2.0):t==='deck'||t==='wood'?3:t==='wall'?4:5;
+  var material=t==='ground'?0:(t==='roof'||t==='roofDark')?1:t==='glass'?(Math.abs(n[0])>.5?2.2:2.0):t==='deck'||t==='wood'?3:t==='wall'?4:5;
   var tint=c.map(v=>v*m/255);
   function vertex(p){var q=proj(p);data.push(q[0]/W*2-1,1-q[1]/H*2,(q[2]-60)/100,p[0],p[1],p[2],...tint,material)}
   for(var i=1;i<pts.length-1;i++){vertex(pts[0]);vertex(pts[i]);vertex(pts[i+1])}
@@ -468,24 +484,25 @@ function draw(){
 cv.addEventListener('webglcontextlost',function(e){e.preventDefault();renderError=true;$('#viewLabel').textContent='Перезагрузите страницу для восстановления 3D'});
 cv.addEventListener('webglcontextrestored',function(){location.reload()});
 
-var lastTick=0;
+var lastTick=0,needsDraw=true;
 function tick(time){
  var dt=Math.min(40,(time||0)-lastTick||16.67);lastTick=time||0;
  if(document.hidden){requestAnimationFrame(tick);return}
  if(autoRot && !drag)target.yaw+=0.000065*dt;
+ var moving=autoRot||grow<1||Math.abs(target.yaw-cam.yaw)+Math.abs(target.pitch-cam.pitch)+Math.abs(target.dist-cam.dist)+Math.abs((exploded?1:0)-exT)>.001;
  cam.yaw+=(target.yaw-cam.yaw)*0.09;
  cam.pitch+=(target.pitch-cam.pitch)*0.09;
  cam.dist+=(target.dist-cam.dist)*0.09;
  exT+=((exploded?1:0)-exT)*0.10;
  if(grow<1)grow=Math.min(1,grow+0.045);
- draw();
+ if(moving||needsDraw){draw();needsDraw=false}
  requestAnimationFrame(tick);
 }
 
 /* ══════════════ управление ══════════════ */
 var drag=false,lx=0,ly=0;
 cv.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;cv.classList.add('drag');
- cv.setPointerCapture(e.pointerId);killHint()});
+ cv.setPointerCapture(e.pointerId);$('#viewLabel').textContent=exploded?'СОСТАВ ЗДАНИЯ':'ПЕРСПЕКТИВА';killHint()});
 cv.addEventListener('pointermove',function(e){
  if(!drag)return;
  target.yaw+=(e.clientX-lx)*0.007;
@@ -522,7 +539,7 @@ function toggleEx(){
 $('#bEx').onclick=function(){toggleEx();killHint()};
 $('#bRot').onclick=function(){autoRot=!autoRot;this.classList.toggle('on',!autoRot);
  this.textContent=autoRot?'Пауза':'Вращать';this.setAttribute('aria-pressed',autoRot);killHint()};
-$('#bRes').onclick=function(){if(exploded)toggleEx();target.yaw=0.62;target.pitch=0.40;target.dist=36;autoRot=false;$('#bRot').textContent='Вращать';$('#bRot').setAttribute('aria-pressed','false');$('#viewLabel').textContent='ПЕРСПЕКТИВА';killHint()};
+$('#bRes').onclick=function(){if(exploded)toggleEx();target.yaw=0.62;target.pitch=0.40;target.dist=cur===3?(W<500?36:44):(W<500?29:36);autoRot=false;$('#bRot').textContent='Вращать';$('#bRot').setAttribute('aria-pressed','false');$('#viewLabel').textContent='ПЕРСПЕКТИВА';killHint()};
 $('#bTop').onclick=function(){target.pitch=1.48;target.yaw=0;$('#viewLabel').textContent='ВИД СВЕРХУ';killHint()};
 $('#zoomIn').onclick=function(){target.dist=Math.max(20,target.dist-4)};
 $('#zoomOut').onclick=function(){target.dist=Math.min(64,target.dist+4)};
@@ -534,7 +551,7 @@ function paintUI(){
  $('#iN').textContent='Проект '+String(cur+1).padStart(2,'0')+' / '+String(PROJECTS.length).padStart(2,'0');
  $('#iT').textContent=p.t;
  $('#iD').textContent=p.d;document.title=p.t+' · 3D · АБ Движение';
- $('#projectCTA').href='прототип_сайта.html#/privatehouse/portfolio/'+p.id;$('#quoteCTA').href='прототип_сайта.html#/start/'+p.id;
+ $('#projectCTA').href='index.html#/privatehouse/portfolio/'+p.id;$('#quoteCTA').href='index.html#/start/'+p.id;
  $('#iM').innerHTML=[[p.area+' м²','площадь'],[p.fl,p.fl===1?'этаж':'этажа'],['3D','концепция']]
   .map(function(m){return '<div><b>'+m[0]+'</b><span>'+m[1]+'</span></div>'}).join('');
  document.querySelectorAll('#rail button').forEach(function(b,i){b.classList.toggle('on',i===cur);b.setAttribute('aria-pressed',i===cur)});

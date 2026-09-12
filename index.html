@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="ru">
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -301,6 +303,35 @@ footer.site a{display:block;color:var(--dmut);text-decoration:none;font-size:14p
 footer.site a:hover{color:#fff}
 footer.site .big{font-size:clamp(22px,3vw,34px);color:#fff;letter-spacing:-.03em;font-weight:700;line-height:1.15}
 @media(max-width:820px){footer.site .fg{grid-template-columns:1fr 1fr}}
+/* Copper editorial system */
+:root{--mut2:#797267;--pad:clamp(20px,4.4vw,64px)}
+html{scroll-padding-top:88px}body{line-height:1.6}a{color:inherit}button,input,select,textarea{font:inherit}button,a,input,textarea,select{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:4px}
+button{touch-action:manipulation}.tools{position:relative;padding:7px var(--pad);min-height:34px;gap:12px}.tools button{padding:7px 10px;font-size:9px}.tools .br{color:#cfc4b8}.tools .addr{color:#b7ada1}.tools .br::after{content:' / 02';color:#ad714d}.exp p{min-width:0}.exp{font-size:12px}
+header.site{background:rgba(248,248,246,.96);backdrop-filter:blur(16px)}.hin{height:82px;gap:32px}.logo{font-size:20px;text-decoration:none}.logo::before{content:'↗';margin-right:9px;color:var(--acc);font-size:26px;font-weight:400}
+nav.main{gap:24px;justify-content:center}nav.main a{font:13px/1.4 var(--sans);text-transform:none;letter-spacing:0;padding:12px 0;color:#56524c}.header-cta{font-size:12px!important;padding:14px 16px!important;white-space:nowrap}#menuToggle{display:none}
+.btn{font:14px/1.3 var(--sans);letter-spacing:0;text-transform:none;padding:14px 20px;min-height:46px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:3px}.btn.p{background:var(--acc);border-color:var(--acc)}.btn.p:hover{background:#7d3e21;border-color:#7d3e21}.btn.gh{color:#625a50}.btn:disabled{opacity:.4}.btn:disabled:hover{background:var(--acc);color:#fff}
+.hero{background:var(--soft)}.hero .guides{opacity:.07}.hin2{grid-template-columns:1.04fr 1fr;gap:40px;padding-top:64px;padding-bottom:64px;align-items:center}.hero h1{font-size:clamp(40px,4.55vw,68px);font-weight:550;line-height:1.04;letter-spacing:-.048em}.eyebrow{font:10px/1.5 var(--mono);letter-spacing:.13em;margin-bottom:24px}.hero p.sub{font-size:17px;max-width:44ch;margin-top:24px}.hero-actions{margin-top:30px}.hero-caption{font-size:12px;color:var(--mut);margin:18px 0 0}
+.hero-visual{min-width:0;background:#f9f6f0;border:1px solid #ded0c1;border-radius:4px;position:relative;align-self:center;box-shadow:0 20px 50px -36px #755537}.hero-visual img{display:block;width:100%;height:auto;aspect-ratio:1.35;object-fit:cover}.visual-top{position:absolute;left:20px;right:20px;top:18px;display:flex;justify-content:space-between;font:9px/1.4 var(--mono);letter-spacing:.08em;color:#82664f;z-index:1}.visual-bottom{padding:18px 20px;border-top:1px solid #ded0c1;display:flex;align-items:center;justify-content:space-between;gap:15px;background:#faf7f1}.visual-bottom b{font-size:14px;font-weight:550}.visual-bottom small{display:block;font-size:11px;color:var(--mut);margin-top:3px}.round-link{border:1px solid #b8a18c;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;text-decoration:none;color:var(--acc)}.round-link:hover{background:var(--acc);color:white}
+.route-strip{display:flex;gap:22px;align-items:center;padding-top:26px;padding-bottom:26px;font-size:12px;border-bottom:1px solid var(--line)}.route-strip>span{margin-right:auto;color:var(--mut)}.route-strip b{font:10px var(--mono);color:var(--acc);margin-right:8px}.route-strip i{font-style:normal;color:#b8a18c}
+section.s{padding-top:72px;padding-bottom:72px}.slab h2{font-size:clamp(26px,3vw,40px);font-weight:550;line-height:1.13}.slab{align-items:center}.slab .more{font:12px/1.4 var(--sans);text-transform:none;letter-spacing:0}.slab i{min-width:20px}.slab .h1s{margin:0}.lede{font-size:18px;max-width:65ch}.h1s{font-weight:550!important;line-height:1.08!important}
+.scen,.tile,.card,.way,.fin,.pbox{border-radius:4px}.scen{min-height:214px;padding:26px;gap:18px}.scen b{font-size:23px;font-weight:550;line-height:1.2;display:flex;justify-content:space-between;gap:12px}.scen b span{color:var(--acc);font-size:20px}.scen small{font-size:14px}.scen .sg{font:12px/1.4 var(--sans);text-transform:none;letter-spacing:0}.text-links{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:13px}.text-links a,.text-link{color:var(--acc);text-decoration:none}.text-links a:hover{text-decoration:underline}.tile b{font-size:17px}.tile .dd{font-size:14px}.tile small{font:11px/1.5 var(--sans);text-transform:none;letter-spacing:0;color:var(--acc)}
+.card{overflow:hidden;padding:0}.card .th{padding:0;position:relative;background:#f3efe7}.study-img{display:block;width:100%;height:auto;aspect-ratio:1.6;object-fit:cover}.card .th svg{padding:20px}.image-badge{position:absolute;top:14px;left:14px;padding:5px 8px;background:#ffffffbb;border:1px solid #dfd5c9;font:9px/1.4 var(--mono);letter-spacing:.05em}.card .bd{padding:22px;gap:9px}.card b{font-size:20px;font-weight:550}.card b span{float:right;color:var(--acc)}.card small{font:11px/1.5 var(--sans);text-transform:none;letter-spacing:0}.card p{margin:0;font-size:13px;color:var(--mut);line-height:1.55}.project-card:hover{border-color:var(--acc)}
+.service-feature{padding:36px;border:1px solid var(--line);background:var(--bg);border-radius:4px}.service-feature.copper{background:var(--soft);border-color:var(--soft2)}.service-feature h3{font-size:32px;font-weight:550;line-height:1.12;letter-spacing:-.03em;margin:24px 0}.service-feature p{font-size:15px;color:var(--mut);max-width:43ch}.service-feature a{display:inline-block;margin-top:14px;color:var(--acc);font-size:13px;text-decoration:none}.calc{border-radius:4px;background:#23231f}.calc h3{max-width:28ch;font-weight:550}.calc p.c{color:#c1b8aa}.calc .opt small{color:#c8bfb3}.opt{border-color:#565148;border-radius:3px}.opt:hover{background:#3a3028}.opt:focus-visible{outline-color:#e0aa86}.calc .qlab{font:12px var(--sans);letter-spacing:0;text-transform:none}.calc.manual{background:var(--soft);border-color:#d4bca5}.calc.manual p.c{color:var(--mut)}
+.nav-intro{padding-top:40px!important}.nav-intro>.h1s{max-width:850px}.persona-grid .scen:first-child{background:var(--soft);border-color:#c29b7c}.persona-grid .scen:last-child{grid-column:1/-1;min-height:170px}.persona-grid{max-width:1120px}.hint-inline{font-size:13px;color:var(--mut);line-height:1.6;margin:20px 0}.hint-inline a{color:var(--acc)}.prototype-note{font-size:11px;line-height:1.6;color:var(--mut);padding-top:18px;margin-top:24px;border-top:1px solid var(--line)}
+.portfolio-toolbar{display:flex;align-items:center;gap:20px;justify-content:space-between;margin:28px 0}.text-link{font-size:13px;white-space:nowrap}.project-heading{display:flex;align-items:center;justify-content:space-between;gap:30px}.project-heading .lede{max-width:54ch}.project-heading .btns{flex-direction:column;flex-shrink:0}.project-wide{overflow:hidden;border:1px solid #dfd8ce;border-radius:4px}.project-wide img{aspect-ratio:2.15;object-fit:cover}.project-specs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.project-specs>div{padding:24px 12px 24px 0}.project-specs small{display:block;font-size:11px;color:var(--mut)}.project-specs b{display:block;font-size:23px;font-weight:500;margin-top:7px}
+.field{display:flex;flex-direction:column;gap:9px;margin:0 0 22px}.field>span,.field-label{font-size:13px;font-weight:500;color:#554d43}.field-label{margin:28px 0 14px}.field input,.field textarea,.field select{width:100%;border:1px solid #cfc7bc;border-radius:3px;background:#fff;padding:13px 14px;color:var(--ink);font:16px/1.5 var(--sans);min-height:48px}.field textarea{resize:vertical;min-height:110px}.field input:focus{border-color:var(--acc)}.field-error{font-size:13px;color:#9d3227}.role-form{max-width:860px}.contact-card{padding:36px;background:var(--soft);border:1px solid var(--soft2);border-radius:4px}.contact-card h2{font-size:30px;font-weight:500}.contact-card p{color:var(--mut);font-size:15px;margin-bottom:26px}.contact-card>a{display:block;margin-top:22px;font-size:13px;color:var(--acc)}.contact-cities{display:flex;flex-wrap:wrap;gap:18px;font-size:20px}.contact-cities span{flex-basis:100%;font-size:14px;color:var(--mut)}
+.brief-summary{border:1px solid #d5bda8;background:var(--soft);padding:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:28px 0}.brief-summary span{flex:1;min-width:180px;font-size:14px}.brief-form{max-width:850px}.brief-form .field{padding:24px 0;margin:0;border-bottom:1px solid var(--line)}.brief-form .field>span{font-size:18px}.brief-form .field i{font:11px var(--mono);font-style:normal;color:var(--acc);margin-right:16px}.brief-form .btns{margin-top:28px}.build-form{max-width:500px}
+.ov{background:#f8f8f6}.ovin{max-width:1080px;padding-top:26px}.ovtop{gap:20px;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--line2)}.quiz-brand{font-size:15px;font-weight:700;letter-spacing:-.03em;text-decoration:none;margin-right:auto}.quiz-brand span{color:var(--acc)}.stp{color:#655e53;font-size:10px;white-space:nowrap}.pbar{max-width:140px;height:3px;flex:1;background:#e3d8cc}.pbar i{height:3px}.xb{margin:0;width:42px;height:42px;border-radius:3px;flex-shrink:0}.quiz-body{width:100%;max-width:800px;margin:0 auto}.quiz-path{display:flex;gap:14px;color:#81766a;font-size:11px;margin-bottom:32px}.quiz-path span:first-child{color:var(--acc)}.quiz-path i{font-style:normal}.ov h3{font-size:clamp(30px,4.6vw,50px);font-weight:550;line-height:1.08;max-width:24ch}.ov h3:focus{outline:none}.ov .hint{max-width:66ch;font-size:15px;margin-bottom:28px}.ov .stack{max-width:none}.oc{border-color:#d2c8bc;background:#fff;border-radius:4px;padding:20px;align-items:center}.oc .mk{width:18px;height:18px;transform:none;border-color:#b4a48f}.oc[aria-pressed="true"]{background:var(--soft);border-color:var(--acc);color:var(--ink)}.oc[aria-pressed="true"] .mk{background:var(--acc);border:4px solid var(--soft);box-shadow:0 0 0 1px var(--acc)}.oc[aria-pressed="true"] small{color:#695440}.oc small{font-size:13px}.choice-arrow{margin-left:auto;font-size:16px;color:#ad8a6e;flex-shrink:0}.nav2{align-items:center;padding-top:32px;margin-top:12px}.quiet{margin-left:auto;font-size:11px;color:var(--mut)}.area-entry{max-width:500px}.area-entry .field input{font-size:48px;background:transparent;font-weight:500;letter-spacing:-.03em;padding:18px 0;border-width:0 0 1px;border-radius:0}.range-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mut)}.presets{margin-top:20px}.presets .btn{min-height:40px;padding:10px 18px}.chk{border-radius:4px;background:white;color:var(--ink);font:14px/1.4 var(--sans);text-align:left}.chk[aria-pressed="true"]{background:var(--soft);border-color:var(--acc)}.chk[aria-pressed="true"] .mk{background:var(--acc);border-color:var(--acc)}.section-picker{margin-top:20px}.section-picker .chk{width:100%;margin-bottom:8px}.section-picker .chk small{display:block;font-size:11px;color:var(--mut);margin-top:5px}.section-picker .chk b{margin-left:auto;font-size:12px;white-space:nowrap;font-weight:500}.section-picker .chk .mk{width:18px;height:18px}.consent{display:flex;align-items:flex-start;gap:12px;font-size:13px;line-height:1.6;margin:6px 0}.consent input{width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);margin-top:3px}
+.quote-head{display:flex;gap:30px;justify-content:space-between}.quote-head .eyebrow{margin-bottom:16px}.quote-head h3{font-size:clamp(36px,6vw,68px)}.quote-stamp{padding:20px;border:1px solid #d5bda8;background:var(--soft);font-size:32px;line-height:1.1;height:fit-content;white-space:nowrap}.quote-stamp small{display:block;font-size:10px;color:var(--mut);margin-top:8px}.summary-chips{display:flex;gap:8px;flex-wrap:wrap}.summary-chips span{padding:6px 10px;background:#ede8df;border-radius:3px;font-size:12px}.rows td{line-height:1.45}.rows td small{display:block;font-size:12px;color:var(--mut);margin-top:6px}.rows td:first-child{padding-right:16px}.flag b{font:13px/1.4 var(--sans);letter-spacing:0;text-transform:none;font-weight:600}.flag{border-radius:3px}.next-route{margin:28px 0;background:#fff;border:1px solid var(--line);padding:24px}.next-route h4{margin:0 0 16px;font-size:18px;font-weight:500}.next-route>div{display:flex;gap:18px;font-size:14px;padding:9px 0;border-top:1px solid var(--line)}.next-route span{font:10px/1.8 var(--mono);color:var(--acc)}.success-mark{width:56px;height:56px;border-radius:50%;background:var(--soft);color:var(--acc);display:grid;place-items:center;font-size:26px;margin-bottom:24px}.request-preview{border:1px solid var(--line2);padding:24px;background:white;font-size:14px}.request-preview p{overflow-wrap:anywhere}.table-wrap{max-width:100%;overflow:auto}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+footer.site{background:#25241f;color:#bbb4a7}.footer-cta{color:#e0ad88!important;font-size:14px!important;margin-top:26px}.big em{font-style:normal;color:#d7a17a}.footer-bottom{max-width:1320px;margin:40px auto 0;padding-top:20px;border-top:1px solid #474238;display:flex;justify-content:space-between;gap:20px;font-size:10px;color:#ada698}footer.site a{color:#bbb4a7;font-size:13px}footer.site b{font-size:10px;color:#f2eadf}
+@media(max-width:1100px){.hin{gap:20px}nav.main{gap:16px}.hin2{gap:28px}.route-strip{gap:14px}.route-strip>span{display:none}.route-strip div{flex:1}.header-cta{padding:12px!important}}
+@media(max-width:900px){.hin{height:72px;flex-wrap:wrap}.logo{margin-right:auto}.header-cta{font-size:12px!important}#menuToggle{display:inline-flex;min-width:44px;padding:10px!important}nav.main{display:none;order:4;width:100%;flex-basis:100%;background:var(--bg);padding:8px 0 16px;overflow:visible}header.site.menu-open .hin{height:auto;min-height:72px;padding-top:12px}header.site.menu-open nav.main{display:flex;flex-wrap:wrap;gap:0}nav.main a{width:50%;padding:14px 4px}.hin2{grid-template-columns:1fr 1fr;padding-top:44px;padding-bottom:44px}.hero h1{font-size:44px}.hero p.sub{font-size:15px}.hero .art{display:block}.hero-visual img{aspect-ratio:1}.hero-actions .btn{width:100%}.hero-caption{font-size:11px}.hero-visual .visual-top{font-size:8px;left:12px;right:12px}.portfolio-toolbar{flex-wrap:wrap}.project-heading{display:block}.project-heading .btns{flex-direction:row;margin-bottom:26px}.project-specs b{font-size:20px}}
+@media(max-width:640px){.tools .br{font-size:8px}.tools .addr{min-width:0;font-size:9px}.tools{gap:8px}.tools button{padding:7px 8px}.hin{gap:8px}.logo{font-size:16px}.logo::before{font-size:22px;margin-right:5px}.header-cta{font-size:11px!important;min-height:40px;padding:10px!important}#menuToggle{font-size:18px;min-height:40px}.hin2{grid-template-columns:1fr;gap:30px;padding-top:38px;padding-bottom:32px}.hero h1{font-size:clamp(39px,10.5vw,58px)}.hero p.sub{font-size:16px}.hero-actions{margin-top:24px;gap:9px}.hero-actions .btn{width:auto;flex:1;font-size:12px;padding:12px 10px;white-space:nowrap}.eyebrow{font-size:9px;letter-spacing:.08em}.hero-visual img{aspect-ratio:1.6}.hero-visual .visual-top{top:12px}.visual-bottom{padding:12px 14px}.hero-caption{margin-top:12px}.route-strip{gap:8px;font-size:10px;padding-top:18px;padding-bottom:18px;align-items:flex-start}.route-strip b{display:block;margin-bottom:4px}.route-strip i{padding-top:12px;font-size:12px}section.s{padding-top:48px;padding-bottom:48px}.slab{flex-wrap:wrap;gap:10px;margin-bottom:24px}.slab .more{margin-left:30px}.slab h2{font-size:28px;flex:1;min-width:230px}.lede{font-size:16px}.scen{padding:22px;min-height:175px}.scen b{font-size:22px}.text-links{gap:14px;font-size:12px}.service-feature{padding:26px}.service-feature h3{font-size:28px}.calc{padding:28px 22px}.calc h3{font-size:30px}.calc .g4{grid-template-columns:1fr}.calc .opt{padding:15px}.project-specs{grid-template-columns:1fr 1fr}.project-specs>div{padding:18px 0;border-bottom:1px solid var(--line)}.project-wide img{aspect-ratio:1.4}.portfolio-toolbar .btn{font-size:12px;min-height:40px;padding:10px 12px}.card .bd{padding:20px}.project-heading .btns .btn{font-size:12px}.persona-grid .scen:last-child{grid-column:auto}.contact-card{padding:26px}.contact-card h2{font-size:26px}.footer-bottom{flex-direction:column;gap:8px}.ovtop{gap:10px;padding-bottom:18px;margin-bottom:22px}.quiz-brand{font-size:12px}.pbar{max-width:70px}.ovtop .stp{font-size:9px}.ovin{padding:18px 20px 36px}.quiz-path{font-size:10px;gap:9px;margin-bottom:26px}.ov h3{font-size:32px;max-width:none}.ov .hint{font-size:14px;margin-bottom:24px}.oc{padding:16px 14px;font-size:15px;gap:12px}.oc small{font-size:12px}.nav2{gap:8px;padding-top:22px}.nav2 .btn{font-size:13px;padding:12px 14px;flex:1}.nav2 .quiet{flex-basis:100%;margin:8px 0;text-align:center}.quote-head{gap:12px}.quote-head h3{font-size:38px}.quote-stamp{font-size:22px;padding:14px 10px}.quote-stamp small{font-size:9px}.quote-head .hint{font-size:13px}.quote-head .eyebrow{font-size:9px}.rows{font-size:13px}.rows td:last-child{white-space:normal;min-width:95px}.rows tr.t td{font-size:15px}.pbox .rows td{font-size:12px}.section-picker .chk{flex-wrap:wrap}.section-picker .chk b{margin-left:30px}.chk{font-size:13px}.area-entry .field input{font-size:44px}.brief-summary{padding:20px}.field>span{line-height:1.5}.map code{overflow-wrap:anywhere}.crumb{line-height:1.6}.fin .btns .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+.guide-article{padding-top:50px;padding-bottom:60px;max-width:980px}.guide-article section{padding:30px 0;border-bottom:1px solid var(--line);max-width:760px}.guide-article section .eyebrow{margin-bottom:12px}.guide-article h2{font-size:26px;line-height:1.2;font-weight:550;letter-spacing:-.02em}.guide-article p{font-size:17px;color:var(--mut)}.guide-article .btns{margin-top:30px}.map a{text-decoration:none}
+.reset-draft{border:0;background:none;font:11px var(--sans);color:var(--mut);margin-left:auto;padding:14px 8px;cursor:pointer;text-decoration:underline}
 </style>
 
 <div class="tools">
@@ -312,9 +343,9 @@ footer.site .big{font-size:clamp(22px,3vw,34px);color:#fff;letter-spacing:-.03em
 <div class="exp hide" id="exp"><code id="expR">/</code><p id="expT"></p></div>
 
 <header class="site"><div class="hin mx">
-  <div class="logo" data-go="/">ДВИЖЕНИЕ<i>.</i></div>
+  <a class="logo" href="#/" data-go="/">ДВИЖЕНИЕ<i>.</i></a>
   <nav class="main" id="nav"></nav>
-  <span class="tel">+7 000 000-00-00</span>
+  <a class="btn p header-cta" href="#/navigator">Подобрать услугу ↗</a><button id="menuToggle" class="btn gh" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">☰</button>
 </div></header>
 
 <main id="page"></main>
@@ -421,7 +452,7 @@ function svcPrice(x){var t=x[3];
   t==='pp'?'от '+money(50000):t==='package'?money(2500)+' /м²':t==='sections'?'от '+money(250)+' /м²':'индивидуально'}
 var PORT=[['as80','Дом в Кондратово','80 м² · 2024'],['as130','Дом на склоне','130 м² · 2025'],
  ['kr90','Дом для двоих','90 м² · 2024'],['vila220','Загородная резиденция','220 м² · 2025'],
- ['bath48','Банный комплекс','48 м² · 2023'],['office','Офис бюро','Интерьеры · 2024'],['park','Сквер в центре','Благоустройство · 2025']];
+ ['bath48','Банный комплекс','48 м² · 2023']];
 var READY=[['as80r','Готовый проект АС 80','80 м²',30000],['as130r','Готовый проект АС 130','130 м²',37000],['kr90r','Готовый проект КР 90','90 м²',24000]];
 var GUIDES=[['start','С чего начать проектирование дома'],['gpzu','Что такое ГПЗУ и зачем он нужен'],
  ['sostav','Что входит в рабочую документацию'],['oshibki','Пять ошибок при выборе участка']];
@@ -430,20 +461,9 @@ var TR={'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh'
 var slug=function(s){return s.toLowerCase().split('').map(function(c){return TR[c]!==undefined?TR[c]:c}).join('')
  .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,32)};
 
-/* ───── расчёт ───── */
-var S={have:null,area:120,need:null,floors:null,extras:{},when:null},step=2,quizOn=false;
-function area(){var a=Math.max(50,+S.area||0);if(S.extras.cokol)a+=Math.round((+S.area||0)*0.5);
- if(S.extras.garage)a+=25;if(S.extras.banya)a+=30;if(S.extras.naves)a+=20;return Math.round(a)}
-function ppP(a){return a<=209?50000:a<=300?100000:150000}
-var SEC=[['Архитектурный раздел АР','600 ₽/м²',600],['Конструктив КР','1 000 ₽/м²',1000],
- ['Инженерия, база','400 ₽/м²',400],['Инженерия, дополнительно','250 ₽/м²',250],['Сметный расчёт','250 ₽/м²',250]];
-function money(n){return n.toLocaleString('ru-RU')+' ₽'}
-function calc(){var a=area(),pp=ppP(a),rd=a*2500,n=S.need||'both';
- if(n==='pp')return{a:a,n:n,total:pp,rows:[['Предпроект','анализ участка, планировка, концепция, визуализация',pp]]};
- if(n==='rd')return{a:a,n:n,total:rd,rows:SEC.map(function(s){return[s[0],s[1],s[2]*a]})};
- return{a:a,n:n,total:rd,pp:pp,rdPay:rd-pp,
-  rows:[['Предпроект','концепция, планировка, визуализация',pp],['Рабочая документация','АР, КР, инженерия, смета — к оплате',rd-pp]]}}
-
+/* ───── состояние и форматирование ───── */
+var S={},step=1,quizOn=false;
+function money(n){return n.toLocaleString('ru-RU',{maximumFractionDigits:2})+' ₽'}
 /* ───── компоненты ───── */
 function crumb(){var a=[].slice.call(arguments);
  return '<div class="crumb mx wrap">'+a.map(function(x,i){return i===a.length-1?'<b>'+x+'</b>':x}).join(' — ')+'</div>'}
@@ -452,7 +472,7 @@ function slab(n,t,more){return '<div class="slab"><i>'+n+'</i><h2>'+t+'</h2>'+
 function calcBlock(ctx){
  return '<div class="calc"><div class="lab">Расчёт стоимости</div>'+
  '<h3>Узнайте цену проекта до разговора</h3>'+
- '<p class="c">Пять вопросов — покажем сумму, состав работ по разделам и что в него входит. Без звонка и без контактов.</p>'+
+ '<p class="c">Ответьте на пять вопросов — увидите состав работ и ориентир стоимости. Результат доступен без контактов.</p>'+
  '<div class="qlab">Что у вас уже есть?</div><div class="g g4">'+
  [['есть участок','Участок есть'],['ищу участок','Участок ищу'],['есть эскиз','Есть эскиз'],['только идея','Пока только идея']]
  .map(function(o){return '<button class="opt" data-start="'+o[0]+'">'+o[1]+'</button>'}).join('')+'</div></div>'}
@@ -467,38 +487,6 @@ function txtph(n){var s='';for(var i=0;i<(n||6);i++)s+='<i></i>';return '<div cl
 /* ───── страницы ───── */
 var P={};
 
-P['/']=function(){return{t:'Главная',e:'Витрина. Одна задача — развести посетителя по направлениям и увести в ИЖС как во флагман. Расчёт стоит здесь же, но коротким входом.',
- h:'<section class="hero"><div class="guides mx">'+'<i></i>'.repeat(12)+'</div><div class="hin2 mx wrap">'+
- '<div><div class="eyebrow">Пермь · Екатеринбург · вся Россия</div>'+
- '<h1>Проектируем дома,<br>в которых <em>живут</em></h1>'+
- '<p class="sub">Архитектурное бюро полного цикла: от подбора участка и концепции до рабочей документации, сметы и авторского надзора.</p>'+
- '<div class="btns" style="margin-top:36px"><button class="btn p" data-go="/privatehouse">Проекты домов</button>'+
- '<button class="btn" data-go="/privatehouse/portfolio">Портфолио</button></div></div>'+
- '<div class="art">'+heroArt()+'</div></div></section>'+
- '<section class="band"><div class="g mx"><div class="c"><b>14</b><span>лет практики</span></div>'+
- '<div class="c"><b>180+</b><span>проектов</span></div><div class="c"><b>6</b><span>направлений</span></div>'+
- '<div class="c"><b>2</b><span>офиса</span></div></div></section>'+
- '<section class="s mx wrap">'+slab('01','Направления')+
- '<button class="feat" data-go="/privatehouse"><div><span class="n">01 — Флагман</span>'+
- '<b>ИЖС и частные дома</b><p>Полный цикл от подбора участка до авторского надзора. Единственное направление, где стоимость базового пакета считается прямо на сайте.</p>'+
- '<small>Посчитать стоимость</small></div><div class="fa">'+sElev(1)+'</div></button>'+
- '<div class="g g3">'+DIRS.slice(1).map(function(d,i){return '<button class="tile" data-go="/napravlenie/'+d[0]+'">'+
-  '<span class="n">'+String(i+2).padStart(2,'0')+'</span><b>'+d[1]+'</b><em class="dd">'+d[3]+'</em><small>Индивидуальный расчёт</small></button>'}).join('')+'</div></section>'+
- '<section class="s mx wrap">'+calcBlock()+'</section>'+
- '<section class="s mx wrap">'+slab('02','Избранные проекты',['Всё портфолио','/privatehouse/portfolio'])+
- '<div class="g g3">'+PORT.slice(0,3).map(function(p,i){return '<button class="card" data-go="/privatehouse/portfolio/'+p[0]+'">'+
-  '<div class="th">'+art(i)+'</div><div class="bd"><b>'+p[1]+'</b><small>'+p[2]+'</small></div></button>'}).join('')+'</div></section>'+
- '<section class="s gray mx wrap">'+slab('03','Как проходит работа')+'<div class="steps">'+
- [['Знакомство','Разбираем задачу, участок и бюджет. Показываем похожие проекты.'],
-  ['Предпроект','Анализ участка, планировка, концепция, визуализация, укрупнённый расчёт стройки.'],
-  ['Рабочая документация','Архитектура, конструктив, инженерия, смета с актуальными ценами.'],
-  ['Согласования','Технические условия, ГПЗУ, разрешение на строительство.'],
-  ['Авторский надзор','Выезды на объект, проверка соответствия проекту, работа с подрядчиком.']]
- .map(function(r,i){return '<div class="r"><i>'+String(i+1).padStart(2,'0')+'</i><b>'+r[0]+'</b><p>'+r[1]+'</p></div>'}).join('')+'</div></section>'+
- '<section class="s mx wrap">'+slab('04','Готовые проекты',['Каталог','/proekt'])+
- '<div class="g g3">'+READY.map(function(r,i){return '<button class="card" data-go="/proekt/'+r[0]+'">'+
-  '<div class="th">'+art(i+1,i)+'</div><div class="bd"><b>'+r[1]+'</b><small>'+r[2]+'</small><span class="pr">'+money(r[3])+'</span></div></button>'}).join('')+'</div></section>'}};
-
 P['/privatehouse']=function(){return{t:'ИЖС',e:'Флагманский хаб. Девять блоков по §5 ТЗ: первый экран, выбор сценария, дорожная карта, услуги по этапам, как собирается решение, избранные проекты, 3D, гайды, финальный CTA. Хаб не дублирует лендинги — он разводит по ним.',
  h:'<section class="hero"><div class="guides mx">'+'<i></i>'.repeat(12)+'</div><div class="hin2 mx wrap">'+
  '<div><div class="eyebrow">Направление 01 · ИЖС</div><h1>Частные дома<br>и коттеджи</h1>'+
@@ -510,7 +498,7 @@ P['/privatehouse']=function(){return{t:'ИЖС',e:'Флагманский хаб
 
  /* 2. Выбор сценария */
  '<section class="s mx wrap">'+slab('01','С чем вы пришли')+
- '<p class="lede">Выберите ситуацию — дальше покажем только то, что относится к ней. Порядок услуг и рекомендации перестроятся.</p>'+
+ '<p class="lede">Выберите ситуацию — откроем подходящую услугу или перенесём её в навигатор.</p>'+
  '<div class="g g3">'+[
   ['Хочу индивидуальный дом','Полный путь: задача, участок, концепция, рабочая документация','start','только идея'],
   ['Ищу готовый проект','Готовые решения, адаптация под участок и доп. услуги','go','/proekt'],
@@ -577,33 +565,8 @@ P['/privatehouse']=function(){return{t:'ИЖС',e:'Флагманский хаб
  '<div class="btns"><button class="btn p" data-start="есть участок">Рассчитать стоимость</button>'+
  '<button class="btn" data-go="/contacts">Связаться с бюро</button></div></div></section>'}};
 
-P['/privatehouse/portfolio']=function(){return{t:'Портфолио',e:'Список с фильтрами, карточки из CMS. На втором шаге сюда добавится воркфлоу: архитектор готовит карточку, владелец публикует.',
- h:crumb('Главная','ИЖС','Портфолио')+'<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+
- slab('','Портфолио')+'<p class="lede">Реализованные проекты бюро. Фильтр по типу и площади.</p>'+
- '<div class="btns" style="margin-bottom:32px">'+['Все','ИЖС','Интерьеры','Благоустройство','до 100 м²','свыше 200 м²']
-  .map(function(c,i){return '<button class="btn '+(i?'gh':'p')+'" style="padding:10px 16px">'+c+'</button>'}).join('')+'</div>'+
- '<div class="g g3">'+PORT.map(function(p,i){return '<button class="card" data-go="/privatehouse/portfolio/'+p[0]+'">'+
-  '<div class="th">'+art(i,i)+'</div><div class="bd"><b>'+p[1]+'</b><small>'+p[2]+'</small></div></button>'}).join('')+'</div></section>'}};
-
-P['/privatehouse/portfolio/:id']=function(id){
- var p=PORT.filter(function(x){return x[0]===id})[0]||PORT[0],i=PORT.indexOf(p);
- return{t:p[1],e:'Карточка проекта. Одна сущность в CMS, из которой собирается публичная страница. Снизу переход в расчёт: портфолио должно продавать, а не просто показывать.',
- h:crumb('Главная','ИЖС','Портфолио',p[1])+
- '<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+slab('',p[1])+
- '<p class="lede">'+p[2]+'. Индивидуальный проект: анализ участка, планировка под сценарии жизни семьи, полный комплект рабочей документации.</p>'+
- '<div class="ph" style="--mh:420px">'+art(i,i)+'</div>'+
- '<div class="g g4" style="margin-top:22px">'+[['Площадь','130 м²'],['Этажей','2'],['Срок','4 месяца'],['Статус','Построен']]
-  .map(function(x){return '<div style="border-top:1px solid var(--ink);padding-top:14px"><div style="font:10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut2)">'+x[0]+'</div><div style="font-size:22px;font-weight:700;letter-spacing:-.03em;margin-top:8px">'+x[1]+'</div></div>'}).join('')+'</div></section>'+
- '<section class="s mx wrap">'+slab('01','О проекте')+'<div class="g g2">'+txtph(7)+txtph(6)+'</div></section>'+
- '<section class="s mx wrap">'+slab('02','Планировки и разрезы')+
- '<div class="g g2"><div class="ph">'+sPlan(1)+'</div><div class="ph">'+sSec()+'</div></div></section>'+
- '<section class="s mx wrap">'+slab('03','Похожие проекты')+'<div class="g g3">'+
- PORT.slice(0,3).map(function(x,j){return '<button class="card" data-go="/privatehouse/portfolio/'+x[0]+'">'+
-  '<div class="th">'+art(j+2,j)+'</div><div class="bd"><b>'+x[1]+'</b><small>'+x[2]+'</small></div></button>'}).join('')+'</div></section>'+
- '<section class="s mx wrap">'+calcBlock('похожий проект')+'</section>'}};
-
 P['/privatehouse/services/:slug']=function(sl){
- var x=svc(sl)||SERVICES[8], name=x[1], gr=x[2], t=x[3];
+ var x=svc(sl);if(!x)return notFound();var name=x[1], gr=x[2], t=x[3];
  var near=SERVICES.filter(function(y){return y[0]!==x[0]&&(y[2]===gr||y[3]==='manual')}).slice(0,3);
  var main=(t==='package'||t==='pp'||t==='per_m2'||t==='sections');
  /* Блок 6 «Цена» — по типу страницы из §4 ТЗ. Выдуманных сумм нет: неутверждённое — «индивидуально». */
@@ -695,7 +658,7 @@ P['/privatehouse/services/:slug']=function(sl){
  '<section class="s mx wrap">'+slab('08','Частые вопросы')+'<div class="steps">'+
  [['Сколько это занимает по времени?','Зависит от площади и готовности исходных данных. Срок называем после брифа, в договоре он фиксированный.'],
   ['Что нужно от меня на старте?','Документы по участку и понимание сценария жизни. Остальное собираем сами.'],
-  ['Можно ли заказать отдельно от проекта?','Да. Услуга самостоятельная, но в пакете выходит дешевле — покажем оба варианта в расчёте.']]
+  ['Можно ли заказать отдельно от проекта?','Да. Можно заказать отдельную услугу или полный пакет. Состав и стоимость покажем до обращения в бюро.']]
   .map(function(q,i){return '<div class="r"><i>0'+(i+1)+'</i><b>'+q[0]+'</b><p>'+q[1]+'</p></div>'}).join('')+'</div></section>'+
 
  /* 10. Навигатор и опросник */
@@ -709,22 +672,22 @@ P['/privatehouse/services/:slug']=function(sl){
 
 P['/proekt']=function(){return{t:'Готовые проекты',e:'Отдельный тип продукта: фиксированная цена за проект, а не ставка за квадратный метр. В прайсе заказчика это не описано — открытый вопрос B-8.',
  h:crumb('Главная','Готовые проекты')+'<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+
- slab('','Готовые проекты')+'<p class="lede">Проработанные решения, которые можно купить и строить. Адаптация под участок — отдельной услугой.</p>'+
+ slab('','Готовые проекты')+'<p class="lede">Готовое решение как отправная точка. Комплект и актуальную цену подтвердит бюро, адаптация под участок обсуждается отдельно.</p>'+
  '<div class="g g3">'+READY.map(function(r,i){return '<button class="card" data-go="/proekt/'+r[0]+'">'+
   '<div class="th">'+art(i,i)+'</div><div class="bd"><b>'+r[1]+'</b><small>'+r[2]+'</small><span class="pr">'+money(r[3])+'</span></div></button>'}).join('')+'</div>'+
- '<p class="note b">цены реальные, из текущего каталога заказчика</p></section>'}};
+ '<p class="note b">Демонстрационные цены из материалов бюро; актуальность и комплектация требуют подтверждения</p></section>'}};
 
 P['/proekt/:id']=function(id){
- var r=READY.filter(function(x){return x[0]===id})[0]||READY[0],i=READY.indexOf(r);
+ var r=READY.filter(function(x){return x[0]===id})[0];if(!r)return notFound();var i=READY.indexOf(r);
  return{t:r[1],e:'Карточка готового проекта. Здесь появится онлайн-оплата — но это третий шаг, не первый.',
  h:crumb('Главная','Готовые проекты',r[1])+
  '<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)"><div class="g g2" style="align-items:center">'+
  '<div class="ph" style="--mh:340px">'+art(i,i)+'</div>'+
- '<div>'+slab('',r[1])+'<p class="lede">'+r[2]+'. Полный комплект рабочей документации, готовый к передаче строителям.</p>'+
+ '<div>'+slab('',r[1])+'<p class="lede">'+r[2]+'. Демонстрационная карточка каталога. Точный состав комплекта подтверждается бюро перед покупкой.</p>'+
  '<div class="figure">'+money(r[3])+'</div>'+
- '<div class="btns" style="margin-top:30px"><button class="btn p" data-manual="1">Купить проект</button>'+
+ '<div class="btns" style="margin-top:30px"><button class="btn p" data-manual="1">Обсудить готовый проект</button>'+
  '<button class="btn gh" data-manual="1">Задать вопрос</button></div>'+
- '<p class="note">оплата онлайн — третий шаг</p></div></div></section>'+
+ '<p class="note">Покупка и онлайн-оплата в прототипе не подключены</p></div></div></section>'+
  '<section class="s mx wrap">'+slab('01','Состав комплекта')+'<div class="g g3">'+
  ['Архитектурные решения','Конструктивные решения','Инженерные сети','Ведомость материалов','Спецификации','Паспорт проекта']
  .map(function(x,j){return '<div class="tile" style="cursor:default"><span class="n">'+String(j+1).padStart(2,'0')+'</span><b>'+x+'</b></div>'}).join('')+'</div></section>'+
@@ -732,7 +695,7 @@ P['/proekt/:id']=function(id){
  '<section class="s mx wrap">'+calcBlock('адаптация готового проекта')+'</section>'}};
 
 P['/napravlenie/:slug']=function(sl){
- var d=DIRS.filter(function(x){return x[0]===sl})[0]||DIRS[1];
+ var d=DIRS.filter(function(x){return x[0]===sl})[0];if(!d)return notFound();
  if(d[0]==='privatehouse'){go('/privatehouse');return null}
  return{t:d[1],e:'Шаблон направления. Пять из шести выглядят так: страница есть, а калькулятора нет — в прайсе заказчика по ним стоит «цены добавить после утверждения». Правило из его же ТЗ: не показывать выдуманную сумму.',
  h:'<section class="hero"><div class="guides mx">'+'<i></i>'.repeat(12)+'</div><div class="hin2 mx wrap">'+
@@ -746,7 +709,7 @@ P['/napravlenie/:slug']=function(sl){
  [0,1,2].map(function(j){return '<div class="card" style="cursor:default"><div class="th">'+art(j+1,j)+'</div>'+
   '<div class="bd"><b>Проект '+(j+1)+'</b><small>2024</small></div></div>'}).join('')+'</div></section>'+
  '<section class="s mx wrap">'+manualBlock(d[1])+
- '<div class="btns" style="margin-top:24px"><button class="btn gh" data-go="/privatehouse">В ИЖС — там расчёт работает</button></div></section>'}};
+ '<div class="btns" style="margin-top:24px"><button class="btn gh" data-go="/privatehouse">Услуги для частного дома</button></div></section>'}};
 
 P['/guides']=function(){return{t:'Гайды',e:'Контентный контур под SEO. Гайд связывается с услугой и с вопросом квиза. Тексты пишет заказчик — его зона и главный риск сроков.',
  h:crumb('Главная','Гайды')+'<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+
@@ -754,267 +717,184 @@ P['/guides']=function(){return{t:'Гайды',e:'Контентный конту
  '<div class="g g2">'+GUIDES.map(function(g,i){return '<button class="tile" data-go="/guides/'+g[0]+'" style="min-height:150px">'+
   '<span class="n">'+String(i+1).padStart(2,'0')+'</span><b style="font-size:20px;letter-spacing:-.025em">'+g[1]+'</b><small>читать</small></button>'}).join('')+'</div></section>'}};
 
-P['/guides/:slug']=function(sl){
- var g=GUIDES.filter(function(x){return x[0]===sl})[0]||GUIDES[0];
- return{t:g[1],e:'Шаблон гайда. В конце переход в расчёт: статья должна вести в воронку, а не быть тупиком.',
- h:crumb('Главная','Гайды',g[1])+'<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+
- '<div style="max-width:760px">'+slab('',g[1])+
- '<p class="lede">Короткое вступление на два-три предложения: о чём статья и кому она полезна.</p>'+
- txtph(8)+'<div style="height:34px"></div><div class="ph">'+sSite(1)+'</div><div style="height:34px"></div>'+txtph(6)+
- '<div class="pull"><b>Короткий вывод.</b> Выносим главную мысль отдельным блоком, чтобы её было видно при беглом чтении.</div>'+
- txtph(5)+'</div></section>'+
- '<section class="s mx wrap">'+calcBlock(g[1])+'</section>'}};
-
-P['/opros']=function(){return{t:'Опросник',e:'Длинная ветка для 20%. Отдельная страница, а не продолжение квиза: человеку, который только что увидел цену, большая анкета сразу после — второй барьер подряд.',
- h:crumb('Главная','Опросник')+'<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+
- '<div style="max-width:740px">'+slab('','Опросник на техническое задание')+
- '<p class="lede">Для тех, кто уже определился. Шесть блоков, можно сохранить и вернуться позже. На выходе — уточнённое коммерческое предложение.</p></div>'+
- '<div class="g g3" style="margin-top:20px">'+
- ['Состав семьи и сценарии жизни','Материал стен и технология','Бюджет строительства','Участок: кадастр, уклон, сети','Стилистика и референсы','Особые требования']
- .map(function(x,i){return '<div class="tile" style="cursor:default"><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+x+'</b></div>'}).join('')+'</div>'+
- '<div class="btns" style="margin-top:34px"><button class="btn p" data-manual="1">Начать опросник</button></div>'+
- '<p class="note b">в первый шаг не входит: проектировать по реальным отказам из метрики, а не угадывая</p></section>'}};
-
-P['/contacts']=function(){return{t:'Контакты',e:'Резервный канал для тех, кто квизы не проходит принципиально. Такие обращения сейчас теряются полностью.',
- h:crumb('Главная','Контакты')+'<section class="s mx wrap" style="padding-top:clamp(24px,3vw,40px)">'+
- '<div class="g g2" style="align-items:start"><div>'+slab('','Контакты')+
- '<div class="steps" style="margin-top:8px">'+
- [['Пермь','ул. Революции, 52 · +7 000 000-00-00'],['Екатеринбург','+7 000 000-00-00'],['Почта','hello@mooveab.ru']]
- .map(function(r,i){return '<div class="r" style="grid-template-columns:64px 1fr"><i>0'+(i+1)+'</i><div><b>'+r[0]+'</b><p>'+r[1]+'</p></div></div>'}).join('')+'</div></div>'+
- '<div><div style="font:10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut2);margin-bottom:22px">Написать нам</div>'+
- '<div class="stack"><input type="text" placeholder="Имя"><input type="text" placeholder="Телефон или почта"><input type="text" placeholder="Коротко о задаче"></div>'+
- '<div class="btns" style="margin-top:28px"><button class="btn p" data-manual="1">Отправить</button></div></div></div></section>'}};
+P['/guides/:slug']=function(sl){var guide=GUIDES.find(g=>g[0]===sl);if(!guide)return notFound();var texts={start:[['Начните со сценария жизни','Кто будет жить в доме, какие пространства важны каждый день, как часто приезжают гости? Эти ответы помогают обсуждать планировку предметно.'],['Соберите то, что уже есть','Документы и данные участка, эскизы, примеры домов, пожелания к площади. Если чего-то пока нет, отметьте это в техническом задании.'],['Выберите ближайший этап','Предпроект помогает определить решение. Рабочая документация детализирует его для строительства. Состав можно выбрать в навигаторе.']],gpzu:[['Зачем нужны исходные данные','Архитектору необходимо понимать ограничения участка до разработки концепции. Градостроительные данные — часть этой проверки.'],['Что подготовить к разговору','Укажите расположение участка и перечислите документы, которые уже есть. Бюро уточнит недостающие исходные данные для вашей задачи.'],['Как это связано с проектом','Проверка участка предшествует окончательному выбору расположения и габаритов дома. Начать можно с услуги анализа участка.']],sostav:[['Архитектура и конструктив','АР описывает планы, фасады и разрезы. КР отвечает за решения несущих конструкций, включая фундамент, стены, перекрытия и кровлю.'],['Инженерные сети и смета','ИР описывает предусмотренные проектом инженерные системы. СМ собирает объёмы и стоимость работ и материалов.'],['Полный пакет или отдельные разделы','В рабочем прайсе полный комплект РД считается по площади. Отдельные разделы можно выбрать самостоятельно; их состав уточняется под задачу.']],oshibki:[['Выбирать участок без сценария дома','Сначала обсудите желаемую площадь, этажность и дополнительные постройки — так проще сформулировать требования к участку.'],['Считать только площадь дома','Расположение подъезда, крытых построек и других зон тоже нужно обсудить с архитектором.'],['Не учитывать исходные данные','Документы, рельеф, подъезд и коммуникации стоит собрать в один список до выбора концепции.'],['Путать цену проекта и бюджет стройки','Это разные оценки. Навигатор рассчитывает проектирование; стоимость строительства уточняется по отдельным исходным данным.'],['Пытаться решить всё сразу','Начните с проверки участка и первичной задачи. Детали можно последовательно уточнять в проектировании.']]};return {t:guide[1],e:'Краткий текст для прототипа на основе состава работ бюро. Перед публикацией требуется редактура профильного специалиста.',h:crumb('Главная','Гайды',guide[1])+'<article class="s mx wrap guide-article"><div class="eyebrow">Разобраться до начала проекта / 3 минуты</div><h1 class="h1s">'+guide[1]+'</h1>'+texts[sl].map((x,i)=>'<section><span class="eyebrow">0'+(i+1)+'</span><h2>'+x[0]+'</h2><p>'+x[1]+'</p></section>').join('')+'<div class="btns"><button class="btn p" data-go="/navigator">Подобрать следующий шаг →</button><button class="btn gh" data-go="/guides">Все гайды</button></div></article>'}};
 
 P['/services']=function(){return{t:'Услуги',e:'Каталог верхнего уровня — его в прототипе не было, а в карте сайта заказчика он есть. Разводит по шести направлениям; вглубь считает только ИЖС.',
  h:crumb('Главная','Услуги')+'<section class="s mx wrap" style="padding-top:clamp(20px,2.6vw,34px)">'+
  slab('','Что делает бюро')+
  '<p class="lede">Шесть направлений. Полный цикл с расчётом на сайте пока только в ИЖС — по остальным цены в реестре не утверждены, и выдуманных сумм здесь не будет.</p>'+
  '<button class="feat" data-go="/privatehouse"><div><span class="n">01 — Флагман</span>'+
- '<b>'+DIRS[0][1]+'</b><p>'+DIRS[0][3]+'. Единственное направление, где стоимость базового пакета считается прямо на сайте.</p>'+
+ '<b>'+DIRS[0][1]+'</b><p>'+DIRS[0][3]+'. Состав и ориентир стоимости можно узнать прямо на сайте.</p>'+
  '<small>Посчитать стоимость</small></div><div class="fa">'+sElev(1)+'</div></button>'+
  '<div class="g g3">'+DIRS.slice(1).map(function(d,i){return '<button class="tile" data-go="/napravlenie/'+d[0]+'">'+
   '<span class="n">'+String(i+2).padStart(2,'0')+'</span><b>'+d[1]+'</b><em class="dd">'+d[3]+'</em><small>Индивидуальный расчёт</small></button>'}).join('')+'</div>'+
  '</section><section class="s mx wrap">'+calcBlock()+'</section>'}};
 
-P['/about']=function(){return{t:'О бюро',e:'Страница из карты сайта заказчика, в прототипе её не было. Нужна и людям, и поисковику: E-E-A-T, команда, лицензии, история.',
- h:crumb('Главная','О бюро')+'<section class="s mx wrap" style="padding-top:clamp(20px,2.6vw,34px)">'+
- '<div class="shero"><div><div class="eyebrow">Пермь · Екатеринбург</div>'+
- '<h1 class="h1s">Бюро, которое доводит<br>дом до стройки</h1>'+
- '<p class="lede">Четырнадцать лет практики и больше ста восьмидесяти проектов. Работаем от подбора участка до авторского надзора — одной командой, без передачи проекта на сторону.</p>'+
- '<div class="btns"><button class="btn p" data-go="/privatehouse/portfolio">Смотреть работы</button>'+
- '<button class="btn" data-go="/contacts">Связаться</button></div></div>'+
- '<div class="ph" style="--mh:260px">'+sSite(1)+'</div></div></section>'+
- '<section class="band"><div class="g mx"><div class="c"><b>14</b><span>лет практики</span></div>'+
- '<div class="c"><b>180+</b><span>проектов</span></div><div class="c"><b>6</b><span>направлений</span></div>'+
- '<div class="c"><b>2</b><span>офиса</span></div></div></section>'+
- '<section class="s gray mx wrap">'+slab('01','Как мы работаем')+
- '<div class="g g3">'+[['Один автор от концепции до стройки','Проект не передаётся между исполнителями — тот, кто придумал дом, доводит его до рабочих чертежей.'],
-  ['Цена известна до договора','Стоимость считается по прайсу, а не «по ощущениям». Расчёт можно получить на сайте без звонка.'],
-  ['Комплект, по которому строят','На выходе документы, а не картинки: ведомости, узлы, смета с актуальными ценами.']]
-  .map(function(c,i){return '<div class="way"><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+c[0]+'</b><p>'+c[1]+'</p></div>'}).join('')+'</div></section>'+
- '<section class="s mx wrap">'+slab('02','Команда')+
- '<p class="lede">Карточки архитекторов и инженеров: имя, роль, профильные проекты. Контент заполняет бюро.</p>'+
- '<div class="g g4">'+[1,2,3,4].map(function(i){return '<div class="card" style="cursor:default"><div class="th">'+sSec(i)+'</div>'+
-  '<div class="bd"><b>Имя Фамилия</b><small>Роль в бюро</small></div></div>'}).join('')+'</div></section>'+
- '<section class="s mx wrap"><div class="fin"><div><b>Посмотрим ваш участок?</b>'+
- '<p>Расскажите про задачу — ответим, что на этом участке можно построить и сколько это будет стоить.</p></div>'+
- '<div class="btns"><button class="btn p" data-start="есть участок">Рассчитать стоимость</button></div></div></section>'}};
+P['/about']=function(){return {t:'О бюро',e:'Содержательные принципы вместо неподтверждённых цифр и вымышленных сотрудников. Факты о команде и истории заполняются после подтверждения бюро.',h:crumb('Главная','О бюро')+'<section class="s mx wrap nav-intro"><div class="eyebrow">АБ Движение / Пермь · Екатеринбург</div><h1 class="h1s">От образа дома<br>до понятного проекта</h1><p class="lede">Архитектура начинается с задачи: как вы живёте, каким видите дом и что позволяет участок. Затем идея превращается в последовательность решений и рабочую документацию.</p><div class="g g3">'+[['Увидеть целое','Связать участок, планировку, конструктив и инженерные сети в одном проекте.'],['Объяснить решения','Показывать объём, обсуждать альтернативы и фиксировать выбранный состав.'],['Подготовить к строительству','Передать чертежи и ведомости, по которым можно обсуждать работы с подрядчиком.']].map((x,i)=>'<div class="service-feature"><span class="eyebrow">0'+(i+1)+'</span><h2>'+x[0]+'</h2><p>'+x[1]+'</p></div>').join('')+'</div></section><section class="s tint mx wrap">'+slab('01','Шесть направлений работы')+'<div class="g g3">'+DIRS.map(d=>'<button class="tile" data-go="'+(d[0]==='privatehouse'?'/privatehouse':'/napravlenie/'+d[0])+'"><b>'+d[1]+'</b><small>'+d[3]+'</small></button>').join('')+'</div></section><section class="s mx wrap"><div class="fin"><div><b>Познакомимся с вашей задачей?</b><p>Можно начать с навигатора или сразу подготовить обращение.</p></div><div class="btns"><button class="btn p" data-go="/navigator">Подобрать решение</button><button class="btn" data-go="/contacts">Обсудить задачу</button></div></div></section>'}};
 
-P['/calcalfa']=function(){return{t:'Калькулятор стройки',e:'Инвестиционный калькулятор строительства. По ТЗ это ОТДЕЛЬНЫЙ контур: он не связан с навигатором, калькулятором проектирования и КП, состояние не общее. Здесь это показано явно — блока расчёта проектирования на странице нет.',
- h:crumb('Главная','Калькулятор строительства')+'<section class="s mx wrap" style="padding-top:clamp(20px,2.6vw,34px)">'+
- slab('','Сколько будет стоить построить')+
- '<p class="lede">Укрупнённый прогноз стоимости строительства по площади, этажности и типу конструктива. Отвечает на вопрос «потяну ли я стройку», а не «сколько стоит проект».</p>'+
- '<div class="flag"><b>Отдельный контур</b>Это не калькулятор проектирования. Результат сюда не переносится и отсюда никуда не уходит: у двух калькуляторов нет общего состояния — так зафиксировано в ТЗ. Если нужна цена проекта, она считается в навигаторе.</div>'+
- '<div class="g g2" style="margin-top:clamp(22px,3vw,34px)"><div>'+
- '<div class="qlab2">Площадь дома</div><input type="text" placeholder="150 м²">'+
- '<div class="qlab2" style="margin-top:30px">Этажность</div>'+
- '<div class="btns">'+['1 этаж','2 этажа','с цоколем'].map(function(o,i){return '<button class="btn '+(i?'gh':'p')+'" style="padding:11px 17px">'+o+'</button>'}).join('')+'</div>'+
- '<div class="qlab2" style="margin-top:30px">Конструктив</div>'+
- '<div class="btns">'+['Газобетон','Кирпич','Каркас'].map(function(o,i){return '<button class="btn '+(i?'gh':'p')+'" style="padding:11px 17px">'+o+'</button>'}).join('')+'</div>'+
- '<div class="btns" style="margin-top:32px"><button class="btn p" data-manual="1">Показать прогноз</button></div></div>'+
- '<div class="pbox"><div class="pk">Прогноз</div><div class="figure">— <span>₽</span></div>'+
- '<p class="pn">Диапазон стоимости коробки, отделки и инженерии. Считается по укрупнённым показателям и обновляется бюро вручную — это ориентир, а не смета.</p>'+
- '<p class="note b">Точная смета считается по проекту, отдельная услуга</p></div></div></section>'+
- '<section class="s mx wrap"><div class="fin"><div><b>Нужна цена проекта, а не стройки?</b>'+
- '<p>Это другой расчёт и другой контур. Навигатор посчитает стоимость проектирования по прайсу бюро за пять вопросов.</p></div>'+
- '<div class="btns"><button class="btn p" data-start="есть участок">Посчитать проект</button></div></div></section>'}};
+P['/map']=function(){var routes=[['/','Главная'],['/navigator','Навигатор'],['/navigator/client','Клиент: направление'],['/navigator/business','Организация: направление'],['/services','Все услуги'],['/privatehouse','Частные дома'],['/privatehouse/portfolio','Портфолио'],['/proekt','Готовые проекты'],['/guides','Гайды'],['/opros','Техническое задание'],['/contacts','Обращение в бюро'],['/about','О бюро'],['/calcalfa','Бюджет строительства']].concat(SERVICES.map(x=>['/privatehouse/services/'+x[0],x[1]]),DIRS.slice(1).map(x=>['/napravlenie/'+x[0],x[1]]),['supplier','partner','candidate'].map(x=>['/zayavka/'+x,'Форма: '+x]),Object.keys(STUDIES).map(id=>['/privatehouse/portfolio/'+id,STUDIES[id].title]),READY.map(x=>['/proekt/'+x[0],x[1]]),GUIDES.map(x=>['/guides/'+x[0],x[1]]));return {t:'Карта прототипа',e:'Реальные кликабельные маршруты. Квиз открывается с контекстных кнопок, а не по фиктивным адресам.',h:'<section class="s mx wrap"><h1 class="h1s">Карта прототипа</h1><p class="lede">'+routes.length+' страниц и единый навигатор для расчёта. Выберите экран для просмотра.</p><div class="map">'+routes.map(x=>'<a class="r" href="#'+x[0]+'"><code>'+x[0]+'</code><em>'+x[1]+'</em></a>').join('')+'</div><div class="btns" style="margin-top:28px"><a class="btn p" href="3d.html">Открыть 3D-портфолио ↗</a></div></section>'}};
 
-P['/navigator']=function(){return{t:'Навигатор',e:'Развилка по типу посетителя — по карте сайта заказчика их четыре. В прототипе раньше был вход только для клиента. Три несбытовых сегмента уходят в свои формы и НЕ попадают в воронку продаж.',
- h:crumb('Главная','Навигатор')+'<section class="s mx wrap" style="padding-top:clamp(20px,2.6vw,34px)">'+
- slab('','Кто вы?')+
- '<p class="lede">Один модуль на весь сайт. Клиент идёт в расчёт стоимости, остальные — в свою короткую форму. Это развод по маршрутам, а не общая форма обратной связи.</p>'+
- '<div class="g g2">'+[
-  ['Клиент','Хочу спроектировать дом или заказать услугу','start','только идея','Пять вопросов → цена и состав работ'],
-  ['Поставщик','Предлагаю материалы, оборудование или работы','go','/zayavka/supplier','Короткая форма → отдел закупок'],
-  ['Соискатель','Ищу работу или практику в бюро','go','/zayavka/candidate','Короткая форма → HR, мимо продаж'],
-  ['Подрядчик','Хочу строить по вашим проектам','go','/zayavka/partner','Короткая форма → партнёрская база']]
-  .map(function(c,i){return '<button class="scen" '+(c[2]==='start'?'data-start="'+c[3]+'"':'data-go="'+c[3]+'"')+'>'+
-   '<span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+c[0]+'</b><small>'+c[1]+'</small>'+
-   '<em class="sg">'+c[4]+'</em></button>'}).join('')+'</div></section>'}};
-
-P['/zayavka/:role']=function(r){
- var M={supplier:['Поставщик','Предложение поставщика','Расскажите, что вы поставляете и в каком регионе работаете. Заявка уходит в закупки, а не в отдел продаж.',['Компания','Что поставляете','Регион','Контакт']],
-  candidate:['Соискатель','Отклик на вакансию','Кем хотите работать и что уже делали. Портфолио можно прислать ссылкой. Заявка уходит в HR и в воронку продаж не попадает.',['Имя','Специальность','Ссылка на портфолио','Контакт']],
-  partner:['Подрядчик','Заявка подрядчика','Что строите, в каком регионе и с какими объёмами работаете. Заявка уходит в партнёрскую базу.',['Компания','Что строите','Регион','Контакт']]};
- var m=M[r]||M.supplier;
- return{t:m[0],e:'Форма несбытового сегмента. Отдельный маршрут и отдельный получатель: такие обращения не должны смешиваться с лидами на проектирование — иначе воронка и конверсия считаются неверно.',
- h:crumb('Главная','Навигатор',m[0])+'<section class="s mx wrap" style="padding-top:clamp(20px,2.6vw,34px)">'+
- slab('',m[1])+'<p class="lede">'+m[2]+'</p>'+
- '<div class="g g2" style="max-width:760px">'+m[3].map(function(f){return '<div><div class="qlab2">'+f+'</div><input type="text" placeholder="'+f+'"></div>'}).join('')+'</div>'+
- '<div class="btns" style="margin-top:30px"><button class="btn p" data-manual="1">Отправить</button>'+
- '<button class="btn" data-go="/navigator">Назад</button></div>'+
- '<p class="note b">Уходит в свой список в CRM, не в сделки</p></section>'}};
-
-P['/map']=function(){
- var rows=[['/','Главная — витрина, развод по направлениям'],['/privatehouse','ИЖС-хаб — флагман, точка входа'],
-  ['/privatehouse/services/:slug','Лендинг услуги — один шаблон на 18 страниц'],['/privatehouse/portfolio','Портфолио — список с фильтрами'],
-  ['/privatehouse/portfolio/:id','Карточка проекта'],['/proekt','Готовые проекты — фиксированные цены'],
-  ['/proekt/:id','Карточка готового проекта'],['/napravlenie/:slug','Направление — пять без калькулятора'],
-  ['/guides','Гайды — SEO-контур'],['/guides/:slug','Шаблон гайда'],
-  ['/raschet/1…5','Квиз — поверх любой страницы'],['/raschet/cena','Экран цены — без контактов'],
-  ['/raschet/kp','Форма — два поля'],['/raschet/gotovo','Отправлено — что и куда улетело'],
-  ['/opros','Опросник на ТЗ — длинная ветка'],['/contacts','Контакты — резервный канал'],
-  ['/services','Каталог услуг — верхний уровень'],['/about','О бюро — E-E-A-T и команда'],
-  ['/calcalfa','Калькулятор стройки — отдельный контур'],['/navigator','Навигатор — развилка по типу посетителя'],
-  ['/zayavka/supplier','Форма поставщика'],['/zayavka/candidate','Форма соискателя'],['/zayavka/partner','Форма подрядчика'],
-  ['3d.html','3D-портфолио — отдельная страница, пять проектов в одном пространстве']];
- return{t:'Карта',e:'Все экраны прототипа. Клик по строке — переход. Удобно начинать показ отсюда.',
- h:'<section class="s mx wrap" style="padding-top:clamp(32px,4vw,56px)">'+slab('','Карта маршрутов')+
- '<p class="lede">'+rows.length+' экранов. Квиз вызывается с любой страницы, где стоит блок расчёта, — это один модуль, а не пять калькуляторов.</p>'+
- '<div class="map">'+rows.map(function(r){
-  if(r[0].indexOf('.html')>0)return '<div class="r" data-ext="'+r[0]+'"><code>'+r[0]+'</code><em>'+r[1]+'</em></div>';
-  var t=/[:…]/.test(r[0])?'':r[0];
-  return '<div class="r"'+(t?' data-go="'+t+'"':' style="cursor:default;opacity:.65"')+'><code>'+r[0]+'</code><em>'+r[1]+'</em></div>'}).join('')+'</div></section>'}};
-
-/* ───── квиз ───── */
+/* Shared commercial session. Draft contains project parameters only, never contacts. */
+var PRICE_VERSION='Рабочий реестр из пакета ТЗ v0.8 · 18.08.2026';
+var sectionCatalog=[['ar','Архитектурный проект',600,'Планы, фасады, разрезы'],['kr','Конструктивный проект',1000,'Фундамент, стены, перекрытия и кровля'],['ir','Инженерный проект: база',400,'Отопление, вентиляция, вода и канализация'],['ir-extra','Инженерный проект: дополнительно',250,'Электрика, освещение и наружные сети'],['sm','Сметный расчёт',250,'Объёмы и стоимость работ и материалов'],['tp','Технический проект',500,'Базовые чертежи и модель']];
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function initialSession(){return {have:null,area:120,need:null,floors:null,extras:{},when:null,region:'',sections:[],supervision:'none',quantity:1,project:null}}
+S=initialSession();
+var draftKey='abd-commercial-draft-v2',opener=null,activeContact={},brief={},quoteId='';
+function saveDraft(){try{sessionStorage.setItem(draftKey,JSON.stringify(S))}catch(e){}}
+try{var restored=JSON.parse(sessionStorage.getItem(draftKey)||'null');if(restored&&typeof restored==='object'&&Number.isFinite(+restored.area)&&+restored.area>0&&+restored.area<=10000){S=Object.assign(initialSession(),restored);S.sections=Array.isArray(S.sections)?S.sections.filter(k=>sectionCatalog.some(x=>x[0]===k)):[];S.extras=S.extras&&typeof S.extras==='object'?S.extras:{};if(!['none','visit','month'].includes(S.supervision))S.supervision='none'}}catch(e){}
+function area(){return Math.max(50,Number(S.area)||0)}
+function ppP(a){return a<210?50000:a<=300?100000:150000}
+function calc(){var a=area(),pp=ppP(a),rd=Math.round(a*250000)/100,n=S.need,rows=[],base=null;
+ if(n==='pp'){base=pp;rows=[['Предпроект',a<210?'Тариф до 200 м², включая 201–209 м²':a<=300?'Тариф 210–300 м²':'Тариф свыше 300 м²',pp]]}
+ if(n==='rd'){base=rd;rows=[['Рабочая документация','АР, КР, ИР и смета · '+a+' м² × 2 500 ₽',rd]]}
+ if(n==='both'){base=rd;rows=[['Этап 1. Предпроект','Планировки, концепция, визуализация',pp],['Этап 2. Рабочая документация','Полная стоимость пакета минус ПП',rd-pp]]}
+ if(n==='sections'){rows=sectionCatalog.filter(x=>S.sections.includes(x[0])).map(x=>[x[1],a+' м² × '+money(x[2]),Math.round(x[2]*a*100)/100]);base=rows.reduce((t,r)=>t+r[2],0)}
+ var sup=S.supervision==='visit'?5000:S.supervision==='month'?50000:0,supTotal=sup*Math.max(1,+S.quantity||1);
+ if(sup)rows.push(['Авторский надзор',S.quantity+' '+(S.supervision==='visit'?'выезд(а) × 5 000 ₽':'мес. × 50 000 ₽'),supTotal]);
+ return {a:a,n:n,base:base,total:base===null?null:base+supTotal,pp:pp,rdPay:rd-pp,rows:rows,supervision:supTotal};
+}
+function inputField(id,label,value,type,attrs){return '<label class="field" for="'+id+'"><span>'+label+'</span><input id="'+id+'" type="'+(type||'text')+'" value="'+esc(value)+'" '+(attrs||'')+'></label>'}
+function oc(k,list,cls){return '<div class="'+(cls?'g '+cls:'stack')+'">'+list.map(o=>'<button type="button" class="oc" data-k="'+k+'" data-v="'+o[0]+'" aria-pressed="'+(S[k]===o[0])+'"><i class="mk" aria-hidden="true"></i><span>'+o[1]+'</span><span class="choice-arrow" aria-hidden="true">↗</span></button>').join('')+'</div>'}
 var Q={
- 1:{t:'Что у вас уже есть?',r:function(){return oc('have',[['есть участок','Участок есть'],['ищу участок','Участок ищу'],['есть эскиз','Есть эскиз или планировка'],['только идея','Пока только идея']])}},
- 2:{t:'Какая площадь дома?',h:'Считаем все помещения с кровлей: дом, веранда, гараж, навес, баня. Минимальная расчётная площадь — 50 м².',
-  r:function(){return '<div style="max-width:420px"><input type="number" id="ar" min="50" max="600" value="'+S.area+'">'+
-   '<div style="display:flex;justify-content:space-between;font:10px/1 var(--mono);color:var(--mut2);margin:22px 0 10px"><span>50 м²</span><span>500 м²</span></div>'+
-   '<input type="range" id="arR" min="50" max="500" step="5" value="'+Math.min(500,S.area)+'"></div>'+
-   '<p class="note b">правило площади у заказчика описано неоднозначно — открытый вопрос B-1</p>'}},
- 3:{t:'Что нужно сделать?',r:function(){return oc('need',[['pp','Предпроект<small>Анализ участка, планировка, концепция, визуализация</small>'],
-   ['rd','Рабочую документацию<small>Архитектура, конструктив, инженерия, смета</small>'],
-   ['both','Всё вместе<small>Рекомендуем: предпроект и рабочка одним пакетом</small>'],
-   ['idk','Пока не знаю<small>Подберём состав на консультации</small>']])}},
- 4:{t:'Этажность и постройки',h:'Отмеченные постройки увеличивают расчётную площадь.',
-  r:function(){return oc('floors',[['1','Один этаж'],['2','Два этажа'],['2m','Два и мансарда']],'g3')+
-   '<div style="height:16px"></div><div class="g g2" style="max-width:660px">'+
-   [['cokol','Цоколь'],['garage','Гараж'],['banya','Баня'],['naves','Навес']].map(function(x){
-    return '<button class="chk" data-ex="'+x[0]+'" aria-pressed="'+(!!S.extras[x[0]])+'"><span class="mk">'+(S.extras[x[0]]?'✓':'')+'</span>'+x[1]+'</button>'}).join('')+'</div>'}},
- 5:{t:'Когда планируете начать?',r:function(){return oc('when',[['сейчас','Прямо сейчас'],['3 мес','В ближайшие три месяца'],['полгода','Примерно через полгода'],['присматриваюсь','Пока присматриваюсь']],'g2')}}};
-function oc(k,list,cls){return '<div class="'+(cls?'g '+cls:'stack')+'">'+list.map(function(o){
- return '<button class="oc" data-k="'+k+'" data-v="'+o[0]+'" aria-pressed="'+(S[k]===o[0])+'"><i class="mk"></i><span>'+o[1]+'</span></button>'}).join('')+'</div>'}
-function filled(){return step===1?!!S.have:step===2?+S.area>=50:step===3?!!S.need:step===4?!!S.floors:!!S.when}
-function ovWrap(top,body){$('#ov').innerHTML='<div class="ov"><div class="ovin">'+top+body+'</div></div>'}
-function topBar(lbl,pct){return '<div class="ovtop"><span class="stp">'+lbl+'</span><div class="pbar"><i style="width:'+pct+'%"></i></div><button class="xb" id="qx">✕</button></div>'}
+ 1:{t:'С чего начинаем?',h:'Подберём следующий шаг под вашу ситуацию. На выходе — состав работ и расчёт без обязательных контактов.',r:()=>oc('have',[
+ ['есть участок','Участок уже есть<small>Проверим исходные данные и перейдём к проекту</small>'],['ищу участок','Пока выбираю участок<small>Начнём с ограничений и подходящего решения</small>'],['есть эскиз','Есть проект или эскиз<small>Нужны проверка, доработка или рабочие чертежи</small>'],['только идея','Пока только идея<small>Поможем определить состав проектирования</small>']])},
+ 2:{t:'Какой площади будет дом?',h:'Укажите общую площадь всех помещений под кровлей: дом, крытая веранда, гараж, навес и баня. Если точной площади нет — задайте ориентир.',r:()=>'<div class="area-entry">'+inputField('ar','Общая площадь, м²',S.area,'number','min="1" max="10000" step="0.1" inputmode="decimal" aria-describedby="areaHelp"')+'<input aria-label="Примерная площадь" type="range" id="arR" min="30" max="500" step="5" value="'+Math.min(500,S.area)+'"><div class="range-labels"><span>30 м²</span><span>500 м²</span></div><div class="btns presets">'+[80,120,180,250].map(a=>'<button class="btn gh" data-area="'+a+'">'+a+' м²</button>').join('')+'</div><p id="areaHelp" class="hint-inline">Минимальная расчётная площадь — 50 м². Дополнительные постройки не прибавляются автоматически.</p><p id="areaError" class="field-error" role="status"></p></div>'},
+ 3:{t:'Какой результат вам нужен?',h:'ПП — чтобы выбрать решение. РД — чтобы строить по чертежам. Можно заказать полный путь или отдельные разделы.',r:()=>oc('need',[
+ ['both','Предпроект + рабочая документация<small>От идеи до комплекта для строителей · 2 500 ₽/м² за весь пакет</small>'],['pp','Только предпроект<small>Планировки, концепция и визуализация · от 50 000 ₽</small>'],['rd','Только рабочая документация<small>Когда концепция уже определена · 2 500 ₽/м²</small>'],['sections','Отдельные разделы<small>Соберите нужный состав по ставкам бюро</small>'],['idk','Помогите определиться<small>Подготовим запрос на консультацию без выдуманной суммы</small>']])+(S.need==='sections'?'<div class="section-picker"><p class="field-label">Выберите разделы</p>'+sectionCatalog.map(x=>'<button class="chk" data-section="'+x[0]+'" aria-pressed="'+S.sections.includes(x[0])+'"><span class="mk">'+(S.sections.includes(x[0])?'✓':'')+'</span><span>'+x[1]+'<small>'+x[3]+'</small></span><b>'+money(x[2])+'/м²</b></button>').join('')+'</div>':'')},
+ 4:{t:'Уточним состав дома',h:'Эти параметры помогут архитектору понять задачу. Метры за постройки повторно не добавляем.',r:()=>oc('floors',[['1','Один этаж'],['2','Два этажа'],['2m','С мансардой']],'g3')+'<p class="field-label">Что ещё предусмотрено под кровлей?</p><div class="g g2">'+[['cokol','Цоколь'],['garage','Гараж'],['banya','Баня'],['naves','Навес']].map(x=>'<button class="chk" data-ex="'+x[0]+'" aria-pressed="'+!!S.extras[x[0]]+'"><span class="mk">'+(S.extras[x[0]]?'✓':'')+'</span>'+x[1]+'</button>').join('')+'</div><p class="field-label">Нужно ли сопровождение строительства?</p>'+oc('supervision',[['none','Решу позже<small>Авторский надзор не включаем в стоимость</small>'],['visit','Выезд архитектора<small>5 000 ₽ за выезд, отдельно от проектирования</small>'],['month','Сопровождение на месяц<small>50 000 ₽ в месяц, отдельно от проектирования</small>']])+(S.supervision!=='none'?inputField('supQty',S.supervision==='visit'?'Количество выездов':'Количество месяцев',S.quantity,'number','min="1" max="100" step="1"'):'')},
+ 5:{t:'Где и когда планируете строить?',h:'Регион и готовность к старту нужны для обсуждения задачи. Они не меняют ставки проектирования в этом расчёте.',r:()=>inputField('region','Город или регион · необязательно',S.region,'text','maxlength="120" placeholder="Например, Пермский край"')+'<p class="field-label">Когда хотите начать проектирование?</p>'+oc('when',[['сейчас','В ближайшее время'],['3 мес','В течение трёх месяцев'],['полгода','Через полгода'],['присматриваюсь','Пока изучаю варианты']],'g2')}
+};
+function filled(){return step===1?!!S.have:step===2?Number.isFinite(+S.area)&&+S.area>0&&+S.area<=10000:step===3?!!S.need&&(S.need!=='sections'||S.sections.length>0):step===4?!!S.floors&&(S.supervision==='none'||Number.isInteger(+S.quantity)&&+S.quantity>0&&+S.quantity<=100):!!S.when}
+function topBar(lbl,pct){return '<div class="ovtop"><a class="quiz-brand" href="#/navigator">ДВИЖЕНИЕ<span>.</span></a><span class="stp">'+lbl+'</span><div class="pbar" role="progressbar" aria-label="Прогресс" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><i style="width:'+pct+'%"></i></div><button class="xb" id="qx" aria-label="Закрыть и сохранить параметры">✕</button></div>'}
+function ovWrap(top,body){$('header.site').inert=true;$('#page').inert=true;$('.tools').inert=true;$('#ov').innerHTML='<div class="ov" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="ovin">'+top+'<div class="quiz-body">'+body+'</div></div></div>';var title=$('#ov h3')||$('#ov h2');if(title){title.id='dialogTitle';title.tabIndex=-1;title.focus({preventScroll:true})}else $('.ov').setAttribute('aria-label','Навигатор проекта');$('.ov').scrollTop=0;$('#qx').onclick=closeQuiz}
+function quiz(){saveDraft();var q=Q[step];ovWrap(topBar('0'+step+' / 05',step*20),
+ '<div class="quiz-path"><span>Задача</span><i>→</i><span>Состав и цена</span><i>→</i><span>Следующий шаг</span></div><h3>'+q.t+'</h3><p class="hint">'+q.h+'</p>'+q.r()+'<div class="nav2"><button class="btn gh" id="qb">'+(step===1?'На сайт':'← Назад')+'</button><button class="btn p" id="qn" '+(filled()?'':'disabled')+'>'+(step===5?'Показать результат →':'Далее →')+'</button><button type="button" class="reset-draft" id="resetDraft">Начать заново</button></div>');
+ $('#resetDraft').onclick=()=>{S=initialSession();step=1;quoteId='';quiz()};addr('/raschet/'+step);$('#qb').onclick=()=>step===1?closeQuiz():(step--,quiz());$('#qn').onclick=()=>{if(filled()){saveDraft();step===5?price():(step++,quiz())}};
+ if($('#ar')){$('#ar').oninput=function(){S.area=this.value===''?0:Number(this.value);$('#arR').value=Math.min(500,S.area);$('#qn').disabled=!filled();$('#areaError').textContent=filled()?'':'Введите площадь от 1 до 10 000 м²';saveDraft()};$('#arR').oninput=function(){S.area=+this.value;$('#ar').value=S.area;$('#qn').disabled=!filled();$('#areaError').textContent='';saveDraft()}}
+ if($('#supQty'))$('#supQty').oninput=function(){S.quantity=+this.value;$('#qn').disabled=!filled();saveDraft()};
+ if($('#region'))$('#region').oninput=function(){S.region=this.value;saveDraft()};
+}
+function routeSummary(){return S.have==='ищу участок'||S.have==='только идея'?['Обсудить задачу и участок','Определить концепцию','Подготовить рабочие чертежи']:S.have==='есть эскиз'?['Проверить имеющийся проект','Уточнить недостающие разделы','Подготовить комплект для стройки']:['Проверить исходные данные участка','Согласовать планировки и облик','Перейти к рабочим чертежам']}
+function price(){saveDraft();var c=calc(),manual=c.base===null;quoteId='ABD-'+Date.now().toString(36).toUpperCase();
+ ovWrap(topBar('Ваш результат',100),'<div class="quote-head"><div><div class="eyebrow">'+(manual?'Начнём с консультации':'Стоимость проектирования')+'</div><h3>'+(manual?'Подберём состав вместе':money(c.total))+'</h3><p class="hint">'+(manual?'Архитектор поможет выбрать нужные этапы и разделы. Сначала уточним задачу, затем рассчитаем стоимость.':'Ориентировочный расчёт по рабочему прайсу бюро. Итог и сроки фиксируются после уточнения задачи.')+'</p></div><div class="quote-stamp">'+esc(S.area)+'<small>м² под кровлей</small></div></div>'+
+ '<div class="summary-chips"><span>'+esc(S.have)+'</span>'+(S.region?'<span>'+esc(S.region)+'</span>':'')+(S.project?'<span>По мотивам: '+esc((PORT.find(p=>p[0]===S.project)||[])[1]||S.project)+'</span>':'')+'</div>'+
+ (c.rows.length?'<table class="rows"><caption class="sr-only">Выбранные услуги и стоимость</caption>'+c.rows.map(r=>'<tr><td><b>'+r[0]+'</b><small>'+r[1]+'</small></td><td>'+money(r[2])+'</td></tr>').join('')+(!manual?'<tr class="t"><td>Итого по выбранному составу</td><td>'+money(c.total)+'</td></tr>':'')+'</table>':'')+
+ (c.n==='both'?'<div class="flag"><b>Предпроект уже внутри пакета</b>'+c.a+' м² × 2 500 ₽ = '+money(c.base)+'. Сначала оплачивается ПП: '+money(c.pp)+'. Затем РД: '+money(c.rdPay)+'. ПП вычитается из общей цены, второй раз его не прибавляем.</div>':'')+
+ (+S.area<50?'<div class="flag"><b>Минимальная площадь</b>Вы указали '+esc(S.area)+' м². По правилу бюро расчёт выполнен для 50 м².</div>':'')+
+ (c.a>300&&c.n!=='pp'&&!manual?'<div class="flag"><b>Большая площадь</b>Цена свыше 300 м² справочная. После обсуждения бюро может скорректировать её в меньшую сторону.</div>':'')+
+ '<p class="hint-inline">Площадь всех выбранных построек уже должна входить в указанные '+esc(S.area)+' м². Геология, геодезия, согласования и услуги вне выбранного состава считаются отдельно.'+(S.supervision==='none'?' Авторский надзор не включён.':'')+'</p>'+
+ '<div class="next-route"><h4>Ваш следующий шаг</h4>'+routeSummary().map((x,i)=>'<div><span>0'+(i+1)+'</span>'+x+'</div>').join('')+'</div>'+
+ '<div class="nav2"><button class="btn p" id="qf">Обсудить с архитектором →</button><button class="btn" id="editQuote">Изменить состав</button><button class="btn gh" id="ql">Заполнить ТЗ</button><button class="btn gh" id="saveQuote">Скачать расчёт</button></div><p class="prototype-note">Демонстрационный расчёт · '+PRICE_VERSION+'. Прайс требует финального утверждения. Это локальный прототип: заявки не отправляются.</p>');
+ addr('/raschet/cena');$('#qf').onclick=()=>formScr('Обсудить расчёт',null,true);$('#editQuote').onclick=()=>{step=3;quiz()};$('#ql').onclick=()=>{closeQuiz();go('/opros')};$('#saveQuote').onclick=()=>download('Расчёт-АБ-Движение.txt',quoteText());
+}
+function quoteText(){var c=calc();return 'АБ ДВИЖЕНИЕ\nДемонстрационный расчёт '+quoteId+'\n'+PRICE_VERSION+'\nДата: '+new Date().toLocaleDateString('ru-RU')+'\n\nПлощадь: '+S.area+' м²; расчётная: '+c.a+' м²\nСитуация: '+(S.have||'не указана')+'\nРегион: '+(S.region||'не указан')+'\n\n'+c.rows.map(r=>r[0]+': '+money(r[2])+' ('+r[1]+')').join('\n')+'\nИтого: '+(c.total===null?'индивидуальный расчёт':money(c.total))+'\n'+(c.n==='both'?'ПП входит в пакет и вычитается из РД.\n':'')+'\nРасчёт ориентировочный. Рабочий прайс требует утверждения. Заявка не отправлялась.'}
+function download(name,text){var blob=new Blob([text],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function validContact(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||/^\+?[\d\s()\-]{10,24}$/.test(v)&&v.replace(/\D/g,'').length>=10&&v.replace(/\D/g,'').length<=15}
+function formScr(context,prefill,includeQuote){opener=opener||document.activeElement;activeContact={includeQuote:!!includeQuote,context:context||'Обсудить проект',prefill:prefill||{},name:'',contact:''};quizOn=true;document.body.style.overflow='hidden';
+ ovWrap(topBar('Обращение в бюро',100),'<h3>'+esc(activeContact.context)+'</h3><p class="hint">Укажите, как с вами связаться, и проверьте обращение. В этом прототипе можно скачать заявку; отправка в бюро ещё не подключена.</p><form id="contactForm" novalidate><div class="stack">'+inputField('nm','Как к вам обращаться',prefill&&prefill.name||'','text','autocomplete="name" maxlength="100" required')+inputField('ct','Телефон или email',prefill&&prefill.contact||'','text','autocomplete="email" required aria-describedby="contactError"')+'<label class="field"><span>Удобный способ связи</span><select id="contactMethod"><option value="email">Email</option><option value="phone">Телефон</option></select></label><label class="field"><span>Коротко о задаче · необязательно</span><textarea id="message" rows="3" maxlength="3000">'+esc(prefill&&prefill.message||'')+'</textarea></label><label class="consent"><input id="ag" type="checkbox">Я согласен на обработку данных для подготовки обращения.</label><label class="consent"><input id="sendConsent" type="checkbox">Я согласен передать обращение бюро после подключения отправки.</label><p id="contactError" class="field-error" role="status"></p></div><div class="nav2"><button class="btn p" type="submit">Проверить заявку →</button><button class="btn gh" type="button" id="contactBack">Назад</button></div></form>');
+ $('#contactBack').onclick=()=>activeContact.includeQuote&&S.need?price():closeQuiz();$('#contactForm').onsubmit=function(e){e.preventDefault();var nm=$('#nm'),ct=$('#ct'),method=$('#contactMethod').value,error='';if(!nm.value.trim())error='Укажите имя.';else if(!validContact(ct.value.trim()))error='Введите телефон с кодом страны или корректный email.';else if(method==='email'&&!ct.value.includes('@'))error='Для связи по email укажите почту или выберите «Телефон».';else if(method==='phone'&&ct.value.includes('@'))error='Для звонка укажите телефон или выберите «Email».';else if(!$('#ag').checked||!$('#sendConsent').checked)error='Подтвердите оба согласия, чтобы подготовить обращение.';$('#contactError').textContent=error;if(error)return;activeContact.name=nm.value.trim();activeContact.contact=ct.value.trim();activeContact.method=method;activeContact.message=$('#message').value.trim();done()};
+ $('#ct').oninput=function(){$('#contactMethod').value=this.value.includes('@')?'email':'phone'};
+}
+function done(){var text='ОБРАЩЕНИЕ В АБ ДВИЖЕНИЕ\nНе отправлено — локальный прототип\n\nТема: '+activeContact.context+'\nИмя: '+activeContact.name+'\nКонтакт: '+activeContact.contact+'\nСпособ связи: '+activeContact.method+'\nЗадача: '+activeContact.message+'\n\n'+(activeContact.includeQuote&&S.need?quoteText():'')+'\n\n'+Object.entries(activeContact.prefill).filter(([k])=>!['name','contact','message'].includes(k)).map(([k,v])=>k+': '+v).join('\n')+(activeContact.includeQuote&&Object.keys(brief).length?'\nТехническое задание:\n'+Object.entries(brief).map(([k,v])=>k+': '+v).join('\n'):'');
+ ovWrap(topBar('Заявка подготовлена',100),'<div class="success-mark">✓</div><h3>Всё готово к обсуждению</h3><p class="hint">Заявка собрана, но пока не отправлена. Скачайте её: в файле будут контакты, задача и выбранный состав работ.</p><div class="request-preview"><b>'+esc(activeContact.context)+'</b><p>'+esc(activeContact.name)+' · '+esc(activeContact.contact)+'</p><p>'+esc(activeContact.message||'Без дополнительного комментария')+'</p></div><div class="nav2"><button class="btn p" id="downloadRequest">Скачать заявку</button><button class="btn gh" id="qx2">Вернуться на сайт</button></div><p class="prototype-note">Никакие письма, сообщения и записи в CRM не создавались. Контакты не сохраняются в браузере после закрытия страницы.</p>');$('#downloadRequest').onclick=()=>download('Заявка-АБ-Движение.txt',text);$('#qx2').onclick=closeQuiz;
+}
+function openQuiz(h){opener=document.activeElement;var path=location.hash.slice(1),service=svc(path.split('/').pop());if(h&&h!=='только идея')S.have=h;
+ if(service){if(service[3]==='pp')S.need='pp';else if(service[3]==='package')S.need='both';else if(service[0]==='working-documentation')S.need='rd';else if(service[0]==='engineering'){S.need='sections';S.sections=['ir','ir-extra']}else if(service[0]==='estimate'){S.need='sections';S.sections=['sm']}}
+ step=h&&h!=='только идея'?2:1;quizOn=true;document.body.style.overflow='hidden';quiz()}
+function closeQuiz(){saveDraft();quizOn=false;$('#ov').innerHTML='';$('header.site').inert=false;$('#page').inert=false;$('.tools').inert=false;document.body.style.overflow='';addr(location.hash.slice(1)||'/');if(opener&&opener.isConnected)opener.focus({preventScroll:true});opener=null}
+document.addEventListener('keydown',function(e){if(!quizOn)return;if(e.key==='Escape'){e.preventDefault();closeQuiz()}if(e.key==='Tab'){var focusable=Array.from($('#ov').querySelectorAll('button:not(:disabled),a[href],input,select,textarea,[tabindex="0"]')).filter(el=>el.offsetParent!==null);if(!focusable.length)return;var first=focusable[0],last=focusable[focusable.length-1];if(e.shiftKey&&(document.activeElement===first||document.activeElement.tagName==='H3')){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
 
-function quiz(){var q=Q[step];
- ovWrap(topBar('Шаг '+step+' из 5',step*20),
-  '<h3>'+q.t+'</h3>'+(q.h?'<p class="hint">'+q.h+'</p>':'<div style="height:8px"></div>')+q.r()+
-  '<div class="nav2"><button class="btn gh" id="qb">Назад</button><button class="btn p" id="qn"'+(filled()?'':' disabled')+'>'+(step===5?'Показать цену':'Далее')+'</button></div>');
- addr('/raschet/'+step);
- var ar=$('#ar'),arR=$('#arR');
- if(ar){ar.oninput=function(){S.area=+ar.value||0;arR.value=Math.min(500,S.area);$('#qn').disabled=!filled()};
-  arR.oninput=function(){S.area=+arR.value;ar.value=S.area;$('#qn').disabled=!filled()}}
- $('#qx').onclick=closeQuiz;
- $('#qb').onclick=function(){step<=1?closeQuiz():(step--,quiz())};
- $('#qn').onclick=function(){if(filled())step===5?price():(step++,quiz())};}
-
-function price(){var c=calc(),pack=c.n==='both',idk=S.need==='idk';
- ovWrap(topBar('Результат расчёта',100),
-  '<div class="stp" style="margin-bottom:18px">'+(idk?'Ориентир по полному пакету':'Ваш проект · '+c.a+' м² расчётной площади')+'</div>'+
-  '<div class="figure">'+money(c.total)+'</div>'+
-  '<p class="hint" style="margin-top:20px">Цена ориентировочная и считается от площади. После уточнения проекта пересчитывается по тем же расценкам.</p>'+
-  '<table class="rows">'+c.rows.map(function(r){return '<tr><td><b style="font-weight:600">'+r[0]+'</b><br><span style="color:var(--mut);font-size:13px">'+r[1]+'</span></td><td>'+money(r[2])+'</td></tr>'}).join('')+
-  '<tr class="t"><td>Итого</td><td>'+money(c.total)+'</td></tr></table>'+
-  (pack?'<div class="flag"><b>Видно только на живом расчёте</b>Итог пакета — '+c.a+' м² × 2 500 ₽ = '+money(c.total)+
-   '. Ровно столько же стоит одна рабочая документация. Предпроект на '+money(c.pp)+' внутри пакета уходит клиенту бесплатно: это '+
-   Math.round(c.pp/c.total*100)+'% чека. Открытый вопрос Д-1 — задумано или нет.</div>':'')+
-  '<p style="font-size:14px;color:var(--mut);margin:0"><b style="color:var(--ink)">Не входит:</b> авторский надзор, разрешение на строительство, геология, геодезия, согласования.</p>'+
-  '<div class="nav2"><button class="btn p" id="qf">Получить подробное КП</button><button class="btn gh" id="ql">Уточнить расчёт</button></div>'+
-  '<p class="note b">контакты на этом экране не спрашиваем — цену человек уже получил</p>');
- addr('/raschet/cena');$('#qx').onclick=closeQuiz;$('#qf').onclick=formScr;
- $('#ql').onclick=function(){closeQuiz();go('/opros')};}
-
-function formScr(){
- ovWrap(topBar('Последний шаг',100),
-  '<h3>Куда прислать предложение</h3><p class="hint">Расшифровка состава по разделам, что входит и что нет, PDF. Придёт в течение минуты.</p>'+
-  '<div class="stack" style="max-width:480px"><input type="text" id="nm" placeholder="Имя"><input type="text" id="ct" placeholder="Телефон или почта">'+
-  '<div style="height:10px"></div><button class="chk" id="ag" aria-pressed="false"><span class="mk"></span>Согласен на обработку персональных данных</button></div>'+
-  '<div class="nav2"><button class="btn p" id="snd" disabled>Отправить</button></div>'+
-  '<p class="note b">два поля. третье — минус конверсия</p>');
- addr('/raschet/kp');
- var ok=function(){return $('#nm').value.trim()&&$('#ct').value.trim()&&$('#ag').getAttribute('aria-pressed')==='true'};
- var upd=function(){$('#snd').disabled=!ok()};
- $('#nm').oninput=upd;$('#ct').oninput=upd;
- $('#ag').onclick=function(){var v=$('#ag').getAttribute('aria-pressed')!=='true';
-  $('#ag').setAttribute('aria-pressed',v);$('#ag').querySelector('.mk').textContent=v?'✓':'';upd()};
- $('#qx').onclick=closeQuiz;$('#snd').onclick=done;}
-
-function done(){var c=calc();
- var p={lead_id:'ld_'+Math.random().toString(36).slice(2,8),name:$('#nm').value.trim(),contact:$('#ct').value.trim(),
-  answers:{have:S.have,area_entered:+S.area,area_calc:c.a,need:S.need,floors:S.floors,
-   extras:Object.keys(S.extras).filter(function(k){return S.extras[k]}),when:S.when},
-  quote:{total:c.total,pp:c.pp||null,rd_to_pay:c.rdPay||null},price_snapshot:'2026-09-10T00:00:00Z'};
- ovWrap('<div class="ovtop"><span class="stp">Готово</span><div class="pbar"><i style="width:100%"></i></div><button class="xb" id="qx">✕</button></div>',
-  '<h3>Предложение отправлено</h3><p class="hint">Письмо ушло на указанный контакт. Архитектор свяжется в течение рабочего дня.</p>'+
-  '<div class="btns"><button class="btn">Скачать PDF</button><button class="btn gh" id="qx2">Вернуться на сайт</button></div>'+
-  '<div class="stp" style="margin:clamp(36px,5vw,56px) 0 16px">Что улетело параллельно, без участия клиента</div>'+
-  '<div class="out">'+[['01','Клиенту — письмо и PDF с расшифровкой'],['02','Наша база — заявка, ответы, расчёт, снапшот прайса'],
-   ['03','Aspro — контрагент, сделка, задача, файл КП'],['04','Дубль в Telegram и на почту — всегда, независимо от CRM']]
-   .map(function(r){return '<div><i>'+r[0]+'</i><span>'+r[1]+'</span></div>'}).join('')+'</div>'+
-  '<div class="code">'+JSON.stringify(p,null,2)+'</div>'+
-  '<p class="note b">очередь с повторами: сначала своя база, потом CRM. лид не теряется, даже если Aspro лежит</p>');
- addr('/raschet/gotovo');$('#qx').onclick=closeQuiz;$('#qx2').onclick=closeQuiz;}
-
-function openQuiz(h){S={have:h,area:120,need:null,floors:null,extras:{},when:null};step=2;quizOn=true;
- document.body.style.overflow='hidden';quiz()}
-function closeQuiz(){quizOn=false;$('#ov').innerHTML='';document.body.style.overflow='';render()}
+/* Presentation and routes built on the same project parameters as the navigator. */
+var STUDIES={
+ as80:{area:80,floors:1,title:'Дом в Кондратово',text:'Компактный дом с двускатной кровлей, террасой и остеклением гостиной. Простая композиция объединяет жилые комнаты и выход в сад.',idea:'Небольшая площадь, большая общая зона. Терраса продолжает гостиную на участке.',roof:'Двускатная'},
+ as130:{area:130,floors:2,title:'Дом на склоне',text:'Два уровня и широкая терраса перед верхним этажом. Односкатная кровля поддерживает вытянутый силуэт дома.',idea:'Разделить тихие и общие пространства по уровням, сохранить связь верхнего этажа с участком.',roof:'Односкатная'},
+ kr90:{area:90,floors:1,title:'Дом для двоих',text:'Одноэтажный дом с навесом для автомобиля. Основной объём обращён к приватной части участка.',idea:'Собрать повседневные маршруты на одном уровне и связать вход с крытым навесом.',roof:'Двускатная'},
+ vila220:{area:220,floors:2,title:'Загородная резиденция',text:'Двухэтажный дом с вальмовой кровлей, гостевым крылом и террасой с бассейном.',idea:'Отделить гостевой блок от жилого дома и объединить оба объёма общим пространством отдыха.',roof:'Вальмовая'},
+ bath48:{area:48,floors:1,title:'Банный комплекс',text:'Камерный объём в тёмном дереве с крытой верандой. Отдельный сценарий отдыха рядом с основным домом.',idea:'Сделать небольшую постройку самостоятельной частью участка, сохранив архитектурный язык дома.',roof:'Двускатная'}
+};
+function studyImage(id,cls){return '<img class="'+(cls||'study-img')+'" src="assets/'+id+'.png" alt="Концептуальный 3D-макет: '+esc(STUDIES[id].title)+'" loading="lazy" width="1000" height="640">'}
+function studyCard(id){var p=STUDIES[id];return '<button class="card project-card" data-go="/privatehouse/portfolio/'+id+'"><div class="th">'+studyImage(id)+'<span class="image-badge">Концепция / 3D</span></div><div class="bd"><small>'+p.area+' м² · '+p.floors+' эт.</small><b>'+p.title+' <span>↗</span></b><p>'+p.idea+'</p></div></button>'}
+function visual(id){return '<div class="hero-visual"><div class="visual-top"><span>Архитектура в объёме</span><span>01 — 05</span></div>'+studyImage(id)+'<div class="visual-bottom"><span><b>'+STUDIES[id].title+'</b><small>Концептуальная модель · '+STUDIES[id].area+' м²</small></span><a href="3d.html#'+id+'" class="round-link" aria-label="Открыть интерактивную 3D-модель">↗</a></div></div>'}
+function routeStrip(){return '<div class="route-strip mx wrap"><span>От идеи до понятного решения</span><div><b>01</b> Ваша задача</div><i>→</i><div><b>02</b> Состав и стоимость</div><i>→</i><div><b>03</b> Разговор с архитектором</div></div>'}
+P['/']=function(){return {t:'Архитектурное бюро',e:'Визуальное направление: медь, светлая сетка, объёмные макеты. Изображения — демонстрационные концепции. Основной маршрут: задача → состав и цена → обращение.',h:
+ '<section class="hero"><div class="guides mx">'+'<i></i>'.repeat(12)+'</div><div class="hin2 mx wrap"><div><div class="eyebrow">Архитектурное бюро · Пермь / Екатеринбург</div><h1>Дом начинается<br>с <em>вашей жизни.</em></h1><p class="sub">Проектируем пространство под ваши привычки, участок и планы. От первой планировки до чертежей для строителей.</p><div class="btns hero-actions"><button class="btn p" data-go="/navigator">Подобрать решение <span>↗</span></button><a class="btn" href="3d.html">Посмотреть дома в 3D</a></div><p class="hero-caption">Состав и стоимость проекта — до первого звонка</p></div>'+visual('as80')+'</div></section>'+routeStrip()+
+ '<section class="s mx wrap">'+slab('01','На каком вы этапе?')+'<p class="lede">Начнём с вашей ситуации. Поможем увидеть ближайший шаг и то, что понадобится дальше.</p><div class="g g3">'+[
+ ['Есть участок','Хочу понять, какой дом здесь можно построить.','есть участок'],['Есть идея дома','Нужны планировки, архитектура и проект для стройки.','только идея'],['Есть проект','Нужно проверить, дополнить или подготовить рабочие чертежи.','есть эскиз']].map((x,i)=>'<button class="scen" data-start="'+x[2]+'"><span class="n">0'+(i+1)+' / ВАША ЗАДАЧА</span><b>'+x[0]+' <span>↗</span></b><small>'+x[1]+'</small></button>').join('')+'</div><div class="text-links"><a href="#/proekt">Ищу готовый проект →</a><a href="#/services">Нужна отдельная услуга →</a><a href="#/navigator">Другая задача →</a></div></section>'+
+ '<section class="s tint mx wrap">'+slab('02','Разные дома. Разные сценарии.',['Все проекты','/privatehouse/portfolio'])+'<p class="lede">Исследуйте пропорции и устройство дома на интерактивных макетах. Выберите близкий сценарий — и переходите к расчёту своего проекта.</p><div class="g g3">'+['as80','as130','vila220'].map(studyCard).join('')+'</div></section>'+
+ '<section class="s mx wrap">'+slab('03','Что вы получите')+'<div class="g g2"><div class="service-feature"><span class="eyebrow">01 / Предпроект</span><h3>Сначала — найти<br>ваше решение</h3><p>Анализ участка, планировки, архитектурная концепция и визуализация. Вы видите будущий дом до детального проектирования.</p><a href="#/privatehouse/services/architecture-concept">Подробнее о предпроекте →</a></div><div class="service-feature copper"><span class="eyebrow">02 / Рабочая документация</span><h3>Затем — подготовить<br>всё для стройки</h3><p>Архитектура, конструктив, инженерные сети и смета. Комплект, с которым можно обсуждать работы и объёмы с подрядчиком.</p><a href="#/privatehouse/services/pp-rd">Как устроен полный пакет →</a></div></div></section>'+
+ '<section class="s gray mx wrap">'+slab('04','Не только частные дома')+'<div class="g g3">'+DIRS.map((d,i)=>'<button class="tile" data-go="'+(i?'/napravlenie/'+d[0]:'/privatehouse')+'"><span class="n">0'+(i+1)+'</span><b>'+d[1]+'</b><em class="dd">'+d[3]+'</em><small>Подробнее →</small></button>').join('')+'</div></section><section class="s mx wrap">'+calcBlock()+'</section>'}}
+P['/navigator']=function(){return {t:'Навигатор',e:'Пять веток по сквозному сценарию §5. Клиент и организация выбирают направление; поставщик, подрядчик и соискатель готовят отдельное обращение.',h:crumb('Главная','Навигатор')+'<section class="s mx wrap nav-intro"><div class="eyebrow">Поможем найти следующий шаг</div><h1 class="h1s">С чем вы пришли?</h1><p class="lede">Выберите задачу. Для дома покажем состав и ориентир стоимости. Для сотрудничества откроем подходящую форму.</p><div class="g g2 persona-grid">'+[
+ ['Хочу заказать проект','Дом, интерьер, общественное здание или отдельная услуга.','/navigator/client','Выбрать задачу'],['Представляю организацию','Проект для бизнеса, девелопера или учреждения.','/navigator/business','Выбрать направление'],['Я подрядчик','Строительство, монтаж или работы по проектам бюро.','/zayavka/partner','Предложить сотрудничество'],['Я поставщик','Материалы, оборудование или продукция для проектов.','/zayavka/supplier','Рассказать о продукции'],['Ищу работу или практику','Хочу присоединиться к команде архитекторов и инженеров.','/zayavka/candidate','Подготовить отклик']].map((x,i)=>'<button class="scen" data-go="'+x[2]+'"><span class="n">0'+(i+1)+'</span><b>'+x[0]+' <span>↗</span></b><small>'+x[1]+'</small><em class="sg">'+x[3]+'</em></button>').join('')+'</div><p class="hint-inline">Не хотите проходить вопросы? <a href="#/contacts">Перейти к обращению в бюро →</a></p></section>'}}
+function directionPicker(business){return {t:business?'Задача организации':'Задача клиента',e:'Выбор направления перед расчётом. По направлениям без утверждённой цены — индивидуальная оценка.',h:crumb('Главная','Навигатор','Направление')+'<section class="s mx wrap nav-intro"><div class="eyebrow">'+(business?'Для бизнеса и организаций':'Проект для вас')+'</div><h1 class="h1s">Что будем проектировать?</h1><p class="lede">Выберите направление, чтобы перейти к услугам и подходящему способу расчёта.</p><div class="g g3">'+DIRS.map((d,i)=>'<button class="scen" '+(i?'data-go="/napravlenie/'+d[0]+'"':'data-start="только идея"')+'><span class="n">0'+(i+1)+'</span><b>'+d[1]+'</b><small>'+d[3]+'</small><em class="sg">'+(i?'Индивидуальная оценка':'Состав и цена за пять вопросов')+'</em></button>').join('')+'</div><div class="text-links"><a href="#/proekt">Выбрать готовый проект →</a><a href="#/services">Найти отдельную услугу →</a><a href="#/navigator">← Изменить тип обращения</a></div></section>'}}
+P['/navigator/client']=()=>directionPicker(false);P['/navigator/business']=()=>directionPicker(true);
+var portfolioFilter='Все';
+function portfolioCards(){var ids=Object.keys(STUDIES).filter(id=>portfolioFilter==='Все'||portfolioFilter==='до 100 м²'&&STUDIES[id].area<100||portfolioFilter==='100–200 м²'&&STUDIES[id].area>=100&&STUDIES[id].area<=200||portfolioFilter==='свыше 200 м²'&&STUDIES[id].area>200);return ids.map(studyCard).join('')}
+P['/privatehouse/portfolio']=()=>({t:'Портфолио домов',e:'Демонстрационные модели, не подтверждённые реализованные объекты. Фильтр работает по фактическим параметрам каждой модели.',h:crumb('Главная','ИЖС','Портфолио')+'<section class="s mx wrap nav-intro"><div class="eyebrow">Архитектурные исследования / 01—05</div><h1 class="h1s">Найдите близкий вам дом</h1><p class="lede">Пять концептуальных моделей: от небольшого дома до загородной резиденции. Рассмотрите каждый объём в 3D и возьмите его за отправную точку.</p><div class="portfolio-toolbar"><div class="btns">'+['Все','до 100 м²','100–200 м²','свыше 200 м²'].map(x=>'<button class="btn '+(portfolioFilter===x?'p':'gh')+'" data-filter="'+x+'" aria-pressed="'+(portfolioFilter===x)+'">'+x+'</button>').join('')+'</div><a class="text-link" href="3d.html">Открыть 3D-пространство ↗</a></div><div class="g g3" id="portfolioCards">'+portfolioCards()+'</div><p id="filterStatus" class="hint-inline" role="status"></p><p class="prototype-note">Макеты показывают дизайн и механику портфолио. Они не являются подтверждёнными проектами бюро; названия и геометрия требуют замены или согласования.</p></section>'});
+P['/privatehouse/portfolio/:id']=function(id){var p=STUDIES[id];if(!p)return notFound();return {t:p.title,e:'Параметры этой карточки совпадают с 3D-моделью. Это концептуальный макет, а не утверждённая документация объекта.',h:crumb('Главная','Портфолио',p.title)+'<section class="s mx wrap nav-intro"><div class="project-heading"><div><div class="eyebrow">Концепция / '+p.area+' м²</div><h1 class="h1s">'+p.title+'</h1><p class="lede">'+p.text+'</p></div><div class="btns"><a class="btn p" href="3d.html#'+id+'">Рассмотреть в 3D ↗</a><button class="btn" data-project-start="'+id+'">Рассчитать похожий дом</button></div></div><div class="project-wide">'+studyImage(id)+'</div><div class="project-specs">'+[['Площадь модели',p.area+' м²'],['Этажность',p.floors+' эт.'],['Кровля',p.roof],['Статус','Концепция']].map(x=>'<div><small>'+x[0]+'</small><b>'+x[1]+'</b></div>').join('')+'</div></section><section class="s gray mx wrap">'+slab('01','Идея дома')+'<p class="lede">'+p.idea+'</p><div class="g g2"><div><h3>Что можно изменить под вас</h3><p>Планировку, материалы, площадь и расположение на участке. На предпроекте архитектор связывает эти решения с вашей задачей.</p></div><div><h3>Что нужно для строительства</h3><p>Исходные данные участка и рабочая документация. Демонстрационная модель показывает объём, но не содержит расчётов конструкций или рабочих узлов.</p></div></div></section><section class="s mx wrap">'+slab('02','Другие сценарии')+'<div class="g g3">'+Object.keys(STUDIES).filter(k=>k!==id).slice(0,3).map(studyCard).join('')+'</div></section><section class="s tint mx wrap"><div class="fin"><div><b>Нравится направление?</b><p>Перенесём площадь '+p.area+' м² в навигатор. Вы сможете изменить её и выбрать нужный состав работ.</p></div><button class="btn p" data-project-start="'+id+'">Рассчитать свой проект →</button></div></section>'}}
+P['/start/:id']=function(id){if(!STUDIES[id])return notFound();var p=STUDIES[id];S.project=id;S.area=p.area;S.floors=String(p.floors);saveDraft();setTimeout(()=>openQuiz('только идея'),0);return P['/privatehouse/portfolio/:id'](id)};
+var briefFields=[['life','Кто будет жить в доме','Состав семьи, гости, работа из дома, привычки'],['rooms','Помещения и этажность','Спальни, общие зоны, хранение, гараж'],['site','Участок и исходные данные','Расположение, рельеф, сети, какие документы уже есть'],['materials','Материалы и технология','Пожелания к стенам, кровле, отделке'],['budget','Бюджет и сроки','Ориентир бюджета строительства и желаемый старт'],['references','Образ дома и особые пожелания','Ссылки на примеры, что нравится и чего хочется избежать']];
+P['/opros']=()=>({t:'Техническое задание',e:'Параметры навигатора переносятся без повторного ввода. Текст брифа остаётся в памяти вкладки; доступно скачивание файла.',h:crumb('Главная','Техническое задание')+'<section class="s mx wrap nav-intro"><div class="eyebrow">Следующий шаг / Ваш будущий дом</div><h1 class="h1s">Расскажите, как вы хотите жить</h1><p class="lede">Необязательно знать все ответы. Заполните то, что уже решили, — остальное обсудим с архитектором.</p><div class="brief-summary"><b>Из вашего расчёта</b><span>'+esc(S.area)+' м² · '+esc(S.region||'регион пока не указан')+' · '+(S.need?calc().total===null?'индивидуальная оценка':money(calc().total):'состав пока не выбран')+'</span><button class="btn gh" data-start="только идея">Изменить параметры</button></div><form id="briefForm" class="brief-form">'+briefFields.map((x,i)=>'<label class="field"><span><i>0'+(i+1)+'</i>'+x[1]+'</span><textarea name="'+x[0]+'" rows="3" maxlength="5000" placeholder="'+x[2]+'">'+esc(brief[x[0]]||'')+'</textarea></label>').join('')+'<div class="btns"><button class="btn p" type="submit">Перейти к обращению →</button><button class="btn" type="button" id="downloadBrief">Скачать ТЗ</button></div><p class="prototype-note">Черновик текста хранится только до перезагрузки этой страницы. Скачайте ТЗ, чтобы вернуться к нему позже.</p></form></section>'});
+P['/contacts']=()=>({t:'Контакты',e:'Контакты из макета не выдаются за проверенные: вымышленные номера удалены. Форма готовит локальное обращение.',h:crumb('Главная','Контакты')+'<section class="s mx wrap nav-intro"><div class="g g2"><div><div class="eyebrow">АБ Движение</div><h1 class="h1s">Начнём с разговора</h1><p class="lede">Расскажите об участке, доме или другой задаче. Можно прийти с готовым проектом или с первой идеей.</p><div class="contact-cities"><b>Пермь</b><b>Екатеринбург</b><span>Работа с проектами по всей России</span></div><p class="prototype-note">Телефон, почта и адреса для публикации должны быть подтверждены бюро. Сейчас доступна подготовка обращения в прототипе.</p></div><div class="contact-card"><h2>Обсудить задачу</h2><p>Короткая форма для первого знакомства. Расчёт можно приложить после навигатора.</p><button class="btn p" data-manual="Обсудить задачу">Подготовить обращение →</button><a href="#/navigator">Сначала подобрать услугу →</a></div></div></section>'});
+P['/zayavka/:role']=function(role){var roles={supplier:['Предложение поставщика','Расскажите о продукции и регионе поставок.',['Компания','Продукция','Регион поставок','Сайт или каталог']],partner:['Сотрудничество с подрядчиком','Расскажите о работах и вашем опыте.',['Компания','Специализация','Регион работы','Опыт и ссылка на портфолио']],candidate:['Работа и практика в бюро','Расскажите, чем хотите заниматься и что уже делали.',['Специализация','Программы и навыки','Город и формат работы','Ссылка на резюме или портфолио']]},m=roles[role];if(!m)return notFound();return {t:m[0],e:'Отдельное обращение без клиентского расчёта. В прототипе формируется скачиваемый файл.',h:crumb('Главная','Навигатор',m[0])+'<section class="s mx wrap nav-intro"><h1 class="h1s">'+m[0]+'</h1><p class="lede">'+m[1]+' Контакты укажете на следующем шаге.</p><div class="role-form g g2">'+m[2].map((x,i)=>inputField('roleField'+i,x,'','text','maxlength="500"')).join('')+'</div><div class="btns" style="margin-top:30px"><button class="btn p" data-role-next="'+role+'">Перейти к контактам →</button><button class="btn gh" data-go="/navigator">Назад</button></div></section>'}}
+P['/calcalfa']=()=>({t:'Оценка бюджета строительства',e:'Отдельный калькулятор строительства: независимые параметры и отсутствие выдуманных ставок. Пока реестр не заполнен, результат — индивидуальная оценка.',h:crumb('Главная','Бюджет строительства')+'<section class="s mx wrap nav-intro"><div class="eyebrow">До начала стройки</div><h1 class="h1s">Оценить бюджет строительства</h1><p class="lede">Стоимость строительства зависит от технологии, комплектации и участка. Укажите базовые параметры, чтобы подготовить запрос на оценку.</p><div class="g g2"><form id="buildForm" class="build-form">'+inputField('buildArea','Площадь дома, м²',150,'number','min="1" max="10000" step="0.1" required')+'<label class="field"><span>Этажность</span><select id="buildFloors"><option>1 этаж</option><option>2 этажа</option><option>С цоколем</option></select></label><label class="field"><span>Материал стен</span><select id="buildMaterial"><option>Газобетон</option><option>Кирпич</option><option>Каркас</option><option>Пока не знаю</option></select></label><button class="btn p" type="submit">Подготовить оценку →</button></form><div class="pbox"><div class="pk">Стоимость строительства</div><h2>Индивидуальный расчёт</h2><p>Бюро уточнит комплектацию и исходные данные участка. Укрупнённые ставки пока не утверждены, поэтому автоматический прогноз не показывается.</p><p class="hint-inline">Стоимость проектирования можно посчитать отдельно в <a href="#/navigator">навигаторе</a>.</p></div></div></section>'});
+function notFound(){return {t:'Страница не найдена',e:'Неизвестный маршрут: понятный выход без подмены карточки первой записью.',h:'<section class="s mx wrap"><div class="eyebrow">404 / Не нашли страницу</div><h1 class="h1s">Похоже, адрес изменился</h1><p class="lede">Вернитесь к выбору задачи или откройте каталог услуг.</p><div class="btns"><button class="btn p" data-go="/navigator">Навигатор</button><button class="btn" data-go="/services">Все услуги</button></div></section>'}}
+function foot(){return '<footer class="site"><div class="fg"><div><div class="big">У каждого дома<br>своя история.<br><em>Начнём вашу?</em></div><a class="footer-cta" href="#/navigator">Подобрать решение ↗</a></div><div><b>Направления</b>'+DIRS.map(d=>'<a href="#/'+(d[0]==='privatehouse'?'privatehouse':'napravlenie/'+d[0])+'">'+d[1]+'</a>').join('')+'</div><div><b>Разделы</b><a href="#/services">Все услуги</a><a href="#/privatehouse/portfolio">Портфолио</a><a href="3d.html">Дома в 3D ↗</a><a href="#/proekt">Готовые проекты</a><a href="#/calcalfa">Бюджет строительства</a><a href="#/guides">Гайды</a></div><div><b>Бюро</b><a href="#/about">О нас</a><a href="#/contacts">Обсудить задачу</a><a href="#/zayavka/partner">Подрядчикам</a><a href="#/zayavka/supplier">Поставщикам</a><a href="#/zayavka/candidate">Работа в бюро</a></div></div><div class="footer-bottom"><span>АБ ДВИЖЕНИЕ · ДИЗАЙН-ПРОТОТИП</span><span>Формы демонстрационные · отправка не подключена</span></div></footer>'}
+function enhancePage(path,r){
+ document.title=r.t+' · АБ Движение';document.documentElement.lang='ru';
+ if(!$('#page h1')){var title=$('#page .slab h2');if(title){var h=document.createElement('h1');h.className='h1s';h.innerHTML=title.innerHTML;title.replaceWith(h)}}
+ document.querySelectorAll('[data-go]').forEach(el=>{if(el.tagName==='A')el.href='#'+el.dataset.go;else if(el.tagName!=='BUTTON'){el.setAttribute('role','link');el.tabIndex=0;el.onkeydown=e=>{if(e.key==='Enter')go(el.dataset.go)}}});
+ document.querySelectorAll('#page input:not([id])').forEach((el,i)=>{el.id='input-'+i;el.setAttribute('aria-label',el.placeholder||'Поле ввода')});
+ document.querySelectorAll('.rows').forEach(t=>{if(!t.parentElement.classList.contains('table-wrap')){var w=document.createElement('div');w.className='table-wrap';t.parentNode.insertBefore(w,t);w.appendChild(t)}});
+ if($('#briefForm')){var readBrief=()=>{new FormData($('#briefForm')).forEach((v,k)=>brief[k]=String(v))};$('#briefForm').oninput=readBrief;$('#briefForm').onsubmit=e=>{e.preventDefault();readBrief();formScr('Обсудить техническое задание',null,true)};$('#downloadBrief').onclick=()=>{readBrief();download('Техническое-задание.txt',quoteText()+'\n\n'+briefFields.map(x=>x[1]+':\n'+(brief[x[0]]||'Пока не определено')).join('\n\n'))}}
+ if($('#buildForm'))$('#buildForm').onsubmit=e=>{e.preventDefault();formScr('Оценить бюджет строительства',{message:'Площадь: '+$('#buildArea').value+' м²; '+$('#buildFloors').value+'; '+$('#buildMaterial').value})};
+ // Catalog previews use the same conceptual models; technical diagrams remain on service pages.
+ document.querySelectorAll('.card[data-go*="/portfolio/"]').forEach(card=>{var id=card.dataset.go.split('/').pop();if(STUDIES[id]&&!card.querySelector('img'))card.querySelector('.th').innerHTML=studyImage(id)});
+ if(path==='/privatehouse'){var target=$('.hero .art');if(target){target.outerHTML=visual('as130')}}
+ if(path==='/services'){$('#page .lede').textContent='Частные дома, интерьеры, общественные здания и территории. Выберите направление: покажем состав услуг и способ расчёта.'}
+}
 
 /* ───── роутер ───── */
 function addr(p){$('#addr').textContent='mooveab.ru'+p}
-function go(p){location.hash='#'+p}
+function go(p){if(quizOn)closeQuiz();if(location.hash==='#'+p)render();else location.hash='#'+p}
 function match(path){if(P[path])return{f:P[path],a:[]};
  var keys=Object.keys(P).filter(function(k){return k.indexOf(':')>-1});
  for(var i=0;i<keys.length;i++){var kp=keys[i].split('/'),pp=path.split('/');
   if(kp.length!==pp.length)continue;var args=[],ok=true;
-  for(var j=0;j<kp.length;j++){if(kp[j].charAt(0)===':')args.push(decodeURIComponent(pp[j]));
+  for(var j=0;j<kp.length;j++){if(kp[j].charAt(0)===':'){try{args.push(decodeURIComponent(pp[j]))}catch(e){return null}}
    else if(kp[j]!==pp[j]){ok=false;break}}
   if(ok)return{f:P[keys[i]],a:args}}
  return null}
 function render(){var path=location.hash.slice(1)||'/',m=match(path);
- if(!m){go('/');return}
- var r=m.f.apply(null,m.a);if(!r)return;
- $('#page').innerHTML=r.h+foot();
+ var r=m?m.f.apply(null,m.a):notFound();if(!r)return;
+ $('#page').innerHTML=r.h+foot();enhancePage(path,r);$('header.site').classList.remove('menu-open');$('#menuToggle').setAttribute('aria-expanded','false');
  $('#expR').textContent=path;$('#expT').textContent=r.e;
  if(!quizOn)addr(path);
  document.querySelectorAll('nav.main a').forEach(function(a){
   a.classList.toggle('on',a.dataset.go===path||(a.dataset.go!=='/'&&path.indexOf(a.dataset.go)===0))});
  window.scrollTo(0,0)}
-function foot(){return '<footer class="site"><div class="fg">'+
- '<div><div class="big">Обсудим ваш проект?</div><div style="margin-top:18px"><button class="btn" style="border-color:var(--dline);color:var(--don)" data-go="/contacts">Связаться</button></div></div>'+
- '<div><b>Направления</b>'+DIRS.slice(0,4).map(function(d){return '<a data-go="/napravlenie/'+d[0]+'">'+d[1]+'</a>'}).join('')+'</div>'+
- '<div><b>Разделы</b><a data-go="/services">Все услуги</a><a data-go="/privatehouse/portfolio">Портфолио</a><a data-go="/proekt">Готовые проекты</a><a data-go="/guides">Гайды</a><a data-go="/calcalfa">Калькулятор стройки</a><a data-go="/about">О бюро</a></div>'+
- '<div><b>Контакты</b><a data-go="/contacts">Пермь</a><a data-go="/contacts">Екатеринбург</a><a>hello@mooveab.ru</a><a>Политика обработки данных</a></div>'+
- '</div></footer>'}
-
+function updateChoice(el){var previous=$('.ov').scrollTop;var selector=el.hasAttribute('data-k')?'[data-k="'+el.dataset.k+'"][data-v="'+el.dataset.v+'"]':el.hasAttribute('data-ex')?'[data-ex="'+el.dataset.ex+'"]':el.hasAttribute('data-section')?'[data-section="'+el.dataset.section+'"]':'[data-area="'+el.dataset.area+'"]';quiz();$('.ov').scrollTop=previous;var selected=$('#ov').querySelector(selector);if(selected)selected.focus({preventScroll:true})}
 document.addEventListener('click',function(e){
- var x=e.target.closest('[data-ext]');if(x){window.open(x.dataset.ext,'_blank');return}
+ var filter=e.target.closest('[data-filter]');if(filter){portfolioFilter=filter.dataset.filter;$('#portfolioCards').innerHTML=portfolioCards();document.querySelectorAll('[data-filter]').forEach(b=>{var on=b.dataset.filter===portfolioFilter;b.setAttribute('aria-pressed',on);b.classList.toggle('p',on);b.classList.toggle('gh',!on)});$('#filterStatus').textContent='Найдено моделей: '+$('#portfolioCards').children.length;return}
+ var pr=e.target.closest('[data-project-start]');if(pr){var model=STUDIES[pr.dataset.projectStart];S.project=pr.dataset.projectStart;S.area=model.area;S.floors=String(model.floors);openQuiz('только идея');return}
+ var sec=e.target.closest('[data-section]');if(sec){var id=sec.dataset.section;S.sections=S.sections.includes(id)?S.sections.filter(x=>x!==id):S.sections.concat(id);updateChoice(sec);return}
+ var preset=e.target.closest('[data-area]');if(preset){S.area=+preset.dataset.area;updateChoice(preset);return}
+ var role=e.target.closest('[data-role-next]');if(role){var fields={};document.querySelectorAll('.role-form .field').forEach(l=>fields[l.querySelector('span').textContent]=l.querySelector('input').value);formScr($('#page h1').textContent,fields);return}
+ var x=e.target.closest('[data-ext]');if(x){window.location.href=x.dataset.ext;return}
  var j=e.target.closest('[data-jump]');if(j){var el=document.getElementById(j.dataset.jump);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});return}
- var t=e.target.closest('[data-go]');if(t){go(t.dataset.go);return}
+ var t=e.target.closest('[data-go]');if(t){e.preventDefault();go(t.dataset.go);return}
  var s=e.target.closest('[data-start]');if(s){openQuiz(s.dataset.start);return}
- if(quizOn){var o=e.target.closest('[data-k]');if(o){S[o.dataset.k]=o.dataset.v;quiz();return}
-  var x=e.target.closest('[data-ex]');if(x){S.extras[x.dataset.ex]=!S.extras[x.dataset.ex];quiz();return}}
- var mn=e.target.closest('[data-manual]');if(mn){alert('Заявка ушла: контакт и контекст страницы → наша база → Aspro → дубль в Telegram.\n\nРезервный канал без расчёта.');return}});
+ if(quizOn){var o=e.target.closest('[data-k]');if(o){S[o.dataset.k]=o.dataset.v;updateChoice(o);return}
+  var x=e.target.closest('[data-ex]');if(x){S.extras[x.dataset.ex]=!S.extras[x.dataset.ex];updateChoice(x);return}}
+ var mn=e.target.closest('[data-manual]');if(mn){var container=mn.closest('.calc')||mn.closest('section'),fields=container?Array.from(container.querySelectorAll('input')):[],prefill={};fields.forEach(f=>{if(/имя/i.test(f.placeholder))prefill.name=f.value;else if(/почта|телефон|контакт/i.test(f.placeholder))prefill.contact=f.value;else if(f.value)prefill.message=(prefill.message||'')+f.value+'; '});formScr(mn.dataset.manual==='1'?($('#page h1')?.textContent||'Обсудить задачу'):mn.dataset.manual,prefill);return}});
+$('#menuToggle').onclick=function(){var open=$('header.site').classList.toggle('menu-open');this.setAttribute('aria-expanded',open);this.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню')};
 $('#bMap').onclick=function(){go('/map')};
 $('#bExp').onclick=function(){var v=$('#bExp').getAttribute('aria-pressed')!=='true';
  $('#bExp').setAttribute('aria-pressed',v);$('#exp').classList.toggle('hide',!v)};
-$('#nav').innerHTML=[['/','Главная'],['/services','Услуги'],['/privatehouse','ИЖС'],['/privatehouse/portfolio','Портфолио'],
- ['/proekt','Готовые проекты'],['/guides','Гайды'],['/about','О бюро'],['/contacts','Контакты']]
- .map(function(n){return '<a data-go="'+n[0]+'">'+n[1]+'</a>'}).join('');
-window.addEventListener('hashchange',function(){quizOn?closeQuiz():render()});
+$('#nav').innerHTML=[['/services','Услуги'],['/privatehouse/portfolio','Проекты'],['/privatehouse','Частные дома'],['/about','Бюро'],['/contacts','Контакты']].map(n=>'<a href="#'+n[0]+'" data-go="'+n[0]+'">'+n[1]+'</a>').join('');
+window.addEventListener('hashchange',function(){if(quizOn)closeQuiz();render()});
 render();
 })();
 </script>
+
+</html>
