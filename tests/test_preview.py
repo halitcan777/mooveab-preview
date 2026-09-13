@@ -9,6 +9,7 @@ parser.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[
 parser.add_argument('--base',default='')
 parser.add_argument('--skip-layout',action='store_true')
 parser.add_argument('--output',type=Path,default=Path('/tmp/abd-preview-checks'))
+parser.add_argument('--browser',choices=['chromium','webkit'],default='chromium')
 a=parser.parse_args();a.output.mkdir(parents=True,exist_ok=True)
 site='index.html' if (a.root/'index.html').exists() else 'прототип_сайта.html'
 view='3d.html' if (a.root/'3d.html').exists() else '3d_портфолио.html'
@@ -46,7 +47,7 @@ def flow(page,area=120,need='both',extras=False,sup='none',sections=None):
  return page.locator('.quote-head h3').inner_text().replace('\xa0',' ')
 
 with sync_playwright() as p:
- browser=p.chromium.launch(headless=True)
+ browser=getattr(p,a.browser).launch(headless=True)
  ctx=browser.new_context(viewport={'width':1440,'height':960},accept_downloads=True)
  page=ctx.new_page();page.on('pageerror',lambda e: errors.append(str(e)))
  goto(page,'/map')
@@ -61,6 +62,25 @@ with sync_playwright() as p:
    check(page.locator('img').evaluate_all('async xs=>{for(const i of xs)i.loading="eager";return (await Promise.all(xs.map(i=>i.decode().then(()=>i.naturalWidth>0).catch(()=>false)))).every(Boolean)}'),f'{width}px {route}: images load')
   goto(page,'/');page.screenshot(path=str(a.output/f'home-{width}.png'))
  page.set_viewport_size({'width':1440,'height':960})
+ # Макеты: постер сразу, ролик только у экрана, одна фаза на всех карточках, пауза за экраном
+ goto(page,'/')
+ check(page.locator('script[src]').count()==0,'Site loads no external scripts or 3D engine')
+ check(page.locator('.route-hero .house-view img').first.get_attribute('fetchpriority')=='high','Hero poster is fetched first')
+ check(page.evaluate('[...document.images].filter(i=>i.closest(".house-view")).every(i=>i.currentSrc.endsWith(".webp")&&i.srcset)'),'House posters are responsive WebP')
+ page.wait_for_selector('.route-hero .house-view.live',timeout=20000);check(True,'Hero model spins as video')
+ check(page.evaluate('[...document.querySelectorAll("#page video")].every(v=>v.closest(".house-view").getBoundingClientRect().top<innerHeight+200)'),'Only near-screen models load video')
+ pick=page.evaluate('(()=>{const v=document.querySelector(".route-hero video"),w=v.parentElement.getBoundingClientRect().width*devicePixelRatio;return [v.currentSrc,w>760?"-1280.":"-720."]})()')
+ check(pick[1] in pick[0],f'Hero video size follows rendered pixels: {pick[0].split("/")[-1]}')
+ page.evaluate('document.querySelector(".project-card").scrollIntoView({block:"start"})');page.wait_for_function('document.querySelectorAll(".project-card .house-view.live").length===3',timeout=20000)
+ page.wait_for_timeout(600)
+ spread=page.evaluate('(()=>{const vs=[...document.querySelectorAll(".project-card video")],d=vs[0].duration,t=vs.map(v=>v.currentTime);let m=0;for(const x of t)for(const y of t){const a=Math.abs(x-y)%d;m=Math.max(m,Math.min(a,d-a))}return m})()')
+ check(spread<0.35,f'Cards spin in one phase (spread {spread:.2f} s)')
+ check(page.evaluate('document.querySelector(".route-hero video").paused'),'Off-screen hero video pauses')
+ goto(page,'/privatehouse');page.wait_for_selector('.hero .house-view.live',timeout=20000);check(True,'IZhS hub hero model spins after late insertion')
+ goto(page,'/privatehouse/portfolio');page.locator('[data-filter="до 100 м²"]').click();page.wait_for_selector('#portfolioCards .house-view.live',timeout=20000);check(True,'Filtered portfolio cards keep spinning')
+ page.locator('[data-filter="Все"]').click()
+ calm=browser.new_context(viewport={'width':1440,'height':960},reduced_motion='reduce');cp=calm.new_page();cp.goto(base+site+'#/');cp.wait_for_load_state('networkidle');cp.wait_for_timeout(800)
+ check(cp.locator('video').count()==0 and cp.locator('.route-hero .house-view img').first.is_visible(),'Reduced motion keeps static posters without video');calm.close()
  for area,need,expected in [(30,'both',125000),(50,'both',125000),(120,'both',300000),(200,'pp',50000),(201,'pp',50000),(209,'pp',50000),(210,'pp',100000),(300,'pp',100000),(301,'pp',150000),(301,'rd',752500)]:
   result=flow(page,area,need)
   check(str(expected)==''.join(c for c in result if c.isdigit()),f'Pricing {area}m² {need}: {expected}')
@@ -99,6 +119,8 @@ with sync_playwright() as p:
  for width,height in [(390,844),(768,900),(1440,960),(1366,650)]:
   page.set_viewport_size({'width':width,'height':height});page.goto(base+view+'#as80');page.wait_for_load_state('networkidle');page.wait_for_timeout(700)
   check(page.evaluate('!!document.querySelector("#cv").getContext("webgl")'),'WebGL initializes')
+  before=page.locator('#cv').screenshot();page.locator('#bRot').click();page.wait_for_timeout(700);page.locator('#bRot').click()
+  check(before!=page.locator('#cv').screenshot(),f'3D {width}px: model renders and rotates')
   check(body_width(page)['body']<=width+1,f'3D {width}px: no horizontal overflow')
   for id in ['as80','as130','kr90','vila220','bath48']:
    page.locator(f'#rail button').nth(['as80','as130','kr90','vila220','bath48'].index(id)).click();page.wait_for_timeout(250)

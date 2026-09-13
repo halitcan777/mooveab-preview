@@ -3,6 +3,9 @@
 <meta charset="utf-8">
 <link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Концептуальные модели домов в 3D: вращение, вид сверху и разбор на части здания. Дизайн-прототип АБ «Движение».">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f5ede6">
 <title>АБ Движение · 3D-портфолио</title>
 <style>
 :root{color-scheme:light;
@@ -16,30 +19,6 @@ html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);
  -webkit-font-smoothing:antialiased;letter-spacing:-.005em;overflow:hidden}
 button{font:inherit;color:inherit}
-
-/* ─────────── заслонка ─────────── */
-#gate{position:fixed;inset:0;z-index:100;background:var(--dark);color:var(--don);
- display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
- transition:opacity .7s ease,visibility .7s}
-#gate.out{opacity:0;visibility:hidden}
-#gate .br{position:absolute;top:clamp(18px,3vw,34px);left:clamp(18px,4vw,44px);
- font:700 16px/1 var(--sans);letter-spacing:-.03em}
-#gate .br i{font-style:normal;color:var(--acc)}
-#gate .esc{position:absolute;top:clamp(18px,3vw,34px);right:clamp(18px,4vw,44px);
- font:10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--dmut)}
-#bcv{width:min(520px,80vw);height:min(334px,52vw);display:block}
-#gate .st{font:10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--soft2);
- min-height:12px;text-align:center}
-#gate .pw{width:min(520px,80vw);height:1px;background:var(--dline);position:relative}
-#gate .pw i{position:absolute;inset:0 auto 0 0;background:var(--acc);width:0;transition:width .3s ease}
-#gate .pc{font:10px/1 var(--mono);letter-spacing:.14em;color:var(--dmut)}
-#gate .enter{border:1px solid var(--acc);background:transparent;color:var(--don);
- padding:14px 26px;cursor:pointer;font:10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
- opacity:0;visibility:hidden;transition:opacity .3s,background .15s}
-#gate .enter.on{opacity:1;visibility:visible}
-#gate .enter:hover{background:var(--acc)}
-#gate h1{font-size:clamp(22px,3.4vw,34px);letter-spacing:-.035em;line-height:1.1;margin:0;
- font-weight:700;text-align:center;max-width:18ch}
 
 /* ─────────── сцена ─────────── */
 #cv{position:fixed;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
@@ -136,9 +115,9 @@ button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid var(
 .hint{bottom:142px;left:calc(50% + 160px);font:11px/1.5 var(--sans);letter-spacing:0;text-transform:none;color:var(--mut);width:60%}
 .layer-panel{display:none}.layer-panel.on{display:block;position:absolute;right:52px;top:155px;width:250px;background:rgba(255,253,249,.94);border:1px solid var(--line2);border-radius:4px;padding:12px;z-index:12;pointer-events:none}
 .lay{position:static;transform:none;opacity:1;visibility:visible;display:flex}.lay div{padding:10px 8px;gap:8px;font-size:11px;background:transparent}.lay small{display:none}.lay i{min-width:24px}.layer-note{font-size:11px;line-height:1.5;color:var(--mut);margin:12px 5px 3px}
-#gate{display:none}
 @media(max-width:1100px) and (min-width:761px){.scene{left:310px}.info{max-width:248px;left:28px}.info h1{font-size:34px}.rail{left:28px}.rail button{grid-template-columns:1fr}.rail svg{display:none}.layer-panel.on{width:190px;right:42px}}
 @media(max-width:760px){
+ #cv{touch-action:pan-y}
  html,body{height:auto;min-height:100%;overflow:auto}.hd{position:relative;height:auto;min-height:110px;flex-wrap:wrap;padding:18px 18px 14px;gap:16px}.hd .logo{font-size:16px}.hd .tag{display:block;font-size:8px;margin-left:auto}.hd .rt{width:100%;margin:0;gap:5px;justify-content:space-between}.hd .rt .btn{flex:1;padding:9px 5px;font-size:11px}#bRes{display:block}
  .scene{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:14px 12px 0;height:340px}.scene-label{top:14px;left:14px;right:14px;font-size:8px}.scene-label span:last-child{display:none}
  .info{position:relative;top:auto;left:auto;right:auto;max-width:none;padding:24px 22px 12px}.info .n{margin-bottom:10px}.info h1{font-size:34px}.info p{display:block;max-width:none}.meta{margin-top:16px}.meta div{flex:1}.meta b{font-size:20px}.project-cta{margin-top:20px}.info .model-note{font-size:11px;margin-bottom:12px}
@@ -334,7 +313,7 @@ var LAYERS=[
 ];
 
 /* ══════════════ рендер ══════════════ */
-var cv=$('#cv'),gl=cv.getContext('webgl',{antialias:true,alpha:true,preserveDrawingBuffer:true}),W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
+var cv=$('#cv'),gl=cv.getContext('webgl',{antialias:true,alpha:true}),W=0,H=0,DPR=Math.min(2,window.devicePixelRatio||1);
 function resize(){
  var rect=cv.parentElement.getBoundingClientRect();W=rect.width;H=rect.height;
  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
@@ -349,27 +328,8 @@ var COL={
 };
 var cam={yaw:0.62,pitch:0.40,dist:36,tgt:[0,2.0,0]},
     target={yaw:0.62,pitch:0.40,dist:36},
-    autoRot=false,exploded=false,exT=0,grow=1,cur=0,geo=[],hintOff=false;
+    autoRot=false,exploded=false,exT=0,grow=1,cur=0,hintOff=false;
 
-function rot(p){
- var x=p[0]-cam.tgt[0],y=p[1]-cam.tgt[1],z=p[2]-cam.tgt[2];
- var cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
- var x1=x*cy-z*sy, z1=x*sy+z*cy;
- var cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch);
- var y1=y*cp+z1*sp, z2=-y*sp+z1*cp;
- return [x1,y1,z2+cam.dist];
-}
-function rotV(v){
- var cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
- var x1=v[0]*cy-v[2]*sy, z1=v[0]*sy+v[2]*cy;
- var cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch);
- return [x1, v[1]*cp+z1*sp, -v[1]*sp+z1*cp];
-}
-function proj(p){
- var q=rot(p), f=Math.min(W*0.95,H*1.65)*1.2;
- var s=f/cam.dist;
- return [W/2+q[0]*s, H/2-q[1]*s, q[2]];
-}
 function norm(a,b,c){
  var u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]], v=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
  var n=[u[1]*v[2]-u[2]*v[1], u[2]*v[0]-u[0]*v[2], u[0]*v[1]-u[1]*v[0]];
@@ -420,7 +380,7 @@ function build(i){
 }
 function setProject(i,instant){
  cur=(i+PROJECTS.length)%PROJECTS.length;
- geo=build(cur);needsDraw=true;
+ upload(cur);needsDraw=true;
  grow=instant||window.matchMedia('(prefers-reduced-motion: reduce)').matches?1:0;target.dist=cur===3?(W<500?36:44):(W<500?29:36);if(instant)cam.dist=target.dist;
  if(location.hash.slice(1)!==PROJECTS[cur].id)history.replaceState(null,'','#'+PROJECTS[cur].id);
  paintUI();
@@ -431,17 +391,39 @@ function fromHash(){
  return 0;
 }
 
-/* Native WebGL depth buffer: intersecting roofs, walls and windows are occluded per pixel. */
-var renderError=false,program,buffer;
+/* Native WebGL depth buffer: intersecting roofs, walls and windows are occluded per pixel.
+   Геометрия уходит в видеокарту один раз на проект. Поворот камеры, «рост» дома и разбор
+   на слои считает вершинный шейдер — кадр стоит четыре uniform и два вызова отрисовки. */
+var renderError=false,program,vbo,U={},packs={},count=0,GROUND=6;
+function materialOf(t,n){return t==='ground'?0:(t==='roof'||t==='roofDark')?1:t==='glass'?(Math.abs(n[0])>.5?2.2:2.0):t==='deck'||t==='wood'?3:t==='wall'?4:5}
+function pack(i){
+ if(packs[i])return packs[i];
+ var data=[];
+ function face(pts,n,t,off){
+  var c=COL[t]||COL.wall,dot=Math.max(0,n[0]*LIGHT[0]+n[1]*LIGHT[1]+n[2]*LIGHT[2]);
+  var m=t==='ground'?1:0.70+0.30*dot,mat=materialOf(t,n),r=c[0]*m/255,g=c[1]*m/255,b=c[2]*m/255;
+  function vertex(p){data.push(p[0],p[1],p[2],off,r,g,b,mat)}
+  for(var k=1;k<pts.length-1;k++){vertex(pts[0]);vertex(pts[k]);vertex(pts[k+1])}
+ }
+ face([[-18,-.55,-18],[-18,-.55,18],[18,-.55,18],[18,-.55,-18]],[0,1,0],'ground',0);
+ build(i).forEach(function(f){face(f.p,f.n,f.t,f.off)});
+ return packs[i]=new Float32Array(data);
+}
 if(!gl){
  renderError=true;cv.insertAdjacentHTML('afterend','<p style="padding:80px 30px">3D недоступно в этом браузере. Откройте карточку дома — описание и расчёт доступны по ссылкам рядом.</p>');
 }else{
  function shader(type,source){var sh=gl.createShader(type);gl.shaderSource(sh,source);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh));return sh}
  program=gl.createProgram();
  gl.attachShader(program,shader(gl.VERTEX_SHADER,`
- attribute vec3 aPosition;attribute vec3 aWorld;attribute vec3 aColor;attribute float aMaterial;
+ attribute vec3 aPos;attribute float aOff;attribute vec3 aColor;attribute float aMat;
+ uniform vec3 uTgt;uniform vec4 uRot;uniform vec3 uCam;uniform vec2 uLift;
  varying vec3 world;varying vec3 color;varying float material;
- void main(){gl_Position=vec4(aPosition,1.0);world=aWorld;color=aColor;material=aMaterial;}`));
+ void main(){
+  vec3 p=vec3(aPos.x,aPos.y*uLift.x+aOff*uLift.y,aPos.z),d=p-uTgt;
+  float x1=d.x*uRot.x-d.z*uRot.y,z1=d.x*uRot.y+d.z*uRot.x;
+  float y1=d.y*uRot.z+z1*uRot.w,z2=-d.y*uRot.w+z1*uRot.z;
+  gl_Position=vec4(x1*uCam.y,y1*uCam.z,(z2+uCam.x-60.0)/100.0,1.0);
+  world=p;color=aColor;material=aMat;}`));
  gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`
  precision highp float;varying vec3 world;varying vec3 color;varying float material;
  float line(float p,float width){float f=fract(p);return 1.0-smoothstep(width,width+0.03,min(f,1.0-f));}
@@ -462,25 +444,33 @@ if(!gl){
  else if(material<4.5){float grain=fract(sin(dot(world.xz+world.y,vec2(12.9898,78.233)))*43758.5453);c*=.985+grain*.015;}
  gl_FragColor=vec4(c,1.0);}`));
  gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));
- gl.useProgram(program);buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
- [['aPosition',3,0],['aWorld',3,12],['aColor',3,24],['aMaterial',1,36]].forEach(function(a){var loc=gl.getAttribLocation(program,a[0]);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,a[1],gl.FLOAT,false,40,a[2])});
+ gl.useProgram(program);vbo=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vbo);
+ [['aPos',3,0],['aOff',1,12],['aColor',3,16],['aMat',1,28]].forEach(function(a){var loc=gl.getAttribLocation(program,a[0]);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,a[1],gl.FLOAT,false,32,a[2])});
+ ['uTgt','uRot','uCam','uLift'].forEach(function(n){U[n]=gl.getUniformLocation(program,n)});
  gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);gl.clearColor(0,0,0,0);
 }
+function upload(i){if(renderError)return;var d=pack(i);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);count=d.length/8}
 function draw(){
  if(renderError)return;
- gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);var data=[];
- function face(pts,n,t){
-  var c=COL[t]||COL.wall,dot=Math.max(0,n[0]*LIGHT[0]+n[1]*LIGHT[1]+n[2]*LIGHT[2]);
-  var m=t==='ground'?1:0.70+0.30*dot;
-  var material=t==='ground'?0:(t==='roof'||t==='roofDark')?1:t==='glass'?(Math.abs(n[0])>.5?2.2:2.0):t==='deck'||t==='wood'?3:t==='wall'?4:5;
-  var tint=c.map(v=>v*m/255);
-  function vertex(p){var q=proj(p);data.push(q[0]/W*2-1,1-q[1]/H*2,(q[2]-60)/100,p[0],p[1],p[2],...tint,material)}
-  for(var i=1;i<pts.length-1;i++){vertex(pts[0]);vertex(pts[i]);vertex(pts[i+1])}
- }
- face([[-18,-.55,-18],[-18,-.55,18],[18,-.55,18],[18,-.55,-18]],[0,1,0],'ground');
- geo.forEach(function(f){face(f.p.map(p=>[p[0],p[1]*grow+f.off*exT,p[2]]),f.n,f.t)});
- gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.DYNAMIC_DRAW);gl.drawArrays(gl.TRIANGLES,0,data.length/10);
+ var s=Math.min(W*0.95,H*1.65)*1.2/cam.dist;
+ gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+ gl.uniform3f(U.uTgt,cam.tgt[0],cam.tgt[1],cam.tgt[2]);
+ gl.uniform4f(U.uRot,Math.cos(cam.yaw),Math.sin(cam.yaw),Math.cos(cam.pitch),Math.sin(cam.pitch));
+ gl.uniform3f(U.uCam,cam.dist,2*s/W,2*s/H);
+ gl.uniform2f(U.uLift,1,0);gl.drawArrays(gl.TRIANGLES,0,GROUND);
+ gl.uniform2f(U.uLift,grow,exT);gl.drawArrays(gl.TRIANGLES,GROUND,count-GROUND);
 }
+/* Кадр для роликов на карточках сайта (design/render_spins.py): та же геометрия и те же
+   материалы, что у интерактивной сцены, на непрозрачном фоне карточки #f3efe7. */
+window.renderStudyFrame=function(id,yaw,w,h){
+ var i=-1;for(var k=0;k<PROJECTS.length;k++)if(PROJECTS[k].id===id)i=k;
+ if(i<0||renderError)return false;
+ autoRot=false;exploded=false;exT=0;grow=1;cur=i;upload(i);
+ if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h)}W=w;H=h;
+ cam.tgt[1]=2;cam.yaw=target.yaw=yaw;cam.pitch=target.pitch=0.40;cam.dist=target.dist=[36,36,36,44,36][i]*0.78;
+ gl.clearColor(243/255,239/255,231/255,1);draw();gl.clearColor(0,0,0,0);
+ return true;
+};
 cv.addEventListener('webglcontextlost',function(e){e.preventDefault();renderError=true;$('#viewLabel').textContent='Перезагрузите страницу для восстановления 3D'});
 cv.addEventListener('webglcontextrestored',function(){location.reload()});
 
@@ -527,7 +517,6 @@ function killHint(){if(!hintOff){hintOff=true;$('#hint').classList.add('off')}}
 
 function toggleEx(){
  exploded=!exploded;
- geo=build(cur);
  $('#bEx').classList.toggle('on',exploded);
  $('#bEx').textContent=exploded?'Собрать':'Разобрать';
  $('#lay').classList.toggle('on',exploded);
@@ -567,7 +556,6 @@ $('#lay').innerHTML=LAYERS.map(function(l){
  return '<div><i>'+l.n+'</i><b>'+l.t+'</b><small>'+l.s+'</small></div>';
 }).join('');
 
-var entered=true;
 window.addEventListener('hashchange',function(){setProject(fromHash())});
 setProject(fromHash(),true);
 requestAnimationFrame(tick);
