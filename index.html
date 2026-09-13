@@ -834,7 +834,27 @@ var STUDIES={
  vila220:{area:220,floors:2,title:'Загородная резиденция',text:'Двухэтажный дом с вальмовой кровлей, гостевым крылом и террасой с бассейном.',idea:'Отделить гостевой блок от жилого дома и объединить оба объёма общим пространством отдыха.',roof:'Вальмовая'},
  bath48:{area:48,floors:1,title:'Банный комплекс',text:'Камерный объём в тёмном дереве с крытой верандой. Отдельный сценарий отдыха рядом с основным домом.',idea:'Сделать небольшую постройку самостоятельной частью участка, сохранив архитектурный язык дома.',roof:'Двускатная'}
 };
-function studyImage(id,cls){return '<img class="'+(cls||'study-img')+'" src="assets/'+id+'.png" alt="Концептуальный 3D-макет: '+esc(STUDIES[id].title)+'" loading="lazy" width="1000" height="640">'}
+function studyImage(id,cls){return '<img class="'+(cls||'study-img')+' spin" src="assets/'+id+'-poster.webp" data-spin="assets/'+id+'.webp" data-still="assets/'+id+'.png" alt="Концептуальный 3D-макет: '+esc(STUDIES[id].title)+', оборот вокруг дома" loading="lazy" decoding="async" width="1000" height="640" onerror="if(this.dataset.still&&this.src.indexOf(\'.png\')<0){this.src=this.dataset.still}">'}
+/* Оборот вокруг дома: анимация (≈260 КБ) грузится только когда карточка появилась
+   на экране, и не грузится вовсе при «уменьшить движение». */
+var spinWatcher=null;
+function initSpin(){
+ var imgs=document.querySelectorAll('img.spin[data-spin]');
+ if(!imgs.length)return;
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ if(!('IntersectionObserver' in window)){imgs.forEach(startSpin);return}
+ if(!spinWatcher)spinWatcher=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){startSpin(e.target);spinWatcher.unobserve(e.target)}});
+ },{rootMargin:'200px'});
+ imgs.forEach(function(im){spinWatcher.observe(im)});
+}
+function startSpin(im){
+ var src=im.dataset.spin;if(!src)return;
+ delete im.dataset.spin;
+ var pre=new Image();
+ pre.onload=function(){im.src=src};
+ pre.src=src;
+}
 function studyCard(id){var p=STUDIES[id];return '<button class="card project-card" data-go="/privatehouse/portfolio/'+id+'"><div class="th">'+studyImage(id)+'<span class="image-badge">Концепция / 3D</span></div><div class="bd"><small>'+p.area+' м² · '+p.floors+' эт.</small><b>'+p.title+' <span>↗</span></b><p>'+p.idea+'</p></div></button>'}
 function visual(id){return '<div class="hero-visual"><div class="visual-top"><span>Архитектура в объёме</span><span>01 — 05</span></div>'+studyImage(id)+'<div class="visual-bottom"><span><b>'+STUDIES[id].title+'</b><small>Концептуальная модель · '+STUDIES[id].area+' м²</small></span><a href="3d.html#'+id+'" class="round-link" aria-label="Открыть интерактивную 3D-модель">↗</a></div></div>'}
 function routeStrip(){return '<div class="route-strip mx wrap"><span>От идеи до понятного решения</span><div><b>01</b> Ваша задача</div><i>→</i><div><b>02</b> Состав и стоимость</div><i>→</i><div><b>03</b> Разговор с архитектором</div></div>'}
@@ -864,6 +884,7 @@ function foot(){return '<footer class="site"><div class="fg"><div><div class="bi
 function enhancePage(path,r){
  document.title=r.t+' · АБ Движение';document.documentElement.lang='ru';
  if(!$('#page h1')){var title=$('#page .slab h2');if(title){var h=document.createElement('h1');h.className='h1s';h.innerHTML=title.innerHTML;title.replaceWith(h)}}
+ initSpin();
  document.querySelectorAll('[data-go]').forEach(el=>{if(el.tagName==='A')el.href='#'+el.dataset.go;else if(el.tagName!=='BUTTON'){el.setAttribute('role','link');el.tabIndex=0;el.onkeydown=e=>{if(e.key==='Enter')go(el.dataset.go)}}});
  document.querySelectorAll('#page input:not([id])').forEach((el,i)=>{el.id='input-'+i;el.setAttribute('aria-label',el.placeholder||'Поле ввода')});
  document.querySelectorAll('.rows').forEach(t=>{if(!t.parentElement.classList.contains('table-wrap')){var w=document.createElement('div');w.className='table-wrap';t.parentNode.insertBefore(w,t);w.appendChild(t)}});
